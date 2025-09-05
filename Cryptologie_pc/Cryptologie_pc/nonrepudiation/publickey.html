@@ -1,0 +1,41 @@
+<HTML>
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 2.0 Win">
+  <TITLE>Cryptologie</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<P><CENTER><B><FONT SIZE=+3>Handtekening met publieke sleutel</FONT></B></CENTER></P>
+
+<P><CENTER>&nbsp;</CENTER></P>
+
+<P><CENTER><B><FONT SIZE=+3>publiek deel - geheim deel<BR>
+</FONT></B><IMG SRC="PublicKeySign.jpg" WIDTH="512" HEIGHT="141" ALIGN=
+"BOTTOM" NATURALSIZEFLAG="3"></CENTER></P>
+
+<P><CENTER><B><FONT SIZE=+3>nodig: D(E(P))=E(D(P)) =&gt; RSA ok!</FONT></B></CENTER></P>
+
+<P>&nbsp;</P>
+
+<P>&nbsp;</P>
+
+<P>De figuur toont zeer duidelijk dat Alice het bericht tweemaal zal versleutelen,
+&eacute;&eacute;nmaal met haar geheime sleutel (=handtekening) en &eacute;&eacute;nmaal
+met Bob's publieke sleutel.</P>
+
+<P>Bob doet de omgekeerde bewerking. Bob moet D<sub>A</sub>(P) goed bijhouden
+als bewijs. Hij kan dat namelijk niet zelf maken!</P>
+
+<P>Bob kan achteraf voor de rechter zijn gelijk bewijzen aan de hand van
+P en D<sub>A</sub>(P). De rechter kan op D<sub>A</sub>(P) de ontcijfering
+E<sub>A</sub>(D<sub>A</sub>(P)) loslaten en zien dat alles klopt!</P>
+
+<P>De procedure is alleen maar onfeilbaar als Alice niet zo onnozel is haar geheime 
+  sleutel aan anderen mee te delen.</P>
+
+<P>Alice kan ook geregeld haar sleutel veranderen. Dit is zelfs zeer verstandig.
+Het algoritme werkt maar goed als een centrale autoriteit alle sleutelwijzigingen
+zal bijhouden, tesamen met een nota betreffende de geldigheidstermijn van
+de sleutel.
+</BODY>
+</HTML>

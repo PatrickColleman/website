@@ -1,0 +1,48 @@
+<HTML>
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 3.0 Win">
+  <TITLE>Cryptologie</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<P><CENTER><B><FONT SIZE="+4">Sleutelbeheer: <BR>
+public key autoriteit</FONT></B></CENTER></P>
+
+<P><CENTER>&nbsp;</CENTER></P>
+
+<P>Een autoriteit gaat weer een dynamisch directorybestand beheren.</P>
+
+<P><CENTER><IMG SRC="sleutel_autoriteit.jpg" WIDTH="512" ALIGN="BOTTOM"
+BORDER="0" HEIGHT="298" NATURALSIZEFLAG="2"></CENTER></P>
+
+<P>Elke deelnemer kent de betrouwbare publieke sleutel van de
+autoriteit.</P>
+
+<P>Het systeem werkt als volgt:<BR>
+1 Alice stuurt naar de autoriteit een bericht met tijdsstempel
+om de publieke sleutel van Bob te vragen.<BR>
+2 De autoriteit stuurt een bericht naar Alice terug, versleuteld
+met zijn eigen private sleutel. Alice kan dit ontcijferen. Dit
+bericht bevat:<BR>
+-&gt; de publieke sleutel van Bob.<BR>
+-&gt; de oorspronkelijke aanvraag. Hierdoor kan Alice weten of
+Charlie haar bericht heeft veranderd.<BR>
+-&gt; het oorspronkelijk tijdsstempel. Hierdoor kan Alice nagaan
+of het geen oud bericht is van de autoriteit, met eventueel een
+verouderde publieke sleutel van Bob.<BR>
+3 Alice stuurt een bericht naar Bob, waar haar identificatie en
+een nonce in zit.<BR>
+4, 5 Bob doet hetzelfde als hierboven om de publieke sleutel van
+Alice te kennen.<BR>
+6 Bob stuurt een vercijferd bericht naar Alice waar haar nonce
+in zit plus een nieuw nonce. Alice weet zeker dat dit bericht
+van Bob moet komen.<BR>
+7. Alice stuurt een vercijferd bericht naar Bob met Bob's nonce.
+Nu weet ook Bob zeker dat hij met Alice praat.</P>
+
+<P>&nbsp;</P>
+
+<P>Nadeel: de autoriteit kan een bottleneck zijn
+
+</BODY>
+</HTML>

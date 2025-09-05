@@ -1,0 +1,30 @@
+<HTML>
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 3.0 Win">
+  <TITLE>Cryptologie</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<P><CENTER><B><FONT SIZE="+4">One time pads:<BR>
+</FONT><FONT SIZE="+3">RC4</FONT></B></CENTER></P>
+
+<P>Een andere, veel gebruikte code, is RC4. Hierbij gaat men de
+klare tekst byte per byte EXORen met een berekende byte, volgens
+een zeer eenvoudig algoritme.</P>
+
+<P><IMG SRC="RC4_principe.jpg" WIDTH="512" ALIGN="BOTTOM" BORDER="0"
+HEIGHT="247" NATURALSIZEFLAG="2"></P>
+
+<P>Bij RC4 zal men een rij getallen S[256] lang gebruiken en een
+andere rij T[256]. De sleutel K heeft een lengte keylen. We geven
+een C-achtige code:</P>
+
+<P><IMG SRC="RC4code.gif" WIDTH="256" HEIGHT="436" ALIGN="BOTTOM"
+BORDER="0" NATURALSIZEFLAG="2"></P>
+
+<P>Elke nieuwe byte uit de klare tekst zal men EXORen met de volgende
+berekende k. Vanzelfsprekend moet men er voor zorgen dat de laatste
+while-lus stopt na de laatste byte.
+
+</BODY>
+</HTML>

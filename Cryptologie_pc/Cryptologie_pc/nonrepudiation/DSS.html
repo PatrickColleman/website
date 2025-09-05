@@ -1,0 +1,41 @@
+<HTML>
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 3.0 Win">
+  <TITLE>Cryptologie</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<P><CENTER><B><FONT SIZE="+4">DSS: Digital Signature Standard</FONT></B></CENTER></P>
+
+<P><CENTER><IMG SRC="DSS.jpg" WIDTH="512" HEIGHT="337" ALIGN="BOTTOM"
+NATURALSIZEFLAG="2"></CENTER></P>
+
+<P>&nbsp;</P>
+
+<P>DSS is een public key techniek die de functie van een handtekening
+verzorgt. Ze is een variante op de RSA methode.</P>
+
+<P>Bij de RSA methode maakt men een veilige hash code van het
+bericht. Deze code heeft een vaste lengte. De versleutelde code
+(met de private sleutel van de zender) en het niet versleutelde
+bericht worden opgestuurd. De ontvanger kan ook de hash code berekenen
+en de ontvangen hash code decoderen. Indien de gedecodeerde en
+de berekende code dezelfde zijn is alles OK, want alleen de rechtmatige
+zender kan deze hebben aangemaakt.<BR>
+</P>
+
+<P>Bij DSS maakt men ook een hash code. Deze is de invoer van
+een handtekeningfunctie, samen met een random getal k. De handtekeningfunctie
+hangt af van de private sleutel (KRa) van de zender en een verzameling
+parameters (KUg) die in de gesloten groep gebruikers bekend is.
+Deze KUg zou men kunnen bekijken als een soort globale publieke
+sleutel. Het resultaat hiervan is de bits r en s.</P>
+
+<P>De ontvanger zal eveneens de hash code berekenen. Deze hash
+code plus de ontvangen bits r en s. De ontvanger gebruikt KUg
+en de publieke sleutel van de zender KUa. Als de handtekening
+juist is, is het resultaat van de verificatiefunctie gelijk aan
+r.
+
+</BODY>
+</HTML>

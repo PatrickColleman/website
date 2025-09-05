@@ -1,0 +1,69 @@
+<HTML>
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 3.0 Win">
+  <TITLE>Cryptologie</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<P><CENTER><B><FONT SIZE="+4">HMAC</FONT></B></CENTER></P>
+
+<P>Doel<BR>
+Gebruik<BR>
+Ontwerpdoelstellingen</P>
+
+<P><CENTER><IMG SRC="HMAC.jpg" WIDTH="512" HEIGHT="589" ALIGN="BOTTOM"
+NATURALSIZEFLAG="2"></CENTER></P>
+
+<P>De bedoeling van HMAC is de snelheid te halen van een hash
+functie en hierbij toch een sleutel te gebruiken, zodat men een
+MAC bekomt.</P>
+
+<P>IV op deze figuur staat voor de initial value of initi&euml;le
+waarde die de verschillende Hashfuncties hebben (zie MD5, &#133;).</P>
+
+<P>HMAC (RFC 2104) is het verplichte MAC voor IP beveiliging en
+wordt in andere Internet protocollen gebruikt, zoals SSL.</P>
+
+<P>De ontwerpdoelstellingen zijn de volgende:<BR>
+- De beschikbare hash functies moeten bruikbaar zijn.<BR>
+- De ingebouwde hash functie moet kunnen vervangen worden door
+een andere.<BR>
+- De oorspronkelijke performantie van de hash functie moet nagenoeg
+behouden blijven.<BR>
+- Het gebruik en de verwerking van de sleutels moet eenvoudig
+zijn.<BR>
+- De veiligheid moet kunnen bewezen worden.</P>
+
+<P>Bovenstaande figuur toont de werking.</P>
+
+<P>Men definieert hiervoor de volgende termen:<BR>
+1. H : ingebouwde hash functie<BR>
+2. M : berichtinvoer, inclusief de opvulling voor de hash functie<BR>
+3. Yi : i-de blok van M<BR>
+4. L : aantal blokken<BR>
+5. b: aantal bits in een blok<BR>
+6. n : lengte van de hash code die door de ingebouwde hash functie
+wordt geproduceerd<BR>
+7. K : geheime sleutel. De aanbevolen lengte is groter dan of
+gelijk aan n. Als de sleutellengte groter is dan b wordt de sleutel
+als invoer bij de hash functie gebruikt om een n bits sleutel
+te produceren.<BR>
+8. K+ : is gelijk aan K, maar aan de linkerkant opgevuld met '0'
+om een resultaat van lengte b te bekomen.<BR>
+9. ipad : 00110110, b/8 keer herhaald<BR>
+10. opad : 01011010, b/8 keer herhaald</P>
+
+<P>&nbsp;</P>
+
+<P>HMAC is zeer veilig. In eerste instantie zou men kunnen stellen
+dat het even veilig is als de hash functie die er de kern van
+is. In dit verband zou men foutief kunnen denken dat MD5 niet
+volstaat.</P>
+
+<P>Zelfs in het geval van de verjaardagsaanval volstaat MD5. Het
+is zo dat MD5 zelf niet voldoet, maar men heeft hier ook nog de
+geheime sleutel. Met MD5 heeft men geschat dat het 250.000 jaar
+duurt op een 1Gbps verbinding duren om het geheel te kunnen kraken.
+
+</BODY>
+</HTML>

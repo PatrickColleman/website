@@ -1,0 +1,49 @@
+<HTML>
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 3.0 Win">
+  <TITLE>Cryptologie</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<P><CENTER><B><FONT SIZE="+4">Sleutelbeheer: <BR>
+public key certificaat</FONT></B></CENTER></P>
+
+<P><CENTER>&nbsp;</CENTER></P>
+
+<P><CENTER><IMG SRC="sleutel_certificaat.jpg" WIDTH="512" ALIGN="BOTTOM"
+BORDER="0" HEIGHT="259" NATURALSIZEFLAG="2"></CENTER></P>
+
+<P>Het gebruik van een certificaat maakt het mogelijk dat deelnemers
+sleutels uitwisselen zonder dat er een autoriteit is.</P>
+
+<P>Een certificaat bevat een publieke sleutel, de naam van de
+eigenaar van die publieke sleutel &eacute;n andere informatie
+(waaronder vb. een vervaldag). Het wordt aangemaakt door een certificaatautoriteit
+(waardoor het geheel te vertrouwen is) en wordt (later) verstrekt
+aan een deelnemer die de juiste sleutel (de publieke sleutel van
+de certificaat autoriteit) heeft. Hierdoor weet deze dat het bericht
+absoluut te vertrouwen is en dat de inhoud zeker de publieke sleutel
+en de eigenaar ervan bevat. Het certificaat kan door de eigenaar
+ervan aan iedereen meegedeeld worden.</P>
+
+<P>Volgende eisen zijn gesteld:<BR>
+- elke deelnemer kan certificaten lezen om de naam en publieke
+sleutel van de eigenaar te kennen. (public key certificaatautoriteit
+is gekend)<BR>
+- elke deelnemer kan nagaan of het certificaat wel van het certificaatautoriteit
+is of vals is. (public key certificaatautoriteit is gekend)<BR>
+- alleen de autoriteit kan certificaten aanmaken en updaten. (alleen
+certificaatautoriteit kent zijn eigen private sleutel)<BR>
+- elke deelnemer kan de geldigheid van een certificaat nagaan.
+(bevat geldigheidsduur)</P>
+
+<P>&nbsp;</P>
+
+<P>De procedure kan men aflezen van bovenstaande figuur. Alice
+en Bob krijgen een certificaat van de certificaatautoriteit. Ze
+kunnen dit naar om het even wie sturen. Iedereen kan nagaan dat
+dit certificaat echt is, want allen de autoriteit kan dit aanmaken
+(versleutelen).
+
+</BODY>
+</HTML>

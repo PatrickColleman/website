@@ -1,0 +1,54 @@
+<HTML>
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 3.0 Win">
+  <TITLE>Cryptologie</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<P><CENTER><B><FONT SIZE="+4">MD5:<BR>
+logica</FONT></B></CENTER></P>
+
+<P><CENTER><IMG SRC="MD5_generatie.jpg" WIDTH="512" HEIGHT="360"
+ALIGN="BOTTOM" NATURALSIZEFLAG="2"></CENTER></P>
+
+<P><CENTER>&nbsp;</CENTER></P>
+
+<P>MD5 is een message digest algorithme, uitgevonden door Ron
+Rivest, de persoon die ook voor een deel achter <B>R</B>SA zit.
+Het was tot 1995 het meest gebruikte veilige hash algorithme.
+Nu moet men het als kraakbaar beschouwen: het is niet meer veilig!</P>
+
+<P>Zoals bovenstaande figuur toont, wordt de invoer verwerkt tot
+een veelvoud van 512 bits. Men doet dit in volgende stappen:</P>
+
+<P>- opvullen met opvulbits: Men zorgt er voor dat de lengte van
+het bericht gelijk is aan 448 modulo 512. Er wordt altijd opgevuld,
+ook als de lengte bij toeval juist zou zijn: dit wil zeggen dat
+het aantal paddingbits of opvulbits ligt tussen 1 en 512. De opvulling
+doet men door een '1' gevolgd door allemaal '0' tekens.</P>
+
+<P>- lengte toevoegen: Hiervoor voegt men achteraan de lengte
+van het bericht toe, voordat er bits werden toegevoegd. Men gebruikt
+alleen de 64 meest beduidende bits van de lengte (in het geval
+dat het bericht vrij lang zou uitvallen). Het gevolg hiervan is
+dat de totale lengte steeds een veelvoud is van 512 bits.</P>
+
+<P>- initialisatie van de MD buffer. Dit is een 128 bits buffer
+die men gebruikt om de tussenresultaten en het eindresultaat te
+bewaren. Men kan deze buffer voorstellen als 4 32 bits cijfers
+A, B, C en D. Men geeft ze achtereenvolgens de waarden:<BR>
+-&gt; A=0X67452301<BR>
+-&gt; B=0XEFCDAB89<BR>
+-&gt; C=0X98BADCFE<BR>
+-&gt; D=0X10325476<BR>
+Deze waarden worden bewaard in het <B>little endian formaat</B>.
+Dit wil zeggen dat de minst beduidende byte op het laagste adres
+wordt geplaatst. Merk op dat elke variabele 4 adressen beslaat
+van elk &eacute;&eacute;n byte.</P>
+
+<P>- verwerking van het bericht. Dit zijn de verschillende blokken
+met opschrift H<sub>MD5</sub> in bovenstaande figuur. We bespreken
+ze in volgende paragraaf.
+
+</BODY>
+</HTML>

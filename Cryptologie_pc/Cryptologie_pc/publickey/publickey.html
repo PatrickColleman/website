@@ -1,0 +1,80 @@
+<HTML>
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 3.0 Win">
+  <TITLE>Cryptologie</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<P><CENTER><B><FONT SIZE="+4">Public key algoritmen</FONT></B></CENTER></P>
+
+<P><B><FONT SIZE="+3"><BR>
+2 sleutels: 1 publieke en 1 geheime</FONT></B></P>
+
+<P><B><FONT SIZE="+3">eisen:<BR>
+- D(E(P))=P<BR>
+- D is niet af te leiden uit E (E = publiek)</FONT></B></P>
+
+<P><B><FONT SIZE="+3">Werkwijze: P=D<sub>B</sub>(E<sub>B</sub>(P))</FONT></B></P>
+
+<P><CENTER><IMG SRC="pub_geheimhouding.jpg" WIDTH="512" HEIGHT="301"
+ALIGN="BOTTOM" NATURALSIZEFLAG="2"></CENTER></P>
+
+<P>In bovenstaande figuur is KUb de publieke sleutel en KRb de
+private sleutel van Bob (bestemmeling B). We noemen deze vanaf
+nu Eb (KUb) om aan te geven dat we deze sleutel gebruiken om te
+encrypteren en Db (KRb) om aan te geven dat we deze gebruiken
+om te decrypteren.</P>
+
+<P>De vercijfer (publieke) en ontcijfersleutel (private) mogen
+natuurlijk niet uit mekaar af te leiden zijn, anders zijn beide
+sleutels 'publiek' en heeft men geen cryptologie meer.</P>
+
+<P>Natuurlijk moeten de vercijfer en ontcijferalgoritmen mekaars
+'inverse' zijn: men moet bij het ontcijferen opnieuw de klare
+tekst bekomen.</P>
+
+<P>Het algoritme is publiek bekend. De publieke sleutel E is natuurlijk
+ook bekend.</P>
+
+<P>&nbsp;</P>
+
+<P>De procedure gaat als volgt:</P>
+
+<P>Stel dat Alice een bericht naar Bob wil versturen. Ze zoekt
+de sleutel E<sub>B</sub> op in een publieke gids en vercijfert
+haar bericht. Dit is E<sub>B</sub>(P).</P>
+
+<P>Bob ontvangt een bericht en zal dit ontcijferen met zijn geheime
+sleutel D<sub>B</sub> en dit levert opnieuw P. Niemand anders
+kan het bericht van Alice lezen.</P>
+
+<P>&nbsp;</P>
+
+<P>De sleutels moeten aan een aantal <B>voorwaarden</B> voldoen:<BR>
+- Een partij (Alice) kan gemakkelijk D en E aanmaken.<BR>
+- Men kan gemakkelijk encrypteren met de publieke sleutel.<BR>
+- Men kan gemakkelijk decrypteren met de private sleutel.<BR>
+- Wanneer men de publieke sleutel kent, is het computationeel
+niet haalbaar de private sleutel te achterhalen.<BR>
+- Wanneer een derde partij de publieke sleutel kent en de vercijferde
+tekst, is het computationeel niet doenbaar de klare tekst te genereren.<BR>
+- Het is nuttig dat de encryptie en decryptiefuncties in een willekeurige
+volgorde kunnen worden toegepast. Dit is wel geen absolute noodzaak.</P>
+
+<P>&nbsp;</P>
+
+<P>Het is duidelijk dat de kracht van een systeem ligt in zowel
+de grootte van de sleutel als de wiskundige functie die de vercijfering
+moet doorvoeren. Het nadeel van public key cryptografie is dan
+ook dat het vrij traag is, zodat het in hoofdzaak wordt gebruikt
+voor:<BR>
+- sleutelbeheer  (Secret key cryptologie is veel sneller dan public
+key cryptologie. Men zal de public key cryptologie zeer dikwijls
+gebruiken om een secret key af te spreken en daarna deze secret
+key gebruiken in secret key cryptologiesystemen gedurende &eacute;&eacute;n
+sessie of &eacute;&eacute;n bericht. Dit heeft het voordeel dat
+men zeer dikwijls van secret key verwisselt.)<BR>
+- handtekening toepassingen <BR>
+
+</BODY>
+</HTML>

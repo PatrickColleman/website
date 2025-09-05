@@ -1,0 +1,85 @@
+<HTML>
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 2.0 Win">
+  <BASE TARGET="target">
+  <TITLE>Cryptologie</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<P><CENTER><B><FONT SIZE=+4>Substitutie<BR>
+Meerletterig</FONT></B></CENTER></P>
+
+<P>&nbsp;</P>
+
+<P>&nbsp;</P>
+
+<P>Een voorbeeld hiervan is <B>Mayfair</B>. Hierbij worden de karakters
+in een matrix gegoten als volgt:<BR>
+<TABLE WIDTH="282" BORDER="1" CELLSPACING="2" CELLPADDING="0" HEIGHT="133">
+<TR>
+<TD WIDTH="20%"><P><CENTER>&nbsp;p</CENTER></TD>
+<TD WIDTH="20%"><P><CENTER>&nbsp;a</CENTER></TD>
+<TD WIDTH="20%"><P><CENTER>&nbsp;t</CENTER></TD>
+<TD WIDTH="20%"><P><CENTER>&nbsp;r</CENTER></TD>
+<TD WIDTH="20%"><P><CENTER>&nbsp;ij</CENTER></TD></TR>
+<TR>
+<TD WIDTH="20%"><P><CENTER>&nbsp;c</CENTER></TD>
+<TD WIDTH="20%"><P><CENTER>&nbsp;k</CENTER></TD>
+<TD WIDTH="20%"><P><CENTER>&nbsp;o</CENTER></TD>
+<TD WIDTH="20%"><P><CENTER>&nbsp;l</CENTER></TD>
+<TD WIDTH="20%"><P><CENTER>&nbsp;e</CENTER></TD></TR>
+<TR>
+<TD WIDTH="20%"><P><CENTER>&nbsp;m</CENTER></TD>
+<TD WIDTH="20%"><P><CENTER>&nbsp;n</CENTER></TD>
+<TD WIDTH="20%"><P><CENTER>&nbsp;b</CENTER></TD>
+<TD WIDTH="20%"><P><CENTER>&nbsp;d</CENTER></TD>
+<TD WIDTH="20%"><P><CENTER>&nbsp;f</CENTER></TD></TR>
+<TR>
+<TD WIDTH="20%"><P><CENTER>&nbsp;g</CENTER></TD>
+<TD WIDTH="20%"><P><CENTER>&nbsp;h</CENTER></TD>
+<TD WIDTH="20%"><P><CENTER>&nbsp;q</CENTER></TD>
+<TD WIDTH="20%"><P><CENTER>&nbsp;s</CENTER></TD>
+<TD WIDTH="20%"><P><CENTER>&nbsp;u</CENTER></TD></TR>
+<TR>
+<TD WIDTH="20%"><P><CENTER>&nbsp;v</CENTER></TD>
+<TD WIDTH="20%"><P><CENTER>&nbsp;w</CENTER></TD>
+<TD WIDTH="20%"><P><CENTER>&nbsp;x</CENTER></TD>
+<TD WIDTH="20%"><P><CENTER>&nbsp;y</CENTER></TD>
+<TD WIDTH="20%"><P><CENTER>&nbsp;z</CENTER></TD></TR>
+</TABLE>
+<BR>
+De letters i en j moeten uit de contekst worden afgeleid. <BR>
+<BR>
+Men begint met een sleutel, bijvoorbeeld 'patrickcolleman'. Men plaatst
+de tekens in het vierkant van links naar rechts en van boven naar onder.
+De dubbels laat men weg. Wanneer de sleutel geplaatst is, zet men de overige
+letters van het alfabet in alfabetische volgorde. <BR>
+<BR>
+De methode gaat verder als volgt. Veronderstel dat het woord 'balloon' moet
+worden versleuteld. Men zal dit woord verdelen in blokjes van twee letters
+als volgt:<BR>
+- herhaalde letters die in hetzelfde blok zitten worden door middel van
+een opvulteken gescheiden. Dit opvulteken kan bijvoorbeeld 'x' zijn. Op
+deze manier krijgen we 'ba lx lo on'.<BR>
+- Letters die in dezelfde rij van de matrix vallen worden vervangen door
+de letter die er rechts naast staat of door het eerste element van de rij
+indien het gaat over het laatste teken van de rij.<BR>
+- Letters die in dezelfde kolom vallen worden vervangen door de letter eronder
+of, in het geval van het laatste teken, door de bovenste letter.<BR>
+- In alle andere gevallen wordt een letter vervangen door de letter van
+zijn eigen rij en in de kolom die door de andere letter wordt bezet.</P>
+
+<P>Gevolg: 'ba' wordt: 'nt'</P>
+
+<P>Deze code is lang als niet breekbaar beschouwd. Ze is in WO I door het
+Britse leger gebruikt.</P>
+
+<P>Het blijkt echter dat de code de structuur van de plaintext niet erg
+door mekaar haalt, zodat bewezen is dat enkele honderden tekens vercijferde
+tekst voldoende zijn om ze te breken.</P>
+
+<P>&nbsp;</P>
+
+<P><A HREF="substitutie.html">Terug naar substitutie.</A>
+</BODY>
+</HTML>

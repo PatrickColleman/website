@@ -1,0 +1,65 @@
+<HTML>
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 3.0 Win">
+  <TITLE>Cryptologie</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<P><CENTER><B><FONT SIZE="+4">Transpositiesystemen</FONT></B></CENTER></P>
+
+<P><CENTER>&nbsp;</CENTER></P>
+
+<P><CENTER><B><FONT SIZE="+2">Vervang de volgorde van de tekens.</FONT></B></CENTER></P>
+
+<P><CENTER><B><FONT SIZE="+2">Niet veilig!</FONT></B></CENTER></P>
+
+<P>&nbsp;</P>
+
+<P>Bij de transpositiesystemen blijven de tekens onveranderd,
+maar gaat men de volgorde op een afgesproken manier veranderen.</P>
+
+<P>Een gevolg hiervan is dat histogrammen niets uithalen, want
+de frequentie van de tekens is juist de verwachtte frequentie.
+Men kan er wel mee ontdekken dat een transpositiesysteem gebruikt
+werd, en dit juist omdat de frequenties kloppen met de verwachtte.</P>
+
+<P>Een gebruikelijke methode is de tekens in een matrix in te
+lezen, rij per rij en ze daarna kolom per kolom uit te lezen.
+De volgorde van de kolommen zal men laten afhangen van een (korte)
+sleutel. Deze sleutel kan een woord zijn waar alle tekens slechts
+&eacute;&eacute;nmaal in voorkomen.</P>
+
+<P>Laten we een voorbeeld bekijken:</P>
+
+<P><CENTER><BR>
+<IMG SRC="transpositie.jpg" WIDTH="512" HEIGHT="228" ALIGN="BOTTOM"
+NATURALSIZEFLAG="3"></CENTER></P>
+
+<P>Het woordje MEGABUCK wordt hier gebruikt als geheugensteuntje
+om te onthouden in welke volgorde de kolommen moeten naar buiten
+worden geschoven. De tweede rij van de figuur geeft de volgorde
+in cijfers.</P>
+
+<P>De cryptoanalyst die de code wil kraken moet de volgorde van
+de kolommen zien te vinden. Stel dat deze omwille van de bestemmeling
+van het bericht denkt dat ergens in de tekst wel het woord 'milliondollars'
+voorkomt.</P>
+
+<P>In de vercijferde tekst staan de volgende tweelettercombinaties
+omwille van het woord milliondollars: mo, il, ll,la,ir en os.</P>
+
+<P>In de vercijferde tekst volgt de letter o op de letter m. Dit
+komt omdat ze onder mekaar in een kolom staan. (kolom 4) Hieruit
+kan men besluiten dat de lengte van de sleutel 8 is.</P>
+
+<P>Uiteindelijk moet de cryptoanalyst alleen nog de volgorde van
+de kolommen ontdekken. Dit doet men met behulp van trial and error:
+men kan alle mogelijkheden uitproberen.</P>
+
+<P>Besluit: deze code is kraakbaar.</P>
+
+<P>Een methode om de methode minder snel kraakbaar te maken is
+meerdere keren na mekaar te transponeren.
+
+</BODY>
+</HTML>

@@ -1,0 +1,87 @@
+<HTML>
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 3.0 Win">
+  <TITLE>Cryptologie</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<P><CENTER><B><FONT SIZE="+4">Vereisten voor authenticatie</FONT></B></CENTER></P>
+
+<P><B><FONT SIZE="+2">aanvallen<BR>
+manieren<BR>
+MAC<BR>
+</FONT></B></P>
+
+<P><B>Mogelijke aanvallen: </B><BR>
+- vertrouwelijkheid<BR>
+* openbaarmaking: bekend maken aan een persoon die niet de juiste
+sleutel bezit.<BR>
+* verkeersanalyse: ontdekken van het patroon van verkeer tussen
+de partijen <BR>
+- authenticatie <BR>
+* maskerade: verzenden van berichten die van een frauduleuze afkomst
+zijn. <BR>
+* inhoudsmodificatie: wijzigen van de inhoud van een bericht.
+<BR>
+* volgordemodificatie: berichten invoegen, verwijderen, herschikken
+<BR>
+* timingmodificatie: vertraging of replay van berichten <BR>
+* handtekening<BR>
+- repudiatie: ontkennen van de ontvangst van een bericht of het
+ontkennen van de zender te zijn van een bericht. <BR>
+<BR>
+<B>Men kan op volgende manieren authenticatie bekomen:</B><BR>
+- berichtencryptie (zie geheime sleutel cryptografie- alleen Alice
+en Bob kennen hun onderlinge geheime sleutel). Publieke sleutelcryptografie
+biedt geen authenticatie, of men moet de variant gebruiken waarbij
+men ook de private sleutel gebruikt. <BR>
+- berichtauthenticatie: MAC <BR>
+- hash functie <BR>
+<BR>
+MAC staat voor Message Authentication Code. Men gebruikt hierbij
+een geheime code en een klein datablok van vaste lengte dat functie
+is van het bericht en dat men de cryptografische checksum of MAC
+noemt. Deze MAC zal men dan tezamen met het bericht doorzenden.</P>
+
+<P>Het verschil met een MD is dat hier wel een gemeenschappelijke
+geheime sleutel gebruikt wordt en dat een MD veel langer is. Een
+MAC moet niet de eigenschap hebben dat het verschillend is voor
+twee verschillende berichten.</P>
+
+<P>Gevolgen:<BR>
+- de ontvanger weet dat het bericht niet is veranderd, want anders
+klopt de MAC niet. <BR>
+- de ontvanger weet dat het bericht van de aangekondigde zender
+komt, want alleen deze kent de juiste geheime sleutel. <BR>
+- indien het bericht een volgordenummer heeft, kan deze volgorde
+ook niet gewijzigd worden.</P>
+
+<P>Merk op dat de MAC alleen authenticatie biedt, maar geen vertrouwelijkheid.
+Het voordeel is echter dat het veel sneller is dan encryptie en
+decryptie. Het is namelijk zo dat het MAC algoritme niet omkeerbaar
+moet zijn. Indien men vertrouwelijkheid wenst, kan men het geheel
+nog vercijferen!</P>
+
+<P>&nbsp;</P>
+
+<P>Merk ook op dat vele verschillende berichten hetzelfde MAC
+kunnen hebben. Dit maakt het de cryptoanalyst moeilijk: hij kent
+&eacute;n de tekst &eacute;n de MAC, maar niet de geheime code
+die de MAC aanmaakte. Er zijn bijgevolg vele koppels klare tekst
+en MAC nodig om de geheime sleutel te kunnen achterhalen.<BR>
+</P>
+
+<P><CENTER><IMG SRC="MAC_toepassingen.jpg" WIDTH="512" ALIGN="BOTTOM"
+BORDER="0" HEIGHT="398" NATURALSIZEFLAG="2"></CENTER></P>
+
+<P>In bovenstaande figuur kan men als functies terugvinden:<BR>
+a) Concatenatie van het bericht men de MAC. Dit geeft een verzekering
+dat het bericht niet aangepast is. Dit geeft authenticiteit.<BR>
+b) Idem als het vorige, maar extra vercijferd met een geheime
+sleutel. Dit geeft ook geheimhouding.<BR>
+c) Men gaat eerst het bericht vercijferen met een geheime sleutel.
+Daarna kan men dit concateneren met de MAC. Ook dit geeft authenticiteit
+en geheimhouding.
+
+</BODY>
+</HTML>

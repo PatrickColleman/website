@@ -1,0 +1,60 @@
+<HTML>
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 3.0 Win">
+  <TITLE>Cryptologie</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<P><CENTER><B><FONT SIZE="+3">Mac en Hash beveiliging</FONT></B></CENTER></P>
+
+<P>&nbsp;</P>
+
+<P><B>1. Beveiliging tegen 'brute kracht aanval'</B></P>
+
+<P>Bij deze aanval heeft de tegenstander zeer veel computerkracht
+te zijner beschikking. Hierdoor kan hij veel pogingen ondernemen
+om de beveiliging te kraken.</P>
+
+<P><I>a. Hash functie</I><BR>
+De beveiliging tegen de brute aanval hangt in hoofdzaak af van
+de lengte van de digest (hash). Herinner u dat deze lengte zodanig
+groot moet zijn dat er (theoretisch) geen twee berichten x en
+y kunnen bestaan die met dezelfde hashfunctie hetzelfde resultaat
+hebben.<BR>
+Noemen we n de lengte van deze hash functie. Men kan dan bewijzen
+dat de weerstand tegen het 'kraken', d.w.z. een ander bericht
+vinden met hetzelfde resultaat, evenredig is met 2 <sup>n/2</sup>.</P>
+
+<P><I>b. MAC</I><BR>
+Dit is moeilijker, want er is een ongekende geheime code gebruikt
+tijdens het opstellen van de MAC. <BR>
+Indien de aanvaller een combinatie kent van bericht en MAC, kan
+hij op zoek gaan naar de sleutel. Wanneer hij de sleutel heeft,
+kan hij om het even welk bericht genereren en met de sleutel een
+ander MAC maken. De hoeveelheid werk om deze sleutel te vinden
+is 2 <sup>k</sup> met k de lengte van de sleutel.<BR>
+Indien de aanvaller de mogelijke berichten wil doorlopen om een
+ander bericht te vinden met hetzelfde MAC, zijn 2 <sup>n</sup>
+berekeningen nodig. De aanvaller kan dit echter niet offline (op
+zijn bureau) doen.</P>
+
+<P>&nbsp;</P>
+
+<P><B>2. Cryptoanalyse</B></P>
+
+<P>Hierbij gaat men op zoek naar een zwakte van het systeem. Dit
+is typisch een eigenschap dat men kan aanvallen. Over het algemeen
+zal dit meer werk vragen dan een aanval van het type 'brute kracht'.</P>
+
+<P><I>a. Hash functie</I><BR>
+Hierbij gaat men op zoek naar de zwakke plek van MD5 of SHA of
+RIPEMD-160. Het is duidelijk dat de lengte van het resultaat belangrijk
+is. Het is begrijpelijk dat er meerdere berichten bestaan van
+een (zeer) grote lengte die eenzelfde (relatief) korte hash compressie
+geven van bjvorbeeld 128 of 160 bits!</P>
+
+<P><I>b. MAC</I><BR>
+Hiervoor bestaan meer variaties. Er is weinig onderzoek over verricht.
+
+</BODY>
+</HTML>

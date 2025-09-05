@@ -1,0 +1,58 @@
+<HTML>
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 3.0 Win">
+  <TITLE>Cryptologie</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<P><CENTER><B><FONT SIZE="+4">redundantie</FONT></B></CENTER></P>
+
+<P><CENTER><B><FONT SIZE="+2">te weinig<BR>
+te veel<BR>
+veel nullen vooraan of achteraan</FONT></B></CENTER></P>
+
+<P>&nbsp;</P>
+
+<P>Veronderstel een postorderbedrijf 'PC express'. Dit bedrijf
+heeft 65.000 producten in voorraad. Een verstandig programmeur
+heeft beslist dat hij voor het voorstellen van de artikelnummers
+toekwam met een short int, d.w.z. een cijfer van twee bytes.</P>
+
+<P>Bestellingen van kleinhandelaars via de modem zijn voorzien.
+Een kleinhandelaar stuurt dan een bericht door waarbij de eerste
+32 bytes zijn naam voorstellen. Deze naam is leesbaar omdat PC
+express anders niet in staat is te weten van wie de bestelling
+komt. De laatste drie bytes worden echter versleuteld met een
+sleutel die specifiek is voor een kleinhandelaar: elke kleinhandelaar
+heeft een andere sleutel. De eerste byte van de drie resterende
+is het aantal stuks en de laatste twee bytes zijn dus ons artikelnummer.</P>
+
+<P>Wanneer echter een kwaadwillig persoon PC express veel schade
+wenst te berokkennen, kan hij een zeer eenvoudig computerprogramma
+opstellen. Het volstaat een idee te hebben van de klanten. Hij
+stuurt dus een reeks records op waarbij de eerste 32 bytes juiste
+klantnamen zijn. Hij weet echter niet hoe hij de resterende drie
+bytes moet uitrekenen. Maar: alle aantallen zijn geloofwaardig
+(er is misschien een bestelling binnengekomen van een PC aktie).
+Voor de eerste van de drie bytes kan hij dus een random cijfer
+invullen. Hij heeft ook een probleem voor de keuze van de laatste
+twee bytes. Er zijn echter 65.000 artikels in een 'ruimte' van
+2 bytes, dit wil zeggen dat er maar 65536 mogelijke nummers zijn.
+Door ook hier een random cijfer in te vullen, gokt de boosdoener
+slechts in 536/65536 (=0.8%) van de gevallen verkeerd.</P>
+
+<P>Een goede oplossing is dan ook bijvoorbeeld 7 bytes te voorzien
+voor het artikelnummer. Als de boosdoener nu gokt, is het slechts
+juist in 9*10<sup>-13</sup>% van de gevallen. Dit is te verwaarlozen.
+Samen met de byte van het aantal is dit een 64 bit blok data dat
+perfect in DES of IDEA cryptologie past. (Al dat dit niet echt
+nodig is natuurlijk.)</P>
+
+<P>Maar: allemaal nullen toevoegen maakt het de indringer gemakkelijker:
+het resultaat is beter voorspelbaar dan anders.</P>
+
+<P>Een beter idee is dus de artikelnummers at random te kiezen
+in het volledige artikelnummerbereik.
+
+</BODY>
+</HTML>

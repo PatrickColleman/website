@@ -1,0 +1,49 @@
+<HTML>
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 3.0 Win">
+  <TITLE>Cryptologie</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<P><CENTER><B><FONT SIZE="+4">One time pads:<BR>
+</FONT><FONT SIZE="+3">Linear feedback schuifregister </FONT><FONT
+ SIZE="+2">(LFSR)</FONT></B></CENTER></P>
+
+<P>&nbsp;</P>
+
+<P>Een oplossing om voldoende random bits te hebben is het gebruik
+van een lineair feedback schuifregister.</P>
+
+<P>Dit is een schuifregister van een groot aantal bits. Er zit(ten)
+eveneens een (aantal) terugkoppeling(en) in met modulo twee adders
+(exorpoorten). Op deze manier is men in staat een pseudorandom
+bitstroom te genereren die zichzelf maar zal herhalen na 2<sup>n</sup>-1
+bits, waarbij n de lengte van het schuifregister is.</P>
+
+<P>Een voorbeeld:</P>
+
+<P><CENTER><IMG SRC="LFSR.gif" WIDTH="512" HEIGHT="244" ALIGN="BOTTOM"
+BORDER="0" NATURALSIZEFLAG="2"></CENTER></P>
+
+<P>In bovenstaande figuur ziet men een zeer eenvboudig voorbeeld
+van slechts 4 flipflops. Ook de opeenvolgende inhoud van de flipflops
+zijn gegeven. De uitgang van het LFSR is dan telkens de laatste
+bit, of:</P>
+
+<P>0 0 0 1 0 0 1 1 0 1 0 1 1 1 1</P>
+
+<P>Indien het schuifregister voldoende lang is, kan men bewijzen
+dat de output bitstroom random is (voor zover men een berekende
+bitstroom echt random kan maken natuurlijk!).</P>
+
+<P>Het nadeel van een LFSR is echter dat de cryptoanalyst voldoende
+heeft aan 2*n bits klare tekst &eacute;n de vercijferde klare
+tekst om de volledige code te kunnen kraken. Men kan snel begrijpen
+dat de exor van deze twee bitstromen informatie van het schuifregister
+bevat: deze is de inhoud op een bepaald ogenblik. De cryptoanalyst
+moet alleen nog de terugkoppelingen bepalen. Dit kan door een
+stelsel op te lossen. Wanneer men dus deze tussenoplossing gebruikt,
+is het systeem niet meer veilig!
+
+</BODY>
+</HTML>

@@ -1,0 +1,70 @@
+<HTML>
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 3.0 Win">
+  <TITLE>Cryptologie</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<P><CENTER><B><FONT SIZE="+4">SHA-1:<BR>
+logica</FONT></B></CENTER></P>
+
+<P><CENTER><IMG SRC="MD5_generatie.jpg" WIDTH="512" HEIGHT="360"
+ALIGN="BOTTOM" NATURALSIZEFLAG="2"></CENTER></P>
+
+<P><CENTER>&nbsp;</CENTER></P>
+
+<P>SHA-1 of secure hash algorithm is beschreven in 1995. Het is
+de opvolger van SHA en gelijkt sterk op MD5. Daarom staat hierboven
+dan ook opnieuw de figuur van MD5! Men moet alleen de 128 bits
+vervangen door 160 bits.</P>
+
+<P>De digest is 160 bits lang. De lengte van een bericht is maximaal
+2<sup>64</sup> bits lang.</P>
+
+<P>Zoals bovenstaande figuur toont, wordt de invoer verwerkt tot
+een veelvoud van 512 bits. Men doet dit in volgende stappen:</P>
+
+<P>- opvullen met opvulbits: men zorgt er voor dat de lengte van
+het bericht gelijk is aan 448 modulo 512. Er wordt altijd opgevuld,
+ook als de lengte bij toeval juist zou zijn: dit wil zeggen dat
+het aantal paddingbits of opvulbits ligt tussen 1 en 512. De opvulling
+doet men door een '1' gevolgd door allemaal '0' tekens.</P>
+
+<P>- lengte toevoegen: hiervoor voegt men achteraan de lengte
+van het bericht toe, voordat er bits werden toegevoegd. Men gebruikt
+hiervoor 64 bits. Het gevolg hiervan is dat de totale lengte steeds
+een veelvoud van 512 bits is.</P>
+
+<P>- initialisatie van de MD buffer. Dit is een 160 bits buffer
+die men gebruikt om de tussenresultaten en het eindresultaat te
+bewaren. Men kan deze buffer voorstellen als 5 32 bits cijfers
+A, B, C, D en E. Men geeft ze achtereenvolgens de waarden:<BR>
+-&gt; A=0X67452301<BR>
+-&gt; B=0XEFCDAB89<BR>
+-&gt; C=0X98BADCFE<BR>
+-&gt; D=0X10325476<BR>
+-&gt; E=0XC3D2E1F0<BR>
+Deze waarden worden bewaard in het <B>big endian formaat</B>.
+Dit wil zeggen dat de minst beduidende byte op het hoogste adres
+wordt geplaatst. Merk op dat elke variabele 4 adressen beslaat
+van elk &eacute;&eacute;n byte.</P>
+
+<P>- verwerking van het bericht. Dit zijn de verschillende blokken
+met opschrift H<sub>MD5</sub> in bovenstaande figuur. De werking
+is net dezelfde als bij MD5, maar nu is het tussenresultaat 160
+bits lang. Men gebruikt wel andere functies dan F, G, H en I.
+Men noemt de functies nu f1, f2, f3 en f4.</P>
+
+<P>&nbsp;</P>
+
+<P>Aangezien SHA-1 een MD heeft die 32 bits langer is dan MD5,
+is deze veel beter bestand tegen brute kracht aanvallen.</P>
+
+<P>SHA-1 lijkt minder kwetsbaar tegen cryptografische aanvallen
+dan MD5.</P>
+
+<P>Zowel SHA-1 als MD5 vragen een CPU met 32 bit rekeninstructies.
+Anders zou de uitrekening veel te lang duren.
+
+</BODY>
+</HTML>

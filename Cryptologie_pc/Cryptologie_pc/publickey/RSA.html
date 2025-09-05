@@ -1,0 +1,73 @@
+<HTML>
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 3.0 Win">
+  <TITLE>Cryptologie</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<P><CENTER><B><FONT SIZE="+3">RSA<BR>
+(Rivest, Shamir, Adleman)</FONT></B></CENTER></P>
+
+<P><B><FONT SIZE="+2">Geven goede sleutels voor public key algoritmen.</FONT></B></P>
+
+<P>1. Kies 2 zeer grote priemgetallen <B>p</B> en <B>q</B>, beiden
+groter dan 10<sup>100</sup>.<BR>
+2. Bereken <B>n=p*q </B>en<B> z=(p-1)*(q-1)</B><BR>
+3. Kies een getal d dat geen factoren met z gemeenschappelijk
+heeft (priemgetal)<BR>
+4. Zoek e zodat <B>e*d=1 mod z</B></P>
+
+<P><B><FONT SIZE="+2">en een vrij eenvoudig algoritme.</FONT></B></P>
+
+<P>Het te vercijferen bericht wordt verdeeld in blokken van k
+bits zodat 2<sup>k</sup>&lt;n. (of P&lt;n)<BR>
+Om te vercijferen zal men C=P<sup>e</sup>(mod n) uitrekenen. Om
+te ontcijferen is p=C<sup>d</sup>(mod n) nodig. Dus zijn e en
+n publiek. De private sleutel bevat d (en natuurlijk ook n die
+publiek is). Men kan d niet vinden uit e en n zonder miljarden
+jaren computertijd.</P>
+
+<P>&nbsp;</P>
+
+<P>Een voorbeeld. Als waarde van het teken is het nummer in het
+alfabet gekozen om geen discriminatie te hebben tussen ASCII en
+EBCDIC. We kiezen <B>p=3</B> en <B>q=11</B>, zodat <B>n=33</B>
+en <B>z=20</B>. Een goede <B>d is 7</B> (priemgetal en geen factor
+met z gemeenschappelijk). Voor e bekomt men dan <B>3 (=e)</B>
+want 7*3=21=1 mod20.</P>
+
+<P><CENTER><IMG SRC="RSA.jpg" WIDTH="512" HEIGHT="186" ALIGN="BOTTOM"
+NATURALSIZEFLAG="3"></CENTER></P>
+
+<P>Voor E kan men berekenen: <BR>
+=&gt; aan de vercijferzijde: 5*5*5=125 en 125 (mod 33)= 26 want
+33*3+26=125.<BR>
+=&gt; aan de ontcijferzijde: 26<sup>7</sup>=8031810176=33*243388187+5</P>
+
+<P>Omdat n=33 kan men voor P, die kleiner dan n moet zijn, slechts
+&eacute;&eacute;n teken gebruiken. In de praktijk is n echter
+een getal met 200 cijfers, zodat men dan vele honderden tekens
+ineens kan vercijferen.</P>
+
+<P>&nbsp;</P>
+
+<P>Praktische kanttekeningen:<BR>
+- het is niet evident om grote priemgetallen te vinden. Meestal
+zal men at random grote getallen kiezen en nagaan of deze dan
+priem zijn.<BR>
+- het is duidelijk dat hoe groter de sleutels zijn (hoe meer bits),
+hoe moeilijker de code te kraken is.<BR>
+- timingaanval: dit is een aanval waarbij een indringer nagaat
+hoeveel tijd de ontvanger er over doet om de versleuterde tekst
+te ontcijferen. Als tegenmaatregel kan men er voor zorgen dat
+dit altijd even lang duurt.</P>
+
+<P>&nbsp;</P>
+
+<P>RSA is slechts echt veilig wanneer de priemgetallen voldoende
+lang zijn. Tegenwoordig kiest men voor getallen van 155 cijfers
+of 512 bits lang. Dit geeft voor een 1GHz Pentium een rekentijd
+van ongeveer 30 jaar om de code te kunnen kraken.
+
+</BODY>
+</HTML>

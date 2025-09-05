@@ -1,0 +1,109 @@
+<HTML>
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 3.0 Win">
+  <TITLE>Cryptologie</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<P><CENTER><B><FONT SIZE="+4">One time pads:<BR>
+</FONT><FONT SIZE="+3">A5</FONT></B></CENTER></P>
+
+<P><B>Stroomversleuteling</B></P>
+
+<P>De sleutel K wordt gebruikt om een generatormodule aan te sturen
+die een lange rij bits genereert. De module is deterministisch
+en wordt door de zender en de ontvanger met dezelfde sleutel aangestuurd,
+zodat dezelfde bitrij S wordt verkregen. Het principe doet denken
+aan het one-time pad, maar een belangrijk verschil is dat het
+pad S niet willekeurig is, maar uit de veel kortere sleutel K
+wordt afgeleid.</P>
+
+<P>&nbsp;</P>
+
+<P><B>Het A5-algoritme voor GSM-telefonie</B></P>
+
+<P>Als voorbeeld van een stroomsysteem bekijken we het A5 algoritme
+dat wordt gebruikt in GSM-telefoons. Communicatie vindt in twee
+richtingen tegelijk plaats en de generator levert bits om beide
+richtingen te versleutelen. Het analoge signaal wordt gedigitaliseerd
+en gecomprimeerd, en er wordt stuurinformatie aan toegevoegd,
+waarna de datastroom in frames van 114 bits wordt geknipt. Een
+frame staat voor 4,6 milliseconde van de conversatie (die dus
+inclusief stuurinformatie zo'n 24 kilobit per seconde vraagt).
+Omdat er bij GSM-communicatie zeer vaak blokken door transmissiefouten
+worden verminkt kan een chaining mode niet worden gebruikt (anders
+zou &eacute;&eacute;n foutief blok al de rest van de data verminken),
+en dus moeten de frames onafhankelijk van elkaar worden versleuteld.</P>
+
+<P>Het A5-algoritme gebruikt een 64-bitssleutel, en het 22-bits
+serienummer i van de frames, die samen door een eenvoudige hardwaremodule
+worden afgebeeld op een 228 bitsstring Si. Elke communicatierichting
+gebruikt de helft van deze bits. Er zijn twee systemen: A5/1 wordt
+in de Europese telefonie gebruikt en A5/2 in de exporttoestellen.
+We beschrijven hier A5/1.</P>
+
+<P>A5/1 gebruikt een vorm van het lineaire feedbackregister. Dit
+is, zoals geweten, een eenvoudige manier om min of meer random
+bitstreams te genereren. Het register bestaat uit een bitrij,
+die in elke stap een positie naar links kan worden verschoven.
+De meest linkse bit is dan de uitvoer, terwijl aan de rechterkant
+een combinatie van een paar bits op vaste posities (de taps) wordt
+ingevoerd.</P>
+
+<P>Een schuifregister met n bits heeft natuurlijk precies 2<sup>n</sup>toestanden.
+Een ervan is bijzonder, namelijk die waarin alle bits gelijk aan
+nul zijn: de volgende uitvoerbit is een nul, en de volgende toestand
+is dezelfde, zodat het register de oneindige rij 000000 ... zal
+genereren. Door de keuze van de taps kan een register zo worden
+ontworpen, dat de uitvoer repeteert met maximale lengte, dit wil
+zeggen dat alle 2<sup>n</sup> - 1 overige toestanden achtereenvolgens
+voorkomen, en de uitvoer periodiek is met periodelengte 2<sup>n</sup>-
+1.</P>
+
+<P><CENTER><IMG SRC="A5.gif" WIDTH="512" HEIGHT="276" ALIGN="BOTTOM"
+BORDER="0" NATURALSIZEFLAG="2"></CENTER></P>
+
+<P><CENTER>&nbsp;</CENTER></P>
+
+<P>Bovenstaande figuur toont de drie schuifregisters van A5/1,
+met lengte 19, 22 en 23 bits, en hun taps; de in totaal 64 bits
+geven 264 toestanden.</P>
+
+<P>De string Si voor het versleutelen van frame i wordt als volgt
+berekend.</P>
+
+<P>1. De schuifregisters worden op 0 gezet en er worden 64 slagen
+gedraaid, waarbij steeds een bit van de sleutel wordt meegeEXORd
+voor het berekenen van de rechter bit.</P>
+
+<P>2. Vervolgens worden er 22 slagen gedraaid waarbij bits van
+het framenummer worden meegeEXORd.</P>
+
+<P>3. Er worden honderd slagen gedraaid waarbij de uitvoer wordt
+genegeerd. In deze fase worden de registers gestuurd op basis
+van een klokbit, een speciale tap op elk register. Een register
+wordt alleen geschoven als de waarde van zijn klokker overeenkomt
+met de meerderheid van de drie klokkers. Dit is de enige manier
+waarop de drie registers elkaar be&iuml;nvloeden. In elke slag
+worden twee of drie registers verschoven.</P>
+
+<P>4. Er worden 228 slagen gedraaid, weer met gebruik van de klokkers,
+waarbij de 228 bits uitvoer worden gebruikt als Si.</P>
+
+<P>In totaal duurt de procedure 414 slagen van de registers, en
+door implementatie in hardware is de benodigde rekenkracht verwaarloosbaar.</P>
+
+<P>&nbsp;</P>
+
+<P><B>Aanval op A5</B></P>
+
+<P>Door Biryukov werd een known plaintext attack op A5/1 beschreven;
+de behandeling beperkt zich hier tot het noemen van de belangrijkste
+zwakheden die worden uitgebuit. Dit begint met de sleutellengte
+die, met 64 bits, net als bij DES weer iets aan de kleine kant
+is. De standaardtrucs als Hellmans aanval zijn daardoor weliswaar
+niet direct haalbaar, maar zijn, zoals door Biryukov opgemerkt,
+slechts &quot;marginaal onhaalbaar&quot;.
+
+</BODY>
+</HTML>

@@ -1,0 +1,32 @@
+<HTML>
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 3.0 Win">
+  <TITLE>Cryptologie</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<P><CENTER><B><FONT SIZE="+4">Data Authentication Algorithm</FONT></B></CENTER></P>
+
+<P><CENTER><IMG SRC="DAA.jpg" WIDTH="512" HEIGHT="258" ALIGN="BOTTOM"
+NATURALSIZEFLAG="2"></CENTER></P>
+
+<P>&nbsp;</P>
+
+<P>Het data authentication algorithm is een MAC op basis van DES.
+Het is een ANSI standaard X9.17.</P>
+
+<P>Het algorithme kan worden gedefinieerd als het gebruik van
+de DES werkmode Cipher Block Chaining (CBC) met initialisatiefactor
+0.</P>
+
+<P>De te authenticeren data wordt gegroepeerd in aangrenzende
+blokken van 64 bits: D1, D2, ..., Dn. Indien nodig worden achteraan
+'0' bits bijgevoegd om een geheel blok te krijgen.</P>
+
+<P>De werking kan men bestuderen op bovenstaande figuur. Men doet
+DES encrypties op de opeenvolgende blokken. Er is, net zoals bij
+geketende DES, een be&iuml;nvloeding van de vorige blokken op
+de te encrypteren bits.
+
+</BODY>
+</HTML>

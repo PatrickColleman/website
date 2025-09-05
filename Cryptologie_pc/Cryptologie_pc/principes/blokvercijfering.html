@@ -1,0 +1,52 @@
+<HTML>
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 3.0 Win">
+  <BASE TARGET="target">
+  <TITLE>Cryptologie</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<P><CENTER><B><FONT SIZE="+4">Blokvercijfering</FONT></B></CENTER></P>
+
+<P>&nbsp;</P>
+
+<P>Blokvercijfering is erg verspreid. Hierbij gaat men steeds
+een aantal tekens ineens vercijferen. Dit in tegenstelling met
+stroomvercijfering, waarbij men teken per teken zal vercijferen.
+Van dit laatste zullen we als voorbeeld een aangepaste versie
+van DES bespreken.</P>
+
+<P>In deze tekst houden we ons verder alleen bezig met blokvercijfering.</P>
+
+<P>Blokvercijfering gebruikt substitutie en transpositie. We gaan
+hier iets dieper op in in de paragraaf over de elementen van geheime
+sleutel cryptografie.</P>
+
+<P>Twee principes worden gebruikt: diffusie en confusie. Dit moet
+de statistische analyse erg bemoeilijken.</P>
+
+<P>Diffusie moet helpen de statistische structuur over een groot
+deel van de tekens uit te smeren. Dit doet men door elk klare
+tekst teken de waarde van vele vercijferde tekens te laten be&iuml;nvloeden.
+Een realisatiemethode is meermaals na mekaar de bits van de tekens
+te permuteren.</P>
+
+<P>Confusie tracht de relatie tussen de statistische gegevens
+van de vercijferde tekst en de waarde van de encryptiesleutel
+zo ingewikkeld mogelijk te maken.</P>
+
+<P>Een realisatie is de <A HREF="Feistel.pdf">Feistel</A> procedure.
+Hierbij gebruikt men n keer na mekaar dezelfde schakeling, maar
+met andere (delen van) de sleutel. Men gaat het blok in twee delen
+opsplitsen (een linker en een rechter deel). Op het linker deel
+doet men een substitutie. Deze doet men op basis van een EXOR
+met een bewerkt rechterdeel. De bewerking van het rechterdeel
+doet men op basis van een (deel van) een sleutel en en functie
+F, die men soms ook rondefunctie noemt. In dezelfde ronde zal
+men ook linker- en rechterdeel met mekaar verwisselen.</P>
+
+<P>Deze techniek wordt o.a. toegepast in DES en AES, die we verder
+zullen bespreken.
+
+</BODY>
+</HTML>

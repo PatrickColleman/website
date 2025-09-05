@@ -1,0 +1,32 @@
+<HTML>
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 2.0 Win">
+  <TITLE>Cryptologie</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<P><CENTER><B><FONT SIZE=+4>Verjaardagsaanval</FONT></B></CENTER></P>
+
+<P>&nbsp;</P>
+
+<P>Een aanval die moeilijk af te slaan is gebruik makende van een MAC of
+een hashfunctie is de verjaardagsaanval. Hierbij gaat men als volgt te werk:</P>
+
+<P>1. De bron Alice wordt voorbereid een bericht te 'ondertekenen' met een
+juiste m bit MAC en die MAC te vercijferen met haar private sleutel.</P>
+
+<P>2. De tegenpartij Charlie genereert 2<sup>m/2</sup> variaties op hetzelfde
+(echte) bericht die allemaal ongeveer dezelfde betekenis hebben. Hij genereert
+evenveel valse berichten die ook allemaal variaties zijn van hetzelfde thema.
+E&eacute;n van deze berichten zal in de plaats komen van het echte bericht.</P>
+
+<P>3. Deze twee verzamelingen worden vergeleken om twee berichten te vinden
+die dezelfde MAC hebben. De kans hierop is groter dan 0.5. Indien er geen
+overeenkomst is, gaat men verder echte en valse berichten genereren. tot
+er een overeenkomst is.</P>
+
+<P>4. De tegenpartij Charlie biedt de geldige variatie aan Alice aan om
+te ondertekenen. Dezelfde handtekening kan aan het valse bericht (met dezelfde
+MAC!) worden gekoppeld. Klaar!
+</BODY>
+</HTML>

@@ -1,0 +1,73 @@
+<HTML>
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 3.0 Win">
+  <TITLE>Cryptologie</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<P><CENTER><B><FONT SIZE="+4">RIPEMD-160:<BR>
+logica</FONT></B></CENTER></P>
+
+<P><CENTER><IMG SRC="MD5_generatie.jpg" WIDTH="512" HEIGHT="360"
+ALIGN="BOTTOM" NATURALSIZEFLAG="2"></CENTER></P>
+
+<P><CENTER>&nbsp;</CENTER></P>
+
+<P>Ook RIPEMD gebruikt het basisschema van MD5. Daarom staat hierboven
+dan ook opnieuw de figuur van MD5! Men moet alleen de 128 bits
+vervangen door 160 bits.</P>
+
+<P>De digest is 160 bits lang. De lengte van een bericht is maximaal
+2<sup>64</sup> bits lang.</P>
+
+<P>Zoals bovenstaande figuur toont, wordt de invoer verwerkt tot
+een veelvoud van 512 bits. Men doet dit in volgende stappen:</P>
+
+<P>- opvullen met opvulbits: men zorgt er voor dat de lengte van
+het bericht gelijk is aan 448 modulo 512. Er wordt altijd opgevuld,
+ook als de lengte bij toeval juist zou zijn: dit wil zeggen dat
+het aantal paddingbits of opvulbits ligt tussen 1 en 512. De opvulling
+doet men door een '1' gevolgd door allemaal '0' tekens.</P>
+
+<P>- lengte toevoegen: hiervoor voegt men achteraan de lengte
+van het bericht toe, voordat er bits werden toegevoegd. Men gebruikt
+hiervoor 64 bits. Het gevolg hiervan is dat de totale lengte steeds
+een veelvoud is van 512 bits.</P>
+
+<P>- initialisatie van de MD buffer. Dit is een 160 bits buffer
+die men gebruikt om de tussenresultaten en het eindresultaat te
+bewaren. Men kan deze buffer voorstellen als 5 32 bits cijfers
+A, B, C, D en E. Men geeft ze achtereenvolgens de waarden:<BR>
+-&gt; A=0X67452301<BR>
+-&gt; B=0XEFCDAB89<BR>
+-&gt; C=0X98BADCFE<BR>
+-&gt; D=0X10325476<BR>
+-&gt; E=0XC3D2E1F0<BR>
+Deze waarden worden bewaard in het <B>little endian formaat</B>.
+Dit wil zeggen dat de minst beduidende byte op het laagste adres
+wordt geplaatst. Merk op dat elke variabele 4 adressen beslaat
+van elk &eacute;&eacute;n byte.</P>
+
+<P>- verwerking van het bericht. Dit zijn de verschillende blokken
+met opschrift H<sub>MD5</sub> in bovenstaande figuur. Het hart
+van het algorithme is een module die uit tien verwerkingsronden
+bestaat. Deze tien ronden hebben elk 16 stappen. De tien ronden
+zijn georganiseerd als twee parallelle lijnen van vijf ronden.
+Elk van de ronden heeft een vergelijkbare structuur, maar gebruikt
+een andere primitieve functie die we f1, f2, f3, f4 en f5 noemen.
+In de linkertak gebruikt men ze in deze volgorde, in de rechtertak
+gebruikt men ze in omgekeerde volgorde.</P>
+
+<P>Volgende figuur toont deze bewerking:</P>
+
+<P><CENTER><IMG SRC="RIPEMD_160_eenblok.jpg" WIDTH="512" HEIGHT="654"
+ALIGN="BOTTOM" NATURALSIZEFLAG="2"></CENTER></P>
+
+<P>Samengevat kan men zeggen dat opnieuw de 5 variabelen als input
+en tussenresultaat dienen. Op het einde van een 512 bits blok
+worden ze opgeteld met het bekomen resultaat, net zoals bij MD5.
+Voor meer informatie over de verwerking verwijzen we naar de gespecialiseerde
+literatuur.
+
+</BODY>
+</HTML>

@@ -1,0 +1,147 @@
+<HTML>
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 3.0 Win">
+  <TITLE>Cryptologie</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<P><CENTER><B><FONT SIZE="+4">Message digests</FONT></B></CENTER></P>
+
+<P>&nbsp;</P>
+
+<P><B><FONT SIZE="+2">gebruik: handtekening nodig, geheimhouding
+niet</FONT></B></P>
+
+<P><B><FONT SIZE="+2">hash functie: genereer bitstream (message
+digest MD)</FONT></B></P>
+
+<P><B><FONT SIZE="+2">eigenschappen hash functie:<BR>
+- MD heeft vaste lengte<BR>
+- gegeven klare tekst =&gt; MD snel te berekenen<BR>
+- gegeven MD =&gt; P onmogelijk te berekenen<BR>
+- twee &lt;&gt; berichten hebben &lt;&gt; MD</FONT></B></P>
+
+<P><B><FONT SIZE="+2">zowel secret key als public key</FONT></B></P>
+
+<P>&nbsp;</P>
+
+<P>Het doel van een message digest is er voor te zorgen dat de
+ontvanger de zekerheid heeft dat aan het bericht geen wijzigingen
+zijn doorgevoerd door Charlie. Het is niet de bedoeling het bericht
+zelf geheim te houden.</P>
+
+<P>Wanneer men de bekomen message digest nog zal versleutelen
+door een private sleutel, heeft men opnieuw een digitale handtekening
+geplaatst.</P>
+
+<P>Een message digest is een bericht dat men berekend door middel
+van een hash functie uit het door te zenden bericht. Hiervoor
+gebruikt men een ingewikkeld mechanisme (zie verder: MD5 en volgenden),
+zonder sleutel, waarbij de digest zelf voldoende lang is, zodat
+het onmogelijk is dat twee berichten dezelfde message digest hebben.<BR>
+</P>
+
+<P>De MD is minstens 128 bits lang, want anders kan men aan de
+vierde eis niet voldoen.</P>
+
+<P>Big Brother (secret key) kan de MD meesturen i.p.v. zijn handtekening
+(eigen geheime sleutel)</P>
+
+<P>In public key kan Alice de MD uitrekenen en meesturen, versleuteld
+met haar geheime sleutel. Bob kan deze ontcijferen. Charlie kan
+onderweg niets wijzigen, want Bob kan de MD zelf ook uitrekenen
+op basis van de doorgezonden klare tekst.</P>
+
+<P>Het doel van een message digest is er voor te zorgen dat de
+ontvanger de zekerheid heeft dat aan het bericht geen wijzigingen
+zijn doorgevoerd door Charlie.</P>
+
+<P>Het is niet de bedoeling het bericht zelf geheim te houden.</P>
+
+<P>Wanneer men de bekomen message digest nog zal versleutelen
+door een private sleutel, heeft men opnieuw een digitale handtekening
+geplaatst.</P>
+
+<P>Een message digest is een bericht dat men berekend uit het
+door te zenden bericht. Hiervoor gebruikt men een ingewikkeld
+mechanisme (zie verder: MD5 en volgenden), zonder sleutel, waarbij
+de digest zelf voldoende lang is, zodat het onmogelijk is dat
+twee berichten dezelfde message digest hebben. In het mechanisme
+zit een hash functie vervat.</P>
+
+<P>In public key kan Alice de MD uitrekenen en meesturen, versleuteld
+met haar geheime sleutel. Bob kan deze ontcijferen, maar nooit
+de versleutelde MD van Alice berekenen: dat is de handtekening.
+Bob kan wel de versleutelde MD terug ontcijferen en zelf de MD
+uitrekenen op basis van de eveneens meegezonden klare tekst. Beide
+waarden moeten gelijk zijn, zoniet is Charlie tussenbeide gekomen.</P>
+
+<P>In secret key cryptografie kan de zender Alice de MD vercijferen
+met de gemeenschappelijke geheime sleutel. Dit vraagt minder werk
+dan het ganse bericht te vercijferen. Ook dit geeft de waarborg
+dat Charlie het bericht niet aangepast heeft. Vanzelfsprekend
+is ook hier geen geheimhouding voorzien.</P>
+
+<P>Merk op dat hier nergens sprake is (voor de berekening van
+de MD) van een sleutel. Een sleutel wordt alleen gebruikt voor
+de handtekening!</P>
+
+<P>Hieronder pagina kan men een reeks verschillende manieren bestuderen
+waarop hash functies kunnen gebruikt worden.</P>
+
+<P><CENTER><IMG SRC="Hash_toepassingen_1.jpg" WIDTH="512" ALIGN="BOTTOM"
+BORDER="0" HEIGHT="369" NATURALSIZEFLAG="2"></CENTER></P>
+
+<P><CENTER><IMG SRC="Hash_toepassingen_2.jpg" WIDTH="512" ALIGN="BOTTOM"
+BORDER="0" HEIGHT="384" NATURALSIZEFLAG="2"></CENTER></P>
+
+<P>Deze zijn dus:<BR>
+a) Een bericht concateneren met het resultaat van de hash functie
+en dan dit geheel vercijferen met een geheime sleutel. Dit geeft
+geheimhouding en een indicatie van fouten in het bericht.<BR>
+b) Een bericht concateneren met de vercijferde waarde met een
+geheime sleutel van het resultaat van de hash functie. Hierbij
+is er geen geheimhouding, maar is het voor een buitenstaander
+zeer moeilijk een bericht ongezien te wijzigen: de hash functie
+zal niet meer 'kloppen'.<BR>
+c) Idem als vorige, maar dan vercijferd met de private sleutel
+van de verzender. Dit geeft een digitale handtekening.<BR>
+d) Idem als vorige, maar waarbij het geheel nogmaals vercijferd
+wordt met een geheime sleutel. Dit geeft zowel een handtekening
+als geheimhouding.<BR>
+e) Een sleutel gaat men concateneren met het bericht om dan van
+dit geheel de hash functie te berekenen. Dit vraagt veel minder
+verwerkingstijd.<BR>
+f) Idem als vorige, maar het geheel wordt met een geheime sleutel
+vercijferd. Dit geeft opnieuw geheimhouding en een summiere extra
+beveiliging van de hash functie.</P>
+
+<P>&nbsp;</P>
+
+<P>Merk op dat de MD de rol speelt van een handtekening. Wanneer
+men het geheel van de code plus de tekst of de code alleen gaat
+versleutelen, spreekt men over de RSA aanpak. Een variante hierop
+bespreken we verder met DSS<BR>
+</P>
+
+<P>Merk op dat de hash functie niet geheim is. Een eenvoudig voorbeeld
+is de EXOR van de bits van het bericht, gegroepeerd in blokken
+van een bepaalde lengte. Dit is de longitudinal redundancy check
+indien men de blokken per byte samen neemt. Eventueel gaat men
+per byte zorgen voor een extra rotatie over &eacute;&eacute;n
+bit per volgende byte. Dit is zeer nuttig omdat bijvoorbeeld in
+ASCII de meest beduidende bit meestal 0 is. Men kan er andere
+regelmatigheden in de invoer ook mee ondervangen.</P>
+
+<P>Een eenvoudige Hash functie kan men bestuderen in onderstaande
+figuur.</P>
+
+<P><CENTER><IMG SRC="Hash_voorbeeld.JPG" WIDTH="512" ALIGN="BOTTOM"
+BORDER="0"></CENTER></P>
+
+<P>&nbsp;</P>
+
+<P>&nbsp;
+
+</BODY>
+</HTML>
