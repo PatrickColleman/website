@@ -1,0 +1,9 @@
+Laatste ogenblik nota's.
+
+
+1. Op de commandolijn (snelkoppeling) is nog een derde parameter voorzien
+   waarmee men kan instellen of men nee (0) of ja (1) fouten wil meetellen
+   als ze een tweede of derde keer gemaakt worden.  (versie 2.0)
+
+2. Men kan elke oefening nog onderbreken door op de eerste vraag te 
+   antwoorden met :   / 

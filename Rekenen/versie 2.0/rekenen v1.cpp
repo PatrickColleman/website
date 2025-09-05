@@ -1,0 +1,437 @@
+#include <stdio.h>
+#include <stdlib.h> 		/* om exit   te kennen */
+#include <conio.h>		/* om kbhit  te kennen */
+#include <time.h>			/* voor de random generator */
+#include <dos.h>
+
+char naam[64];
+char buffer[64];
+int grens;
+time_t starttijd;
+int toontijd;
+int fouten;
+
+void leertafel(void);
+void hoofding(void);
+void vraagxtafel(void);
+void vermtafel(void);
+void vraagdeeltafel(void);
+void deeltafel(void);
+void telop(void);
+void trekaf(void);
+void invuloefening(void);
+void klok(int);
+int leesgetal(void);
+void verifieer(int);
+
+main(int argc, char * argv[])
+{  char ch;
+	int i;
+   if (argc>2) grens=atoi(argv[2]);
+   		else grens=100;
+   if (grens < 10) grens=10;
+   if (argc>1) toontijd=atoi(argv[1]);
+   		else toontijd=0;
+   /* standaard:
+   		rekenen tot 100
+         geen rekentijd laten zien na de oefeningen
+   */
+
+	printf("Geef je naam in en druk op de <enter> toets: ");
+   i=0;
+   while (((ch=getchar())!='\n')&& (i<62)) naam[i++]=ch;
+   naam[i]='\0';
+   while (ch != '\n') ch=getchar();
+   /* flush buffer als nog meer tekens zijn ingegeven */
+   randomize();
+   /* naam is gekend -- geef menu*/
+   loop:
+	hoofding();
+   printf("menu:\n\n\n");
+   printf("        0: verlaat programma\n\n");
+   printf("        1: tafels van vermenigvuldigen en delen leren\n");
+   printf("        2: opvragen van een vermenigvuldigingstafel\n");
+   printf("        3: opvragen van willekeurige vermenigvuldigingstafels\n");
+   printf("        4: opvragen van een deeltafel\n");
+   printf("        5: opvragen van willekeurige deeltafels\n");
+   printf("        6: optellen tot %d\n",grens);
+   printf("        7: aftrekken tot %d\n",grens);
+   printf("        8: invullen van het ontbrekende cijfer (+ en -) tot %d\n",
+   										grens);
+   printf("\n\n");
+   i=-1;
+   printf("Maak uw keuze: geef getal ");
+   while ((i<0)||(i>9)) i=getch()-'0';
+   /* en verwerk dit menu */
+   switch(i)
+   {	case 0: exit (0); break;
+      case 1: leertafel(); break;
+      case 2: vraagxtafel(); break;
+      case 3: vermtafel(); break;
+      case 4: vraagdeeltafel(); break;
+      case 5: deeltafel(); break;
+      case 6: telop(); break;
+      case 7: trekaf(); break;
+      case 8: invuloefening();break;
+      case 9: printf("\nProgramma gemaakt door Patrick Colleman.\n");
+      		  printf("Versie 1.0.\n");
+              printf("Druk op een toets om verder te gaan.\n");
+              i=getch();
+              break;
+   }
+
+   goto loop;
+}
+
+void hoofding(void)
+{  clrscr();
+   printf("Je bent: %s \n",naam);
+   printf("\n\n");
+}
+
+void klok(int oefeningen)
+{	//time_t tijd;
+	int verschil;
+   int minuten, seconden,
+	tijd=time(NULL);
+   if (oefeningen==0) starttijd=tijd;
+   if (toontijd && (oefeningen>0))
+   {	verschil=tijd-starttijd;
+   	minuten=verschil/60;
+      seconden=verschil-minuten*60;
+   	printf("%s, je gebruikte voor deze %d oefeningen: %d minuten en %d seconden.\n",
+      			naam, oefeningen, minuten, seconden);
+      printf("Dit is gemiddeld %6.2f seconden per oefening.\n",
+      			((float)verschil/(float)oefeningen));
+   }
+}
+
+int leesgetal(void)
+{  int i, ch;
+	i=0;
+   while (((ch=getchar())!='\n')&& (i<62)) buffer[i++]=ch;
+   buffer[i]='\0';
+   while (ch != '\n') ch=getchar();
+   ch=atoi(buffer);
+   return ch;
+}
+
+void verifieer(int juist)
+{  int antw;
+	// scanf("%d",&antw);
+	antw=leesgetal();
+   if (antw != juist)
+   	{ printf("fout! tweede poging: ");
+        fouten++;
+        // scanf("%d",&antw);
+        antw=leesgetal();
+        if (antw != juist)
+        		{	printf("fout! derde poging: ");
+               fouten++;
+               // scanf("%d",&antw);
+               antw=leesgetal();
+               if (antw != juist)
+                 { fouten++;
+                   printf("Het juiste antwoord was: %3d\n",juist);
+                 }
+            }
+        }
+}
+
+
+void leertafel(void)
+{	int i, tafel;
+   hoofding();
+   tafel=-1;
+   printf("Welke tafel wil je leren of bekijken? (0..11) ");
+   i=getch();  /* deze getch() dient om de leesbuffer leeg te maken */
+   while ((tafel<0)||(tafel>11))
+   	{ 	// scanf("%d",&tafel);
+      	tafel=leesgetal();
+         if ((tafel<0)||(tafel>11))
+         	{	printf("Foutieve waarde.  Geef een juiste!\n");
+         		printf("Welke tafel wil je leren of bekijken? (0..11) ");
+            }
+      }
+   printf("Je koos voor de tafel van: %2d \n",tafel);
+   if (tafel == 0)
+      for (i=0;i<11;i++) printf("%2d x %2d = %3d \n",i, tafel, i*tafel);
+		else
+   		for (i=0;i<11;i++)
+   		{	printf("%2d x %2d = %3d",i, tafel, i*tafel);
+         	printf("    en %3d : %2d = %2d \n", i*tafel, tafel, i);
+   		}
+   printf("Druk op een toets om verder te gaan");
+   i=getch();
+}
+
+void vraagxtafel(void)
+{  int i, tafel, used[11], volgorde[11];
+   hoofding();
+   tafel=-1;
+   printf("Welke vermenigvuldigingstafel wil je overhoren? (0..11) ");
+   i=getch();  /* deze getch() dient om de leesbuffer leeg te maken */
+   while ((tafel<0)||(tafel>11))
+   	{ 	// scanf("%d",&tafel);
+      	tafel=leesgetal();
+         if ((tafel<0)||(tafel>11))
+         	{	printf("Foutieve waarde.  Geef een juiste!\n");
+         		printf("Welke vermenigvuldigingstafel wil je overhoren? (0..11) ");
+            }
+      }
+   printf("Je koos voor de tafel van: %2d \n",tafel);
+   for (i=0;i<11;i++) used[i]=0;
+   for (i=0;i<11;i++)
+   	{  nieuw:
+      	fouten=random(11);
+         if (used[fouten]) goto nieuw;
+         used[fouten]=1;
+         volgorde[i]=fouten;
+      }
+   fouten=0;
+   klok(0);
+   for (i=0; i<11;i++)
+   	{	printf("%2d.   %2d x %2d = ? ",i+1, volgorde[i], tafel);
+         verifieer(volgorde[i]*tafel);
+      }
+   klok(11);
+	if (fouten == 0) printf("Uitstekend %s, je maakte geen fouten!\n", naam);
+   if (fouten == 1) printf("Zeer goed %s, je maakte slechts 1 fout!\n",naam);
+   if (fouten == 2) printf("Goed %s, je maakte 2 foutjes.\n",naam);
+   if (fouten == 3) printf("%s, je maakte 3 fouten.  Beter opletten!\n",naam);
+   if (fouten >3) printf("%s, je maakte %d fouten.  Studeer de tafel opnieuw.\n",naam, fouten);
+   printf("Druk op een toets om verder te gaan");
+   i=getch();
+}
+
+void vermtafel(void)
+{  int i, tafel, maal, oef;
+   hoofding();
+   tafel=-1;
+	printf("Hoeveel vermenigvuldigingen wil je overhoren? (5..50) ");
+   i=getch();  /* deze getch() dient om de leesbuffer leeg te maken */
+   while ((tafel<5)||(tafel>50))
+   	{ 	// scanf("%d",&tafel);
+      	tafel=leesgetal();
+         if ((tafel<5)||(tafel>50))
+         	{	printf("Foutieve waarde.  Geef een juiste!\n");
+         		printf("Hoeveel vermenigvuldigingen wil je overhoren? (5..50) ");
+            }
+      }
+   printf("Je koos voor %2d oefeningen.\n",tafel);
+
+   oef=tafel;
+   fouten=0;
+   klok(0);
+   for (i=0; i<oef;i++)
+   	{  maal=random(11);
+      	tafel=random(11);
+      	printf("%2d.   %2d x %2d = ? ", i+1, maal, tafel);
+         verifieer(maal*tafel);
+      }
+   klok(oef);
+	if (fouten == 0) printf("Uitstekend %s, je maakte geen fouten!\n", naam);
+   else if (fouten == 1) printf("Zeer goed %s, je maakte slechts 1 fout!\n",naam);
+   else if (fouten == 2) printf("Goed %s, je maakte 2 foutjes.\n",naam);
+   else printf("%s, je maakte %d fouten op %d oefeningen.\n",naam, fouten, oef);
+   printf("Druk op een toets om verder te gaan");
+   i=getch();
+}
+
+void vraagdeeltafel(void)
+{  int i, tafel, used[11], volgorde[11];
+   hoofding();
+   tafel=-1;
+   printf("Welke deeltafel wil je overhoren? (1..11) ");
+   i=getch();  /* deze getch() dient om de leesbuffer leeg te maken */
+   while ((tafel<1)||(tafel>11))
+   	{ 	// scanf("%d",&tafel);
+      	tafel=leesgetal();
+         if ((tafel<1)||(tafel>11))
+         	{	printf("Foutieve waarde.  Geef een juiste!\n");
+         		printf("Welke deeltafel wil je overhoren? (1..11) ");
+            }
+      }
+   printf("Je koos voor de tafel van: %2d \n",tafel);
+   for (i=0;i<11;i++) used[i]=0;
+   for (i=0;i<11;i++)
+   	{  nieuw:
+      	fouten=random(11);
+         if (used[fouten]) goto nieuw;
+         used[fouten]=1;
+         volgorde[i]=fouten;
+      }
+   fouten=0;
+   klok(0);
+   for (i=0; i<11;i++)
+   	{	printf("%2d.   %2d : %2d = ? ", i+1, tafel*volgorde[i], tafel);
+      	verifieer(volgorde[i]);
+      }
+   klok(11);
+	if (fouten == 0) printf("Uitstekend %s, je maakte geen fouten!\n", naam);
+   if (fouten == 1) printf("Zeer goed %s, je maakte slechts 1 fout!\n",naam);
+   if (fouten == 2) printf("Goed %s, je maakte 2 foutjes.\n",naam);
+   if (fouten == 3) printf("%s, je maakte 3 fouten.  Beter opletten!\n",naam);
+   if (fouten >3) printf("%s, je maakte %d fouten.  Studeer de tafel opnieuw.\n",naam, fouten);
+   printf("Druk op een toets om verder te gaan");
+   i=getch();
+}
+
+void deeltafel(void)
+{  int i, tafel, maal, oef;
+   hoofding();
+	tafel=-1;
+	printf("Hoeveel delingen wil je overhoren? (5..50) ");
+   i=getch();  /* deze getch() dient om de leesbuffer leeg te maken */
+   while ((tafel<5)||(tafel>50))
+   	{ 	// scanf("%d",&tafel);
+      	tafel=leesgetal();
+         if ((tafel<5)||(tafel>50))
+         	{	printf("Foutieve waarde.  Geef een juiste!\n");
+         		printf("Hoeveel delingen wil je overhoren? (5..50) ");
+            }
+      }
+   printf("Je koos voor %2d oefeningen.\n",tafel);
+
+   oef=tafel;
+   fouten=0;
+   klok(0);
+   for (i=0; i<oef;i++)
+   	{  maal=random(11);
+      	tafel=random(10);
+         tafel++;
+      	printf("%2d.   %2d : %2d = ? ", i+1, tafel*maal, tafel);
+         verifieer(maal);
+      }
+   klok(oef);
+	if (fouten == 0) printf("Uitstekend %s, je maakte geen fouten!\n", naam);
+   else if (fouten == 1) printf("Zeer goed %s, je maakte slechts 1 fout!\n",naam);
+   else if (fouten == 2) printf("Goed %s, je maakte 2 foutjes.\n",naam);
+   else printf("%s, je maakte %d fouten op %d oefeningen.\n",naam, fouten, oef);
+   printf("Druk op een toets om verder te gaan");
+   i=getch();
+}
+
+void telop(void)
+{	int i, tafel, maal, oef;
+   hoofding();
+   tafel=-1;
+	printf("Hoeveel sommen wil je overhoren? (5..50) ");
+   i=getch();  /* deze getch() dient om de leesbuffer leeg te maken */
+   while ((tafel<5)||(tafel>50))
+   	{ 	// scanf("%d",&tafel);
+      	tafel=leesgetal();
+         if ((tafel<5)||(tafel>50))
+         	{	printf("Foutieve waarde.  Geef een juiste!\n");
+         		printf("Hoeveel sommen wil je overhoren? (5..50) ");
+            }
+      }
+   printf("Je koos voor %2d oefeningen.\n",tafel);
+
+   oef=tafel;
+   fouten=0;
+   klok(0);
+   for (i=0; i<oef;i++)
+   	{  maal=random(grens+1);
+      	tafel=random(grens-maal+1);
+      	printf("%2d.   %3d + %3d = ? ", i+1, maal, tafel);
+         verifieer(tafel+maal);
+      }
+   klok(oef);
+	if (fouten == 0) printf("Uitstekend %s, je maakte geen fouten!\n", naam);
+   else if (fouten == 1) printf("Zeer goed %s, je maakte slechts 1 fout!\n",naam);
+   else if (fouten == 2) printf("Goed %s, je maakte 2 foutjes.\n",naam);
+   else printf("%s, je maakte %d fouten op %d oefeningen.\n",naam, fouten, oef);
+   printf("Druk op een toets om verder te gaan");
+   i=getch();
+}
+
+void trekaf(void)
+{	int i, tafel, maal, oef;
+   hoofding();
+   tafel=-1;
+	printf("Hoeveel verschillen wil je overhoren? (5..50) ");
+   i=getch();  /* deze getch() dient om de leesbuffer leeg te maken */
+   while ((tafel<5)||(tafel>50))
+   	{ 	// scanf("%d",&tafel);
+      	tafel=leesgetal();
+         if ((tafel<5)||(tafel>50))
+         	{	printf("Foutieve waarde.  Geef een juiste!\n");
+         		printf("Hoeveel verschillen wil je overhoren? (5..50) ");
+            }
+      }
+   printf("Je koos voor %2d oefeningen.\n",tafel);
+
+   oef=tafel;
+   fouten=0;
+   klok(0);
+   for (i=0; i<oef;i++)
+   	{  maal=random(grens+1);
+      	tafel=random(maal+1);
+      	printf("%2d.   %3d - %3d = ? ", i+1, maal, tafel);
+         verifieer(maal-tafel);
+      }
+   klok(oef);
+	if (fouten == 0) printf("Uitstekend %s, je maakte geen fouten!\n", naam);
+   else if (fouten == 1) printf("Zeer goed %s, je maakte slechts 1 fout!\n",naam);
+   else if (fouten == 2) printf("Goed %s, je maakte 2 foutjes.\n",naam);
+   else printf("%s, je maakte %d fouten op %d oefeningen.\n",naam, fouten, oef);
+   printf("Druk op een toets om verder te gaan");
+   i=getch();
+}
+
+
+void invuloefening(void)
+{	int i, tafel, maal, oef, keuze;
+   hoofding();
+   tafel=-1;
+	printf("Hoeveel invuloefeningen wil je oplossen? (5..50) ");
+   i=getch();  /* deze getch() dient om de leesbuffer leeg te maken */
+   while ((tafel<5)||(tafel>50))
+   	{ 	// scanf("%d",&tafel);
+      	tafel=leesgetal();
+         if ((tafel<5)||(tafel>50))
+         	{	printf("Foutieve waarde.  Geef een juiste!\n");
+         		printf("Hoeveel invuloefeningen wil je oplossen? (5..50) ");
+            }
+      }
+   printf("Je koos voor %2d oefeningen.\n",tafel);
+   printf("Vul na het ? het cijfer in dat het . teken vervangt.\n");
+
+   oef=tafel;
+   fouten=0;
+   klok(0);
+   for (i=0; i<oef;i++)
+   	{  maal=random(grens+1);
+      	tafel=random(grens+1);
+         if ( maal> tafel)
+         {	keuze=tafel;
+         	tafel=maal;
+            maal=keuze;
+         }
+         keuze=random(4);
+         switch(keuze)
+         {	case 0:  printf("%2d.    .  + %3d = %3d  ? ", i+1, maal, tafel);
+                     verifieer (tafel-maal);
+                     break;
+         	case 1:  printf("%2d.   %3d +  .  = %3d  ? ", i+1, maal, tafel);
+                     verifieer (tafel-maal);
+                     break;
+            case 2:  printf("%2d.   %3d -  .  = %3d  ? ", i+1, tafel, maal);
+                     verifieer (tafel-maal);
+                     break;
+            case 3:  tafel=random(grens+1-maal);
+            			printf("%2d.    .  - %3d = %3d  ? ", i+1, maal, tafel);
+                     verifieer (tafel+maal);
+                     break;
+         }
+      }
+   klok(oef);
+	if (fouten == 0) printf("Uitstekend %s, je maakte geen fouten!\n", naam);
+   else if (fouten == 1) printf("Zeer goed %s, je maakte slechts 1 fout!\n",naam);
+   else if (fouten == 2) printf("Goed %s, je maakte 2 foutjes.\n",naam);
+   else printf("%s, je maakte %d fouten op %d oefeningen.\n",naam, fouten, oef);
+   printf("Druk op een toets om verder te gaan");
+   i=getch();
+}
+
