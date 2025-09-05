@@ -1,0 +1,36 @@
+<HTML>
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 3.0 Win">
+  <BASE TARGET="target">
+  <TITLE>Cryptologie</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<P><CENTER><B><FONT SIZE="+4">DES sleutelgeneratie</FONT></B></CENTER></P>
+
+<P><CENTER><IMG SRC="DES_sleutelgeneratie.jpg" WIDTH="512" HEIGHT="584"
+ALIGN="BOTTOM" NATURALSIZEFLAG="2"></CENTER></P>
+
+<P>&nbsp;</P>
+
+<P>De sleutel van DES is 56 bits breed. Men geeft hem op in 64
+bits, maar 8 bits hiervan zijn 'pariteitsbits' en worden niet
+gebruikt. (zie deel a van de figuur) In elke stap hebben we een
+subsleutel van 48 bits nodig (zie de DES ronde). Eerst gaat men
+een gepermuteerde keuze 1 doorvoeren (=deel b van bovenstaande
+figuur). Het resultaat daarvan is nog steeds een 56 bits brede
+sleutel. Men noemt deze de 'Gepermuteerde Keuze E&eacute;n'.</P>
+
+<P>Daarna gaat men deze in twee delen splitsen en behandelen als
+twee 28 bits lange subsleutels C<sub>0</sub> en D<sub>0</sub>.
+In elke ronde zal men de C<sub>i</sub> en D<sub>i</sub> links
+roteren over &eacute;&eacute;n of twee bits. Dit aantal is weergegeven
+in deel c van bovenstaande figuur.</P>
+
+<P>Het resultaat van deze rotaties gaat men onderwerpen aan een
+permutatiestap zoals weergegeven in deel b van bovenstaande figuur.
+Het resultaat daarvan noemt men 'Gepermuteerde Keuze Twee' en
+is een 48 bits resultaat, net wat we moesten bekomen!
+
+</BODY>
+</HTML>

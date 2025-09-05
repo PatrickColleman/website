@@ -1,0 +1,29 @@
+<HTML>
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 3.0 Win">
+  <TITLE>Cryptologie</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<P><CENTER><B><FONT SIZE="+4">Geketende DES</FONT></B></CENTER></P>
+
+<P><CENTER><B><FONT SIZE="+3">cipher feedback mode</FONT></B></CENTER></P>
+
+<P><CENTER><IMG SRC="DES_CFBmode.jpg" WIDTH="512" ALIGN="BOTTOM"
+BORDER="0" HEIGHT="397" NATURALSIZEFLAG="2"></CENTER></P>
+
+<P>In de CFB mode of cipher feedback mode kan men op blokken data
+van minder dan 64 bits gaan werken. In bovenstaande figuur ziet
+men het principeschema waarbij men werkt op elementaire blokken
+van s bits data.</P>
+
+<P>Pi op de figuur zijn de elementaire blokken (8 bits meestal
+natuurlijk omwille van ASCII) klare tekst.</P>
+
+<P>Men verwerkt telkens 64 bits met het DES algoritme, waarna
+men de s meest links gelegen bits zal EXORen met een deel klare
+tekst. Het resultaat daarvan zijn de s meest rechtse bits van
+de volgende 64 bits die men met DES gaat verwerken.
+
+</BODY>
+</HTML>

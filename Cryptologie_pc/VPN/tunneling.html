@@ -1,0 +1,138 @@
+<HTML>
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 3.0 Win">
+  <TITLE>Cryptologie</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<P class="MsoNormal"><CENTER><B><FONT SIZE="+2">Virtuele private
+netwerken (VPN)<BR>
+Tunneling</FONT></B></CENTER></P>
+
+<P>&nbsp;</P>
+
+<P><B><U>Het is nuttig hier eerst een onderscheid te maken tussen
+drie verschillende soorten VPN's:</U></B><BR>
+- access VPN's, die de toegang tot een netwerk verzorgen via een
+ISP. Deze gebruiken typisch L2TP of PPTP of IPSec in combinatie
+met een ADSL, kabelmodem, mobile IP of gewone dial-up telefoonlijn<BR>
+- Intranet VPN's. Deze gebruiken typisch L2TP, IPSec in combinatie
+met ATM of frame relay.<BR>
+- Extranet VPN's, die dezelfde technologie&euml;n gebruiken als
+de intranet VPN's.</P>
+
+<P>&nbsp;</P>
+
+<P><B><U>Men kan ook meerdere soorten tunnels gebruiken voor toegangsnetwerken:</U></B></P>
+
+<P><B>1. van de inbellende cli&euml;nt naar de VPN server van
+het bedrijf in kwestie.</B> De ISP die voor de verbinding zorgt
+moet dan helemaal van niets weten, maar de gebruiker op de inbellende
+computer moet wel speciale software en instellingen gebruiken
+om de verbinding te beveiligen. Men spreekt soms over een voluntary
+tunnel: de gebruiker beslist zelf wanneer een tunnel gebruikt
+wordt.</P>
+
+<P>Voordelen:<BR>
+a. De tunnel gaat van de inbellende computer tot bij de VPN server
+van het bedrijf.<BR>
+b. De cli&euml;nt kan een tunnel maken naar om het even waar.<BR>
+c. Men kan meerdere providers gebruiken.<BR>
+d. Onafhankelijk van de extra diensten die de provider al of niet
+kan/wil aanbieden.</P>
+
+<P>Nadelen:<BR>
+a. Indien de gebruiker de tunnel niet gebruikt, is er geen privacy!!<BR>
+b. De gebruiker heeft extra training nodig: hij moet weten wat
+hij moet doen en waarom.<BR>
+c. De gebruiker moet een geldig IP adres ontvangen van zijn ISP:
+adres translatie kan niet gebruikt worden: adressen zoals 10.x.x.x
+zijn niet bruikbaar.<BR>
+d. Men moet extra software op de computers van de cli&euml;nt
+installeren.<BR>
+e. van het inbelpunt van de cli&euml;nt (de ISP) naar de VPN server
+van het bedrijf in kwestie.</P>
+
+<P>&nbsp;</P>
+
+<P><B>2. Van ISP naar bedrijf.</B> Wanneer men inbelt (met behulp
+van PPP) bij de ISP met een bepaalde naam en paswoord zal deze
+als extra dienst (betalend!!) dan automatisch een beveiligde verbinding
+met de VPN server van het bedrijf opzetten. Men noemt het soms
+compulsory VPN. <BR>
+</P>
+
+<P>Voordelen:<BR>
+a. De gebruiker moet geen speciale software draaien op zijn computer.<BR>
+b. Het bedrijf kan een beveiligingsbeleid afdwingen van zijn werknemers
+omdat de ISP zelf de beveiligde verbinding aanmaakt.<BR>
+c. De gebruiker moet niet weten dat er een tunnel gemaakt wordt
+of hoe deze werkt.<BR>
+d. Men kan gebruik maken van extra diensten van de ISP zoals extra
+modem poorten, gegarandeerde modem beschikbaarheid, ...</P>
+
+<P><BR>
+Nadelen:<BR>
+a. Men hangt af van de diensten van de ISP.<BR>
+b. van de inbellende cli&euml;nt naar de bestemmeling van het
+bericht. <BR>
+</P>
+
+<P>De eerste twee soorten tunnels (die men eigenlijk ook als &eacute;&eacute;n
+soort zou kunnen beschouwen) voorzien in een tunnel tot bij de
+VPN server van het bedrijf. De laatste zorgt voor end-to-end databeveiliging
+vanaf de zender tot bij de ontvanger.</P>
+
+<P>&nbsp;</P>
+
+<P><B>Intranet en extranet VPN's</B></P>
+
+<P>Intranet en extranet VPN's worden anders ge&iuml;mplementeerd.
+Men heeft drie mogelijkheden:<BR>
+1. gebruik makende van IP. Hierbij gebruikt men bijvoorbeeld IPSec
+of mobile IP. Deze technieken leggen een tunnel aan over het publieke
+Internet.<BR>
+2. gebruik makende van virtuele circuits op een ATM of Frame Relay
+backbone. Privacy is hier beschikbaar omwille van het PVC concept.
+Encryptie wordt al dan niet gebruikt door de applicaties. We gaan
+op deze website daar niet dieper op in.<BR>
+3. gebruik makende van MPLS of multi protocol label switching.
+Dit is een nieuwe techniek die tracht de intelligentie van de
+router te combineren met de snelheid van de switch. Alle datagrams
+hebben een label dat de bestemmeling specificeert. Het eerste
+datagram dat naar de bestemmeling moet wordt door de router behandeld,
+die in zijn tabellen gaat kijken om de uitgang te kennen waar
+het datagram moet naar gekopieerd worden. Daarbij gaat hij in
+zijn geheugen een tabel bijhouden dat een combinatie is van label
+en uitgang. De volgende datagrams voor dezelfde bestemming bevatten
+hetzelfde label en kunnen dan snel door een switching techniek
+naar de juiste uitgang gekopieerd worden. Men kan stellen dat
+deze technologie een soort convergentie met zich mee brengt tussen
+de IP wereld en de ATM wereld.</P>
+
+<P><B>Als definitie van tunnelling zouden we kunnen stellen dat
+dit het inpakken is van een pakket van een netwerk (eventueel
+niet IP!!) in een routeerbaar protocol, zoals IP. Merk dus op
+dat tunnelling niet encryptie oplegt. Natuurlijk zal men wel bijna
+steeds ook encryptie gebruiken om privacy te bekomen.</B></P>
+
+<P>&nbsp;</P>
+
+<P>Men kan twee soorten tunnelling, bekeken op de laag waarin
+ze operationeel zijn, gebruiken:<BR>
+1. <I>laag 2 tunnelling</I> waarbij PPP technologie gebruikt wordt
+in combinatie met paswoorden (PAP, CHAP). Men heeft geen speciale
+software nodig op de inbellende computers. Men gebruikt deze voor
+access VPN's. Als protocols gebruikt men o.a. L2F (Cisco), L2TP
+(IETF) en PPTP (Microsoft). <B>PPTP</B> (point to point tunneling
+protocol) kan ook encryptie leveren.<BR>
+2. <I>laag 3 tunnelling</I>, waarbij <B>IPSec</B> gebruikt wordt.
+Men gebruikt deze voor intranet en extranet VPN's en eventueel
+als access VPN waarbij de cli&euml;nt de tunnel opzet. IPSec levert
+ineens ook encryptie. Andere protocols zijn eveneens mogelijk.</P>
+
+<P><CENTER><IMG SRC="image010.jpg" WIDTH="403" HEIGHT="372" ALIGN="BOTTOM"
+BORDER="0" NATURALSIZEFLAG="3"></CENTER>
+
+</BODY>
+</HTML>

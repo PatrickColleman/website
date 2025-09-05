@@ -1,0 +1,43 @@
+<HTML>
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 3.0 Win">
+  <TITLE>Cryptologie</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<P><CENTER><B><FONT SIZE="+3">Advanced encryption standard</FONT></B></CENTER></P>
+
+<P>&nbsp;</P>
+
+<P>In het algemene schema zien we dat in elke ronde een bytesubstitutie
+en een rondesleutel gebruikt wordt. We bespreken hier beide acties.</P>
+
+<P><B>Bytesubstitutie.</B> Een vaste substitutie wordt toegepast
+op elke individuele byte. Dat wil zeggen, er vindt een permutatie
+van de 256 mogelijke waarden van een byte plaats. Implementatie
+kan met een matrix met 256 elementen uitgevoerd worden. De 8 bits
+van een byte kan men bekijken als tweemaal 4 bits. Met 4 bits
+kan men 16 rijen en ook 16 kolommen adresseren. De inhoud van
+een byte definieert dus de plaats in de matrix waar dan de nieuwe
+gesubstitueerde waarde staat.<BR>
+Volgende figuur maakt dit nog duidelijker:</P>
+
+<P><CENTER><IMG SRC="AES_byteleveloperations.jpg" WIDTH="512"
+ALIGN="BOTTOM" BORDER="0" HEIGHT="593" NATURALSIZEFLAG="2"></CENTER></P>
+
+<P>De substitutiematrices kan men in volgende figuur vinden:</P>
+
+<P><CENTER><IMG SRC="AES_S_box.jpg" WIDTH="512" ALIGN="BOTTOM"
+BORDER="0" HEIGHT="600" NATURALSIZEFLAG="2"></CENTER></P>
+
+<P>De aandachtige lezer kan inzien dat de matrices mekaars 'inverse'
+zijn. een voorbeeld: byte 00 wordt vertaald in 63 in de S box.
+In de inverse S-box kan men zien dat 63 vertaald wordt in 00,
+zoals het hoort!!</P>
+
+<P><B>Sleuteltoevoeging.</B> Alle data wordt puntsgewijs geEXORd
+met de rondesleutel (die dezelfde lengte heeft als de data). Men
+noemt dit &quot;add round key&quot; in de figuren. (algemeen schema).
+
+</BODY>
+</HTML>

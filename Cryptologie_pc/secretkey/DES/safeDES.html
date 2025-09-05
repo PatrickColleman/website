@@ -1,0 +1,96 @@
+<HTML>
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 3.0 Win">
+  <TITLE>Cryptologie</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<P><CENTER><B><FONT SIZE="+4">Veilige DES</FONT></B></CENTER></P>
+
+<P><CENTER><B><FONT SIZE="+3">Tweemaal DES<BR>
+Ontmoeting halverwege<BR>
+Driemaal DES</FONT></B></CENTER></P>
+
+<P>&nbsp;</P>
+
+<P>Als DES niet voldoet, kan men het gewoon tweemaal na mekaar
+toepassen met twee verschillende sleutels. Het is dan alsof de
+sleutel 2*56, dit is 112, bits bevat.</P>
+
+<P><CENTER><IMG SRC="DES_double_encryption.jpg" WIDTH="512" ALIGN="BOTTOM"
+BORDER="0" HEIGHT="417" NATURALSIZEFLAG="2"></CENTER></P>
+
+<P>Men gaat bij het vercijferen dus tweemaal na mekaar DES uitvoeren.
+E&eacute;nmaal met de eerste sleutel en nog eens met de tweede.<BR>
+Decoderen doet men dan invers, zoals bovenstaande figuur toont.</P>
+
+<P>Toch is dat niet voldoende. De zwakke schakel zit hem namelijk
+in de <B>ontmoeting halverwege</B>. Dit gaat als volgt. Men vercijferd
+P als:<BR>
+C=E<sub>k2</sub>(E<sub>k1</sub>(P))<BR>
+Als men de ontcijferingsfunctie D<sub>k</sub> toepast krijgt men:<BR>
+D<sub>k2</sub>(C)=D<sub>k2</sub>(E<sub>k2</sub>(E<sub>k1</sub>(P)))<BR>
+of:<BR>
+D<sub>k2</sub>(C)=E<sub>k1</sub>(P)</P>
+
+<P>Men zal dus<BR>
+R<sub>i</sub>=E<sub>i</sub>(P)<BR>
+berekenen voor alle 2<sup>56</sup> waarden van i. Deze resultaten
+worden stijgend gesorteerd.</P>
+
+<P>In een tweede stap zal men<BR>
+S<sub>j</sub>=D<sub>j</sub>(C)<BR>
+berekenen voor alle 2<sup>56</sup> waarden van j. Deze resultaten
+worden stijgend gesorteerd.</P>
+
+<P>In de derde stap gaat men nagaan welke waarden van S en R overeenkomen.
+Dit is zo voor een aantal waarden van i en j. Men moet deze dan
+wel uitproberen op de volledige tekst. Soms moet men verder zoeken
+naar een volgende mix van i en j.</P>
+
+<P>Het voordeel hiervan is dat slechts 2<sup>57</sup> cijferoperaties
+nodig zijn in plaats van 2<sup>112</sup>.</P>
+
+<P><B>Driedubbele vercijfering:</B></P>
+
+<P><CENTER>&nbsp;</CENTER></P>
+
+<P><B>Driedubbele vercijfering</B> echter is wel veilig. Men gaat
+vercijferen met twee sleutels zoals aangegeven in bovenstaande
+figuur. Deel (a) geeft weer wat de vercijfering doet, deel (b)
+wat de ontcijfering doet. Twee sleutels zijn voorlopig zeker nog
+voldoende!</P>
+
+<P><CENTER><IMG SRC="DES_triple_encryption.jpg" WIDTH="512" ALIGN="BOTTOM"
+BORDER="0" HEIGHT="298" NATURALSIZEFLAG="2"></CENTER></P>
+
+<P>&nbsp;</P>
+
+<P>Bij het vercijferen zal men eerst encoderen met de eerste sleutel,
+dan decoderen met de tweede sleutel om daarna nog eens de encoderen
+met de eerste sleutel.</P>
+
+<P>Bij het ontcijferen zal men eerst decoderen met de eerste sleutel,
+dan encoderen met de tweede en daarna nogmaals decoderen met de
+eerste sleutel.</P>
+
+<P>Dit is mogelijk, omdat decoderen en encoderen gelijkaardige
+functies zijn.</P>
+
+<P>Het voordeel van vorig schema is de achterwaartse compatibiliteit
+met de enkelvoudige DES, op voorwaarde dat men beide sleutels
+gelijk neemt. Dit is voor de industrie een belangrijk voordeel:
+men kan langzaam een migratie toepassen.</P>
+
+<P>Een laatste evolutie is dat men zelfs drie verschillende sleutels
+gebruikt bij 3DES. Hierbij haalt men dus een effectieve lengte
+van 168 bits. Men blijft wel na mekaar een EDE uitvoeren.<BR>
+Men heeft dus:<BR>
+- 3DES met twee verschillende sleutels<BR>
+- 3DES met drie verschillende sleutels<BR>
+</P>
+
+<P>&nbsp;
+
+</BODY>
+</HTML>

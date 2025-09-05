@@ -1,0 +1,45 @@
+<HTML>
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 3.0 Win">
+  <TITLE>Cryptologie</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<P class="MsoNormal"><CENTER><B><FONT SIZE="+2">Virtuele private
+netwerken (VPN)<BR>
+verbinding</FONT></B></CENTER></P>
+
+<P>&nbsp;</P>
+
+<P>Eens alle sleutels gekend zijn, kan men beginnen met het opzetten
+van de verbinding. Ook dit is niet zo eenvoudig en er bestaan
+meerdere protocols. Vrij veel gebruikt is het ISAKMP/Oakley protocol.
+Dit is het Internet Security And Key Management Protocol, gecombineerd
+met de Oakley sleutel exchange protocol. IKE of het Internet Key
+Exchange protocol is hieraan identiek (een andere benaming). Het
+werkt in een beveiligde omgeving, een security association (SA).</P>
+
+<P>De functies zijn:<BR>
+- overeenkomt over het protocol<BR>
+- overeenkomst over het algoritme<BR>
+- overeenkomst over de sleutels<BR>
+- primaire authenticatie: Alice weet dat ze met Bob communiceert
+(en omgekeerd)<BR>
+- management van de sleutels na goedkeuring<BR>
+- uitwisseling van de sleutels na goedkeuring</P>
+
+<P>In een eerste fase wordt een beveiligde verbinding opgesteld
+tussen twee 'peers' of gelijken. Dit is de ISAKMP Security Associaton.
+In een tweede stap onderhandelen de peers over een 'general purpose'
+SA dat ze verder zullen gebruiken voor de data uitwisseling. Dit
+heeft het voordeel dat het ISAKMP SA niet veel gebruikt wordt.</P>
+
+<P>Voor een gedetailleerde beschrijving van deze protocols verwijzen
+we weer naar gespecialiseerde litteratuur. Het volstaat op te
+merken dat ze gebruik maken van volgende elementen:<BR>
+- Alice en Bob komen een encryptie en hash algoritme overeen<BR>
+- publieke sleutels worden kenbaar gemaakt<BR>
+- handtekeningen worden uitgewisseld, vergezeld van certificaten.
+
+</BODY>
+</HTML>

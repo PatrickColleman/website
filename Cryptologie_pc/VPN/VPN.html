@@ -1,0 +1,194 @@
+<HTML>
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 3.0 Win">
+  <TITLE>Cryptologie</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<P class="MsoNormal"><CENTER><B><FONT SIZE="+2">Virtuele private
+netwerken (VPN)<BR>
+</FONT></B></CENTER></P>
+
+<P class="MsoNormal">&nbsp;</P>
+
+<P class="MsoNormal">Een virtual private network is een oplossing
+voor een netwerk waarbij de hardware (de infrastructuur) van een
+publiek netwerk gebruikt worden om verbindingen te realiseren
+met knooppunten die geografisch ver verwijderd van mekaar kunnen
+zijn.  Voor de gebruiker moet dit geheel zich echter gedragen
+alsof het een priv&eacute; netwerk is.  Daarom spreekt men van
+een virtueel netwerk.</P>
+
+<P class="MsoNormal">Als meest voor de hand liggend publiek netwerk
+gebruikt men natuurlijk het Internet.</P>
+
+<P class="MsoNormal">&nbsp;</P>
+
+<P class="MsoNormal"><B>Waarom een VPN</B></P>
+
+<P class="MsoNormal">Een van de hoofdredenen waarom men deze weg
+op gaat is het reduceren van de kostprijs.</P>
+
+<P class="MsoNormal">Er zijn drie soorten toepassingen waar het
+gebruik van een VPN zinvol is:<BR>
+1.	Ter vervanging van een reeks remote access lijnen, met een
+lokale RAS server.<BR>
+2.	Bij een intranet, dit is een intern netwerk waar men 'van buiten',
+bijvoorbeeld het Internet, niet 'aan kan'.  Men gebruikt dus eigenlijk
+Internettechnologie, maar zonder verbinding met het Internet.<BR>
+3.	Voor een extranet.  Dit is bijna hetzelfde als een intranet,
+maar ook klanten en leveranciers kunnen verbonden worden.</P>
+
+<P class="MsoNormal">Als voorbeeld voor een intranet kan men de
+volgende situatie beschouwen.  Veronderstel bijvoorbeeld dat een
+bedrijf bestaat uit drie vestigingen, bijvoorbeeld in Oostende,
+Geel en Virton (nabij Aarlen).  Wanneer deze drie vestigingsplaatsen
+op de traditionele manier met mekaar moeten verbonden worden zal
+men dit doen door middel van een aantal (vaste) verbindingen,
+bijvoorbeeld ISDN verbindingen.  Zo zijn er dan drie nodig.  Het
+is duidelijk dat voor deze niet-interzonale verbindingen de kostprijs
+zeer hoog ligt.  Deze prijs is zelfs onafhankelijk van de bezetting
+van die verbinding: ook voor de (bijna) niet gebruikte tijd moet
+men betalen!  Het wordt nog erger wanneer we een nieuwe vestigingsplaats
+in Parijs moeten bij implementeren.  Er zijn dan drie extra (&eacute;&eacute;n
+naar elke vestigingsplaats) internationale lijnen nodig&#133;
+.</P>
+
+<P class="MsoNormal">Wanneer men op elk van deze vestigingsplaatsen
+een lokale verbinding heeft met een ISP, is de kostprijs enkel
+viermaal een lokale verbinding.  Via de hardware van het Internet
+kan dan de data doorgestuurd worden.  Dit is zonder twijfel veel
+goedkoper!!</P>
+
+<P class="MsoNormal">Als voorbeeld voor een remote access server
+heeft men bijvoorbeeld de situatie waarbij een aantal rondreizende
+verkopers in hun hotel regelmatig via (internationale) lijnen
+hun thuisbasis opbellen om een verbinding tot stand te brengen.
+ Maar ze kunnen evengoed een VPN gebruiken, waarbij ze een (lokale)
+ISP opbellen via een PPTP (zie verder) verbinding (een lokale
+verbinding) en daarna aan de bedrijfsbestanden kan. </P>
+
+<P class="MsoNormal">Een andere toepassing is het gebruik als
+een extranet.  Hierbij vormt een bedrijf en bijvoorbeeld zijn
+toeleveranciers en/of zijn klanten een eigen VPN.</P>
+
+<P class="MsoNormal">Het is duidelijk dat een router op het bedrijf
+zeker zal nodig zijn om een verbinding met het Internet te realiseren.
+ Een firewall is eveneens geen overbodige luxe om binnendringers
+te weren.</P>
+
+<P class="MsoNormal">&nbsp;</P>
+
+<P class="MsoNormal"><B>Basisbegrippen van een VPN</B></P>
+
+<P class="MsoNormal">Hoe kan een VPN een private, veilige verbinding
+maken op het Internet?  Problemen die kunnen opduiken zijn bijvoorbeeld:<BR>
+- uw LAN gebruikt geen IP<BR>
+- uw LAN gebruikt IP adressen die niet toegelaten zijn (niet aangevraagd)<BR>
+- hoe kan men vreemde bezoekers buiten houden? (hackers)</P>
+
+<P class="MsoNormal">Om de eigen IP adressen verborgen te houden
+voor het Internet, zal men zijn toevlucht nemen tot tunneling.
+ We weten dat het Internet een packet-switched network is.  Men
+kan dus moeilijk van een echte tunnel spreken.  Wat men wel kan
+realiseren is dat de zender en ontvanger  op een of andere manier
+een akkoord sluiten over hoe ze gaan communiceren.  Er worden
+een aantal achtergrondberichten heen en weer gestuurd over het
+Internet om tot zo een deal over te gaan.  Het is echter geenszins
+een echte tunnel zoals de vaste telefoonverbinding er een is met
+zijn toegewezen kanaalcapaciteit.</P>
+
+<P class="MsoNormal">Een andere kreet is 'encapsulation'.  Men
+gebruikt deze min of meer als synoniem voor tunneling.  Het is
+echter beter het onderscheid scherper te stellen en te poneren
+dat 'encapsulation' gaat over wat men gaat doen met elk apart
+pakketje. De term tunnelling gebruikt men om het ganse proces
+van data transfer te kenmerken.</P>
+
+<P class="MsoNormal">In dit encapsulation proces zal men elk pakket,
+inclusief de header, verbergen in een nieuwe enveloppe en op deze
+enveloppe de adressen van de source en destination VPN servers
+noteren.  Dit geheel gaat dan als een IP pakket door het Internet.
+ De oude header reist dus mee als data in de enveloppe!  (Let
+op: deze verborgen pakketten worden eerst helemaal versleuteld
+met een geheime code, zodat het voor vreemden zeer moeilijk of
+niet doenbaar is de data te achterhalen. Men noemt dit encryptie)
+ Dit maakt dat compleet vreemde netwerkframes kunnen getransporteerd
+worden.  Uiterst belangrijk is het dus in te zien dat men bij
+het gebruik van een VPN steeds een frame dat normaal zou opgezonden
+worden in het Internet, eerst gaat verpakken in een routeerbaar
+geheel, dit wil zeggen in een IP datagram.  Dit kan dus zowel
+een laag 2 frame zijn (PPP) als een laag 3 datagram (IPSec) (zie
+verder)</P>
+
+<P class="MsoNormal">Om vreemde bezoekers te weren, moet men zijn
+toevlucht nemen tot een systeem van authenticatie samen met een
+beveiliginggateway, zoals bijvoorbeeld een firewall. (zie volgend
+hoofdstuk)</P>
+
+<P class="MsoNormal">Om er voor te zorgen dat de data niet gemanipuleerd
+is, is een systeem van authenticatie samen met verificatie nodig.
+ Hoe kan iemand aan deze kant van de oceaan met absolute zekerheid
+weten dat aan de PC aan de andere kant van de oceaan de persoon
+zit die hij wil bereiken.  Dit is geen eenvoudig probleem, dat
+echter ook oplosbaar is (authenticatie).  Het zou eveneens kunnen
+dat met de gegevens geknoeid is.  Men zou bijvoorbeeld een frame
+meerdere keren kunnen opsturen.  Daarom is verificatie nodig.</P>
+
+<P class="MsoNormal">&nbsp;</P>
+
+<P class="MsoNormal"><B>Goede redenen om geen VPN te installeren.</B></P>
+
+<P class="MsoNormal">Er zijn een aantal redenen die een bedrijf
+er kunnen toe overhalen geen VPN te gebruiken.  We sommen er hier
+een aantal op.</P>
+
+<P class="MsoNormal">Indien het bedrijf slechts een (of een klein
+aantal) rondreizende vertegenwoordigers heeft, die maar af en
+toe hun email afhalen, is het gebruik van een VPN zeker niet aangewezen.
+ De telefoonkost is bij een RAS (remote access server) oplossing
+dan niet hoog en een VPN brengt extra kosten mee.</P>
+
+<P class="MsoNormal">Zijn er POP's (points of presence) van het
+Internet op alle plaatsen die men wil bereiken?  Dit is zeker
+niet het geval in bijvoorbeeld Siberie.  Kan het betreffende POP
+de nodige capaciteit leveren?  Dit kan gaan van een eenvoudige
+dial up verbinding, over een ISDN verbinding tot bijvoorbeeld
+een xDSL verbinding.</P>
+
+<P class="MsoNormal">Soms spreekt men beter over het World Wide
+Wait: de performantie van het Internet is hoegenaamd niet gegarandeerd,
+zodat er geen sprake is van een QoS.</P>
+
+<P class="MsoNormal"> <BR>
+Wanneer men het Internet op gaat, moet men veel investeren in
+beveiliging.  Een aantal aanvallen sommen we hier op:<BR>
+- spam email.  Dit is vrij onschuldig, maar grote hoeveelheden
+email ontvangen, kan de disk capaciteit van de server onnodig
+consumeren en is zeker niet prettig voor de werknemers.<BR>
+- snooping en sniffing.  Er bestaat software, zelfs in Windows
+98, NT, enz.  om ALLE pakketjes op het netwerk binnen te nemen.
+ Een sniffer gaat alleen de IP adressen van source en destination
+bekijken, terwijl een snooper ook de inhoud van het pakket zal
+analyseren.  Zoals in volgend puntje besproken kan dit vergaande
+gevolgen hebben.  Men kan zich wapenen tegen deze indringers door
+middel van encryptie.<BR>
+- spoofing.  Een kraker kan door de kennis van de IP adressen
+een zeer grote hoeveelheid data naar een server sturen, zodat
+deze de geest geeft.  Hierbij zal de server dikwijls een core
+dump opsturen, waar bijvoorbeeld paswoorden kunnen in staan. 
+Met alle gevolgen vandien&#133; .  Men spreekt van spoofing wanneer
+een niet gerechtigd gebruiker toch de firewall kan passeren en
+zo de IP adressen kan gebruiken.  Men kan zich hiertegen wapenen
+door onder andere adres translatie en alleen de VPN server IP
+adressen zichtbaar te maken.  Dit laatste gebeurt door de 'encapsulation'.
+ Wanneer de spoofer alleen het IP adres van de VPN server kent,
+kan hij waarschijnlijk alleen die server aanvallen.<BR>
+- session hijacking.  Wanneer Alice denkt met Bob te communiceren,
+maar in werkelijkheid met Charlie praat, spreekt men van session
+hijacking.</P>
+
+<P class="MsoNormal"><BR>
+
+</BODY>
+</HTML>

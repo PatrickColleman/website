@@ -1,0 +1,106 @@
+<HTML>
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 3.0 Win">
+  <TITLE>Cryptologie</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<P><CENTER><B><FONT SIZE="+3">Advanced encryption standard</FONT></B></CENTER></P>
+
+<P>&nbsp;</P>
+
+<P>De 128 bits bloklengte kan men zien in een matrix van bytes
+van 4 rijen en 4 kolommen. (4*4*8=128)</P>
+
+<P><CENTER><IMG SRC="AES_datastructuren.jpg" WIDTH="512" ALIGN="BOTTOM"
+HEIGHT="278" NATURALSIZEFLAG="2"></CENTER></P>
+
+<P>In bovenstaande figuur (deel a) kan men de datastructuur bestuderen.
+128 bits of 16 keer een byte worden genoteerd als een matrix van
+4 rijen en 4 kolommen. Let bij alle figuren goed op de kleuren:
+opeenvolgende bytes met een grijze achtergrond staan in eenzelfde
+kolom.</P>
+
+<P>Bovenstaande figuur (deel b) geeft weer dat de sleutel moet
+verlengd worden. Dit noemt men sleutelexpansie.</P>
+
+<P>Het gebruik van deze verlengde sleutel kan men terugvinden
+in het algemeen schema dat men in de desbetreffende paragraaf
+kan terugvinden als w[x, x+3]. Men gebruikt steeds 4 woorden van
+de verlengde sleutel!</P>
+
+<P>De eerste vier woorden van de geexpandeerde sleutel zijn de
+eerste vier kolommen van de keymatrix. Bestudeer de grijze zones
+in de figuren om te weten over welke bytes het gaat. Een woord
+is dus 32 bits breed en weergegeven als een kolom in volgende
+figuur, waar je de sleutelexpansie kan bekijken:</P>
+
+<P><IMG SRC="AES_keyexpension.jpg" WIDTH="512" ALIGN="BOTTOM"
+BORDER="0" HEIGHT="608" NATURALSIZEFLAG="2"></P>
+
+<P>Zoals men op bovenstaande figuur kan bestuderen wordt een volgend
+woord berekend door een EXOR van het vorige woord en het woord
+4 plaatsen ervoor. Alleen voor de woorden waarvan de plaats een
+veelvoud van 4 is, gebruikt men een ingewikkelde functie g.</P>
+
+<P><I>Deze functie g doet in hoofdzaak 3 bewerkingen:<BR>
+- een 'shift left' van 1 volledige byte. Dit wil zeggen dat 4
+bytes : [b0 b1 b2 b3] worden vertaald in: [b1 b2 b3 b0]<BR>
+- een bytesubstitutie op dezelfde manier en dezelfde matrix als
+het AES algoritme zelf. We bespreken dit verder.<BR>
+- EXOR met een constante, die functie is van het rondenummer.
+De drie meest rechtse bytes zijn steeds 00. De andere, meest beduidende,
+byte is:<BR>
+</I><TABLE WIDTH="100%" BORDER="1" CELLSPACING="2" CELLPADDING="0">
+  <TR>
+    <TD WIDTH="9%">
+    ronde</TD> 
+    <TD WIDTH="9%">
+    <P><CENTER>&nbsp;1</CENTER></TD>
+    <TD WIDTH="9%">
+    <P><CENTER>&nbsp;2</CENTER></TD>
+    <TD WIDTH="9%">
+    <P><CENTER>&nbsp;3</CENTER></TD>
+    <TD WIDTH="9%">
+    <P><CENTER>&nbsp;4</CENTER></TD>
+    <TD WIDTH="9%">
+    <P><CENTER>&nbsp;5</CENTER></TD>
+    <TD WIDTH="9%">
+    <P><CENTER>&nbsp;6</CENTER></TD>
+    <TD WIDTH="9%">
+    <P><CENTER>&nbsp;7</CENTER></TD>
+    <TD WIDTH="9%">
+    <P><CENTER>&nbsp;8</CENTER></TD>
+    <TD WIDTH="9%">
+    <P><CENTER>&nbsp;9</CENTER></TD>
+    <TD WIDTH="10%">
+    <P><CENTER>&nbsp;10</CENTER></TD>
+  </TR>
+  <TR>
+    <TD WIDTH="9%">
+    constante</TD> 
+    <TD WIDTH="9%">
+    <P><CENTER>&nbsp;01</CENTER></TD>
+    <TD WIDTH="9%">
+    <P><CENTER>&nbsp;02</CENTER></TD>
+    <TD WIDTH="9%">
+    <P><CENTER>&nbsp;04</CENTER></TD>
+    <TD WIDTH="9%">
+    <P><CENTER>&nbsp;08</CENTER></TD>
+    <TD WIDTH="9%">
+    <P><CENTER>&nbsp;10</CENTER></TD>
+    <TD WIDTH="9%">
+    <P><CENTER>&nbsp;20</CENTER></TD>
+    <TD WIDTH="9%">
+    <P><CENTER>&nbsp;40</CENTER></TD>
+    <TD WIDTH="9%">
+    <P><CENTER>&nbsp;80</CENTER></TD>
+    <TD WIDTH="9%">
+    <P><CENTER>&nbsp;1B</CENTER></TD>
+    <TD WIDTH="10%">
+    <P><CENTER>&nbsp;36</CENTER></TD>
+  </TR>
+</TABLE>
+
+</BODY>
+</HTML>

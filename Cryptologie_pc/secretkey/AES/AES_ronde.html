@@ -1,0 +1,28 @@
+<HTML>
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 3.0 Win">
+  <TITLE>Cryptologie</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<P><CENTER><B><FONT SIZE="+3">Advanced encryption standard</FONT></B></CENTER></P>
+
+<P>&nbsp;</P>
+
+<P>Dit alles geeft ons volgend schema voor een AES ronde:</P>
+
+<P><CENTER><IMG SRC="AES_ronde.jpg" WIDTH="512" ALIGN="BOTTOM"
+BORDER="0" HEIGHT="396" NATURALSIZEFLAG="2"></CENTER></P>
+
+<P>De DES-sleutelgeneratie verplaatst alleen maar bits zodat elke
+iteratiekeybit overeenkomt met een bepaalde hoofdsleutelbit; de
+sleutelgeneratie is lineair. In Rijndael wordt de hoofdsleutel
+'verlengd' door sleutelbytes te EXORen met andere sleutelbytes,
+soms na toepassing van de S-box op een van de operanden.<BR>
+(N.B.: er is natuurlijk, vanuit het oogpunt van veiligheid, niet
+echt sprake van verlenging van de sleutel omdat de toegevoegde
+bits berekend worden uit de hoofdsleutel.) Dit proces wordt voortgezet
+tot er genoeg sleutelbytes zijn voor alle iteraties.
+
+</BODY>
+</HTML>

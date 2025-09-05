@@ -1,0 +1,135 @@
+<HTML>
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 3.0 Win">
+  <TITLE>Cryptologie</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<P class="MsoNormal"><CENTER><B><FONT SIZE="+2">Virtuele private
+netwerken (VPN)<BR>
+IPSec</FONT></B></CENTER></P>
+
+<P class="MsoNormal">&nbsp;</P>
+
+<P class="MsoNormal">IPSec heeft het grote voordeel dat het de
+volledige functionaliteit van een VPN in zich draagt. Wanneer
+men dit gebruikt, moet men dus minder bouwstenen 'in mekaar doen
+passen'. Dit maakt het systeem zeker betrouwbaarder. Routers zoals
+deze van Cisco implementeren IPSec. Het is dus zeker een veilige
+keuze.</P>
+
+<P class="MsoNormal">&nbsp;</P>
+
+<P class="MsoNormal"><B>IPSec header</B></P>
+
+<P class="MsoNormal"><CENTER><IMG SRC="image014.gif" WIDTH="514"
+HEIGHT="343" ALIGN="BOTTOM" BORDER="0" NATURALSIZEFLAG="3"></CENTER></P>
+
+<P class="MsoNormal">Bovenstaande figuur toont het IPSec datagram.</P>
+
+<P class="MsoNormal">De header van IPSec is identiek aan deze
+van IP. Dit maakt dat alle bestaande apparatuur IPSec aankunnen.
+Er wordt zelfs samengewerkt met Ipv6. Het enige speciale is dat
+er als protocol ESP (encapsulated security payload) is gespecificeerd
+in plaats van TCP of UDP.</P>
+
+<P class="MsoNormal">Men kan een optionele authentication header
+(AH) toevoegen om aan te tonen dat de data niet aangepast is tijdens
+het transport. Deze header moet de integriteit van het ganse pakket
+garanderen, inclusief van de velden in de header die niet aangepast
+worden tijdens het transport. Vanzelfsprekend worden de velden
+die wel worden aangepast tijdens het transport buiten beschouwing
+gelaten. Denk bijvoorbeeld aan de time to live.</P>
+
+<P class="MsoNormal">&nbsp;</P>
+
+<P class="MsoNormal"><B>AH header</B></P>
+
+<P class="MsoNormal"><CENTER><IMG SRC="image016.jpg" WIDTH="515"
+HEIGHT="343" ALIGN="BOTTOM" BORDER="0" NATURALSIZEFLAG="3"></CENTER></P>
+
+<P class="MsoNormal">Bovenstaande figuur toont de authenticatieheader.</P>
+
+<P class="MsoNormal">Beide partijen zullen, tijdens het opzetten
+van de beveiligde verbinding, een aantal afspraken (die vanzelfsprekend
+functie zijn van de functionaliteiten die beide partijen aankunnen)
+maken over de te gebruiken algoritmes, welke sleutels zullen gebruikt
+worden, en eventuele andere parameters.  Ze sluiten hiermee een
+security association af.  Om achteraf tijdens de datatransfer
+gemakkelijk te kunnen refereren naar deze gemaakte afspraken hechten
+ze hier een SPI of een security parameter index aan vast.  Dit
+is een cijfer dat refereert naar deze gemaakte afspraken.</P>
+
+<P class="MsoNormal">De parameters van de optionele authentication
+header  zijn:<BR>
+- Het veld next header van de AH geeft het hoger liggende protocol
+aan, bijvoorbeeld TCP of ESP.<BR>
+- payload length: lengte van de header<BR>
+- security parameter index: algoritmes en sleutels, zie nota hierboven.<BR>
+- sequence number: ge&iuml;ncrementeerd om er voor te zorgen dat
+alle headers anders zijn.  Dit moet een bescherming bieden tegen
+de replay aanval, waarbij men een bericht terug gaat doorzenden,
+zonder echt te weten wat er in staat.  (Maar als je weet dat iemand
+een rekening aan jou moet betalen kan je hopen dat hij dat met
+een bepaalde datatransfer doet.)<BR>
+- autentication data: Hierbij gebruikt men certificaten.  Certificaten
+zijn berichten die van een door alle partijen vertrouwde persoon
+of instantie afkomstig zijn.  Ze kunnen door iedereen gelezen
+worden, maar alleen door deze vertrouwde instantie aangemaakt
+worden.  In het certificaat staat in eerste instantie de naam
+van de afzender en zijn publieke sleutel.  (zie asymmetrische
+encryptie). Gebruik makende van de gemaakte afspraken (SPI) kan
+dan een soort controlesom (message digest genoemd, 128 bits lang,
+bijvoorbeeld via SHA-1) berekend worden.  Een mee doorgezonden
+digitale handtekening (dit is een message digest die versleuteld
+is met de private sleutel van de verzender) kan, gebruik makende
+van de publieke sleutel, ontcijferd worden en vergeleken met de
+zopas zelf berekende message digest.  Indien ze dezelfde zijn,
+is aan het bericht niet geknoeid en komt het zeker van de afzender
+die zich hiermee kan authenticeren.  Men kan eveneens een MAC
+gebruiken.  Dit is een korter bericht (typisch 64 bits) dat berekend
+wordt uit de boodschap en een geheime sleutel.  Men kan hiermee
+garanderen dat aan het bericht niet geknoeid is.</P>
+
+<P class="MsoNormal">&nbsp;</P>
+
+<P class="MsoNormal"><B>ESP header</B></P>
+
+<P class="MsoNormal"><CENTER><IMG SRC="image018.jpg" WIDTH="515"
+HEIGHT="343" ALIGN="BOTTOM" BORDER="0" NATURALSIZEFLAG="3"></CENTER></P>
+
+<P class="MsoNormal">ESP moet voor de nodige confidentialiteit
+zorgen.  Het is duidelijk dat de AH header wel kan waarborgen
+(op basis van de digitale handtekening, certificaat) dat een bericht
+niet aangepast is tijdens het transport, maar het bericht zelf
+moet natuurlijk ook beveiligd doorgezonden worden.  ESP zal dus
+de encryptie doorvoeren.</P>
+
+<P class="MsoNormal">ESP kan in twee modi werken:<BR>
+- transport mode, waarbij de data gewoon vercijferde IP data is
+(bijvoorbeeld TCP pakket)<BR>
+- tunnel mode, waarbij de ESP data een IP datagram is, IP header
+inclusief.  Vooraan staat dan een nieuwe IP header.  Men gebruikt
+deze mode best tussen twee VPN servers aan de ingang van het private
+netwerk (op de firewall bijvoorbeeld).  In de nieuwe IP header
+vooraan staan dan de IP adressen van de VPN servers, die de ESP
+data moeten verpakken (en het echte IP adres van de zender verbergen)
+en 'ontpakken' (en doorsturen naar het echte IP adres van de ontvanger)</P>
+
+<P class="MsoNormal">Voor de ESP (encapsulated security payload)
+header hebben we:<BR>
+- security parameter index: algoritmes en sleutels, zie nota hoger
+bij AH.<BR>
+- sequence number: ge&iuml;ncrementeerd om er voor te zorgen dat
+alle headers anders zijn.  Zie eveneens de nota bij de AH.<BR>
+- payload data, die geencrypteerd is met bijvoorbeeld DES of triple
+DES.<BR>
+- authentication data (optioneel): hashing van het grootste deel
+van het ESP frame.</P>
+
+<P class="MsoNormal">IPSec gebruikt ISAKMP/Oakley voor het sleutelmanagement.
+ We verwijzen hiervoor naar het desbetreffende deel van deze website.<BR>
+<BR>
+
+</BODY>
+</HTML>

@@ -1,0 +1,67 @@
+<HTML>
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 3.0 Win">
+  <TITLE>Cryptologie</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<P><CENTER><B><FONT SIZE="+4">Plaats van de encryptiefunctie</FONT></B></CENTER></P>
+
+<P>&nbsp;</P>
+
+<P><B>plaatsen van aanvallen<BR>
+link encryptie versus end-to-end encryptie</B></P>
+
+<P><CENTER><IMG SRC="encryptiemogelijkheden.jpg" WIDTH="512" 
+HEIGHT="330" ALIGN="BOTTOM" NATURALSIZEFLAG="2"></CENTER></P>
+
+<P>Er zijn een aantal plaatsen waar men kan aanvallen:<BR>
+- afluisteren op het LAN door andere medewerkers (overspelige
+mode van de netwerkkaart)<BR>
+- schakelkast met de verbindingen van de telefoonlijnen. Met behulp
+van een lichte zender/ontvanger kan de indringer in de nabije
+omgeving gaan luistervinken.<BR>
+- de verbinding met de telecom partner (Belgacom, e.a.), eventueel
+via elektromagnetische straling (uitstraling van de kabel). Dit
+is niet mogelijk bij glasvezel.</P>
+
+<P>&nbsp;</P>
+
+<P>link encryptie versus end-to-end encryptie: <BR>
+- Bij <B>link encryptie</B> gaat men elke plaats (bijvoorbeeld
+een kabelverbinding) waar men kan indringen beveiligen met een
+aparte encryptie. Het nadeel hiervan is dat elke keer een bericht
+bij een packet switch (X.25) aankomt moet worden ontcijferd om
+de juiste virtual circuit identifier te kennen. Deze zit immers
+in het bericht. Het is duidelijk dat deze aanpak ook alleen echt
+goed werkt als alle plaatsen door middel van encryptie beveiligd
+zijn.<BR>
+- Bij <B>end-to-end encryptie</B> gaat men alleen vercijferen
+en ontcijferen bij de twee eindsystemen. Dit lijkt veel veiliger
+dan link encryptie. Het nadeel is echter dat alleen de data kan
+worden beveiligd, niet de header. Het gevolg hiervan is dat een
+luistervink wel kan weten dat er transport van data heeft plaatsgehad:
+het verkeerspatroon is nog steeds gekend. Het voordeel is wel
+dat er meteen een vorm van authenticatie heeft plaatsgevonden.<BR>
+- Best is beide technieken te combineren: de eindhosts vercijferen
+de data met een end-to-end sleutel. Elk pakket gaat men nog eens
+apart versleutelen, header inclusief, om het dan op elk deel van
+de lijn te zetten. Men kan dit aanschouwelijk terugvinden op bovenstaande
+figuur.</P>
+
+<P>Link encryptie zal men doorvoeren op een lage plaats in het
+OSI model, typisch de datalinklaag.</P>
+
+<P>End-to-end encryptie kan vanaf de netwerklaag en in hogere
+lagen. In de netwerklaag ken men de bestemmeling en kan men dan
+ook werken op basis van een gemeenschappelijke geheime sleutel.
+Om de hoofd-CPU te ontlasten zal men deze taak dan ook laten uitvoeren
+door een front-end processor. Een andere plaats is de gateway.
+Typisch zal men dit toepassen voor e-mail. Er is hier immers de
+mogelijkheid van een store-and-forward. Het is natuurlijk ook
+zo dat hoe hoger in de lagen men de encryptie gaat doorvoeren,
+hoe minder er moet versleuteld worden. De headers van de onderliggende
+lagen zijn immers nog niet aanwezig.
+
+</BODY>
+</HTML>

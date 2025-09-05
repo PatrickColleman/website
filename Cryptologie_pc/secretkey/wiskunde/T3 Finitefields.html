@@ -1,0 +1,112 @@
+<HTML>
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 2.0 Win">
+  <TITLE>Cryptologie</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<P><CENTER><B><FONT SIZE=+4>Galois velden GF(</FONT></B><FONT SIZE=+4>p<sup>n</sup><B>)</B></FONT></CENTER></P>
+
+<P>&nbsp;</P>
+
+<P>Deze velden zijn belangrijk in cryptografiesystemen.</P>
+
+<P>Meer specifiek wanneer men gaat rekenen modulo p<sup>n</sup>, waarbij
+p een priemgetal is en n om het even welk positief geheel getal.</P>
+
+<P>Deze eindige velden (modulo p<sup>n</sup>) noemt men Galois velden. Men
+noteert ze als GP(p<sup>n</sup>)<BR>
+Hiervan zijn er twee speciale soorten:<BR>
+- p<sup>1</sup>, of p: GF(p)<BR>
+- 2<sup>n</sup> of GF(2<sup>n</sup>)</P>
+
+<P>&nbsp;</P>
+
+<P><B><FONT SIZE=+2>GF(p)</FONT></B></P>
+
+<P>Nemen we als voorbeeld p gelijk aan 7.</P>
+
+<P>Men kan de verzameling van alle natuurlijke getallen projecteren op de
+verzameling {0, 1, 2, 3, 4, 5, 6} door de rest van de deling door 7 te gebruiken.</P>
+
+<P>Men heeft dan minstens een <U>commutatieve ring.</U></P>
+
+<P>Maar wanneer men <U>modulo een priemgetal</U> gaat rekenen bestaat er
+ook een invers element voor elk element voor de vermenigvuldiging. Men heeft
+dan een veld. Een voorbeeld:<BR>
+</P>
+
+<P><CENTER><IMG SRC="modulo7.jpg" WIDTH="512" HEIGHT="465" ALIGN="BOTTOM"
+BORDER="0" NATURALSIZEFLAG="2"></CENTER></P>
+
+<P>&nbsp;</P>
+
+<P><B><FONT SIZE=+2>GF(</FONT></B><FONT SIZE=+2>2<sup>n</sup><B>)</B></FONT></P>
+
+<P>Wanneer men modulo<FONT SIZE=-2> </FONT>p<sup>n</sup> gaat rekenen, heeft
+men geen veld. Voor p=8 en n = 1 heeft men namelijk:</P>
+
+<P><CENTER><IMG SRC="modulo8.jpg" WIDTH="512" HEIGHT="512" ALIGN="BOTTOM"
+BORDER="0" NATURALSIZEFLAG="2"></CENTER></P>
+
+<P>De inverse elementen bestaan dus niet altijd!</P>
+
+<P>Stel dat we encryptie willen doen op bytes, dit zijn 8 bits. Men heeft
+dan alle combinaties van 0 tot 255. 255 is echter geen priemgetal, 251 is
+het wel. Men zou dan modulo 251 kunnen rekenen en alle goede eigenschappen
+kunnen gebruiken van velden. Het nadeel is dan echter dat we enkele combinaties
+(251 .. 255) niet gebruiken.</P>
+
+<P>Er bestaan echter wel velden van de vorm: GF(2<sup>p</sup>).</P>
+
+<P>Nemen we als voorbeeld 2<sup>3</sup>. Men gebruikt dan volgende rekenregels:</P>
+
+<P><CENTER><IMG SRC="GF8.jpg" WIDTH="512" ALIGN="BOTTOM" BORDER="0"></CENTER></P>
+
+<P>De aandachtige lezer zal opmerken dat de sommatie eigenlijk op een EXOR
+functie van de verschillende bits neerkomt. Voor de vermenigvuldiging zijn
+de rekenregels op het eerste zicht niet zo duidelijk. We komen er iets verder
+op terug...</P>
+
+<P>&nbsp;</P>
+
+<P><B><FONT SIZE=+2>Rekenen met veeltermen</FONT></B></P>
+
+<P>Men kan gaan rekenen met veeltermen (optellen en vermenigvuldigen) waarvan
+de co&euml;fficienten 0 of 1 zijn. (0 en 1 zijn de elementen modulo 2).</P>
+
+<P>AES gebruikt rekenkunde in GF(2<sup>8</sup>) met als veelterm:<BR>
+m(x) = x<sup>8</sup> + x<sup>4</sup> + x<sup>3</sup> + x + 1</P>
+
+<P>Een voorbeeld:<BR>
+f(x) = x<sup>6</sup> + x<sup>4</sup> + x<sup>2</sup> + x + 1<BR>
+g(x) = x<sup>7</sup> + x + 1</P>
+
+<P>dan is:<BR>
+f(x) + g(x) = x<sup>7</sup> + x<sup>6</sup> + x<sup>4</sup> + x<sup>2</sup><BR>
+want 1 + 1 = 0</P>
+
+<P>en dan is: <BR>
+f(x) * g(x) = x<sup>13</sup> + x<sup>11</sup> + x<sup>9</sup> + x<sup>8</sup>
++ x<sup>6</sup> + x<sup>5</sup> + x<sup>4</sup> + x<sup>3</sup> + 1</P>
+
+<P>en :<BR>
+f(x) * g(x) mod m(x) = x<sup>7</sup> + x<sup>6</sup> + 1<BR>
+door te delen door m(x).</P>
+
+<P>&nbsp;</P>
+
+<P>Om het veld GF(2<sup>3</sup>) op te stellen moeten we een analoge berekening
+doen, maar dan met een veelterm van macht 3. Er zijn 2 goede kandidaten:<BR>
+x<sup>3</sup> + x<sup>2</sup> + 1<BR>
+x<sup>3</sup> + x + 1.</P>
+
+<P>Met deze laatste krijgen we:</P>
+
+<P><CENTER><IMG SRC="veeltermrekenen.jpg" WIDTH="512" HEIGHT="285" ALIGN=
+"BOTTOM" BORDER="0" NATURALSIZEFLAG="2"></CENTER></P>
+
+<P>Vergelijk de co&euml;ffici&euml;nten van de veeltermen met de tabel voor
+rekenen in GF(2<sup>3</sup>).
+</BODY>
+</HTML>

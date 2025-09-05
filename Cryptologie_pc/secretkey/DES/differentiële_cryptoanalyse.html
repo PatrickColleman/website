@@ -1,0 +1,43 @@
+<HTML>
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 2.0 Win">
+  <TITLE>Cryptologie</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<P><CENTER><B><FONT SIZE=+4>Differenti&euml;le cryptoanalyse</FONT></B></CENTER></P>
+
+<P>&nbsp;</P>
+
+<P>Differenti&euml;le cryptoanalyse is bedoeld als een methode om DES sneller
+te kunnen kraken.</P>
+
+<P>Zonder in details te gaan, volstaat het te melden dat DES eigenlijk een
+invoer in twee delen opsplitst, waarbij &eacute;&eacute;n van de twee delen
+in een stap niet wordt aangepast: men maakt maar &eacute;&eacute;n nieuw
+blok.</P>
+
+<P>Dit nieuwe blok is het resultaat van een EXOR operatie. Dit is eigenlijk
+een maat voor het verschil tussen beide helften.</P>
+
+<P>Deze kenmerken gaat men als volgt toepassen.</P>
+
+<P>Er wordt begonnen met twee klare teksten m en m', met een gegeven verschil.
+Na elke ronde wordt een waarschijnlijk patroon van verschillen doorlopen
+om een waarschijnlijk verschil voor de vercijferde tekst te verkrijgen.
+Daarna zal men m en m' aanbieden voor encryptie om het werkelijk verschil
+onder de onbekende sleutel vast te stellen en het resultaat met het werkelijk
+verschil te vergelijken.</P>
+
+<P>Indien er dan een overeenkomst bestaat, dan kan men stellen dat alle
+werkelijke patronen op alle tussenronden correct zijn.</P>
+
+<P>Hieruit kan men enkele afleidingen met betrekking tot de sleutelbits
+maken.</P>
+
+<P>Om alle sleutelbits te verkrijgen, moet men dit vele keren herhalen.</P>
+
+<P>Er zijn 2<sup>47</sup> gekozen klare teksten nodig om de sleutel te kunnen
+kraken!
+</BODY>
+</HTML>

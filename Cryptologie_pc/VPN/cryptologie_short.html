@@ -1,0 +1,210 @@
+<HTML>
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 3.0 Win">
+  <TITLE>Cryptologie</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<P class="MsoNormal"><CENTER><B><FONT SIZE="+2">Virtuele private
+netwerken (VPN)<BR>
+korte herhaling</FONT></B></CENTER></P>
+
+<P>&nbsp;</P>
+
+<P><B><U>Encryptie</U></B></P>
+
+<P>De bedoeling van encryptie is er voor te zorgen dat machines
+of personen die niets te maken hebben met het VPN, dit ook niet
+kunnen omdat er geheimschrift gebruikt is. In de volgende bladzijden
+zullen we de methodes van encryptie kort herhalen.</P>
+
+<P>In de cryptoanalyse spreekt men over het begrip 'plain text'.
+Dit is het door te sturen bericht voordat er geheimcodering gebruikt
+is. Dit is dus perfect door iedereen te lezen.</P>
+
+<P>Het is duidelijk dat de lengte van de sleutel uiterst belangrijk
+is. Wanneer men deze niet kent, kan men de tekst niet lezen, en
+hoe langer de sleutel, hoe langer men moet zoeken omdat er meer
+mogelijkheden zijn. Tegenwoordig is een lengte van 56 bits een
+minimum.</P>
+
+<P>In het vervolg van deze tekst spreken we over Alice en Bob.
+Beide zijn gewenste personen (machines) in de communicatie. Charlie
+is steeds ongewenst.</P>
+
+<P>&nbsp;</P>
+
+<P><B>Symmetrische encryptie</B></P>
+
+<P>Bij symmetrische encryptie gebruiken zender en ontvanger dezelfde
+'sleutel'. Dit is een getal bestaande uit vele bits, in de praktijk
+minstens 4 bits. Veel gebruikte systemen gebruiken sleutels van
+40, 56 tot 128 bits.</P>
+
+<P>Er zijn vele systemen beschikbaar, onder andere DES, triple
+DES, AES en IDEA (International Data Encryption Algorithm). Indien
+VPN apparatuur niet specificeert welke methode gebruikt wordt,
+is het meestal DES. DES kan werken met een sleutel van 56 bits.
+Triple DES gebruikt twee verschillende sleutels van 56 bits, hetgeen
+dit systeem uiterst moeilijk te kraken maakt. IDEA gebruikt ineens
+een sleutel van 128 bits. AES eveneens.</P>
+
+<P>Zoals volgende figuur toont, gebruiken beide partners in de
+communicatie dezelfde sleutel.</P>
+
+<P><CENTER><IMG SRC="image002.jpg" WIDTH="507" HEIGHT="150" ALIGN="BOTTOM"
+BORDER="0" NATURALSIZEFLAG="3"></CENTER></P>
+
+<P>Het is duidelijk dat hoe langer een sleutel gebruikt wordt,
+hoe erger de schade is wanneer deze gevonden wordt, omdat er meer
+berichten met dezelfde sleutel verstuurd zijn. Een bijkomend probleem
+is dat wanneer er meer berichten verstuurd zijn, het in het algemeen
+gemakkelijker wordt de sleutel te vinden, bijvoorbeeld door een
+hystogram op te stellen betreffende de frequentie van voorkomen
+van de lettertekens.</P>
+
+<P>Daarom is het nodig dat zeer regelmatig (om de paar minuten)
+andere sleutels gebruikt worden.</P>
+
+<P>Een extra probleem hierbij is dat alle partners een andere
+sleutel gebruiken wanneer ze met iemand anders communiceren. Wanneer
+er bijvoorbeeld drie deelnemers zijn, A, B en C, zal er een andere
+sleutel gebruikt worden voor de communicatie tussen A en C dan
+voor de communicatie tussen A en B.</P>
+
+<P>Wanneer er dus vele sleutels in gebruik zijn, en deze sleutels
+moeten regelmatig veranderd worden, is het dus een aartsmoeilijke
+taak om dit geheel gesynchroniseerd te houden.</P>
+
+<P>Daarom is asymmetrische encryptie eenvoudiger. <BR>
+</P>
+
+<P><B>Asymmetrische encryptie</B></P>
+
+<P>Bij asymmetrische encryptie heeft elke deelnemer twee sleutels,
+die niet uit mekaar af te leiden zijn.</P>
+
+<P>Een van de twee sleutels is uiterst geheim (priv&eacute;),
+terwijl de andere sleutel publiek is.</P>
+
+<P>Omdat men meestal beide sleutels gaat mengen, bekomt en gebruikte
+sleutels (zie verder) van vlot 1024 bits lang. Dit is meer dan
+voldoende!</P>
+
+<P>Er zijn meerdere systemen in omloop, onder andere dat van Diffie-Helman.
+We zullen dit hier niet bespreken.</P>
+
+<P>Veel gebruikt evenwel is het RSA encryptie systeem. Dit zit
+ondermeer in Microsoft Explorer, Netscape Navigator, Lotus Notes,
+... .</P>
+
+<P>Alice zal, wanneer ze een boodschap naar Bob wil sturen, de
+publieke sleutel van Bob gebruiken. Alleen Bob kan dit bericht
+ontcijferen met zijn eigen geheime sleutel.<BR>
+</P>
+
+<P><CENTER><IMG SRC="image004.jpg" WIDTH="511" HEIGHT="434" ALIGN="BOTTOM"
+BORDER="0" NATURALSIZEFLAG="2"></CENTER></P>
+
+<P>Het grote nadeel van RSA is dat het traag is: tot 10.000 keer
+trager dan DES.</P>
+
+<P>Toch kan men RSA gebruiken voor het veilig doorsturen van een
+DES sleutel. Dit is dan een random cijfer van voldoende bits.
+Zoals in vorige paragraaf besproken moet dit zeer dikwijls gebeuren.
+Daarna kan men bijvoorbeeld DES gebruiken.</P>
+
+<P><CENTER><IMG SRC="image006.jpg" WIDTH="511" HEIGHT="482" ALIGN="BOTTOM"
+BORDER="0" NATURALSIZEFLAG="3"></CENTER></P>
+
+<P><CENTER>&nbsp;</CENTER></P>
+
+<P>Rest nog het probleem van de distributie van de publieke sleutels.
+Dit kan ondermeer met behulp van een derde partner, een certificate
+authority (CA). In de meest gevallen zal dit organisme zowel de
+private als de publieke sleutel aanmaken en deze naar de juiste
+personen sturen. Samen met de private sleutel moet natuurlijk
+een certificaat reizen om aan te tonen dat het hier om beveiligde
+data gaat (geldigheid van de sleutel).</P>
+
+<P>In dit certificaat staat meestal een vervaldatum, de naam van
+het certificate authority en een serial number. Het bevat in alle
+geval ook de handtekening van het CA (zie volgende paragraaf).</P>
+
+<P>Er bestaat een formaat voor de berichtuitwisseling met een
+CA, namelijk X.509.</P>
+
+<P>Eens Alice en Bob elkaars publieke sleutels kennen, kan de
+communicatie starten. Dit natuurlijk op voorwaarde dat hun hard-
+en software dezelfde encryptie kan ondersteunen.</P>
+
+<P><CENTER><IMG SRC="image008.jpg" WIDTH="375" HEIGHT="316" ALIGN="BOTTOM"
+BORDER="0" NATURALSIZEFLAG="3"></CENTER></P>
+
+<P>&nbsp;</P>
+
+<P><B>Een digitale handtekening</B></P>
+
+<P>Wanneer men bijvoorbeeld belangrijke financi&euml;le transacties
+wenst te doen via het Internet, is het vanzelfsprekend dat beide
+partners absolute zekerheid willen hebben. Wanneer een klant aan
+de bank het bevel geeft een goudvoorraad te kopen, moet hij dit
+zeker 'ondertekenen'. Op papier kan dit, maar elektronisch is
+dit minder eenvoudig. Daarom bestaat volgend systeem.</P>
+
+<P>Alice wenst een ondertekend bericht naar Bob te sturen. Eerst
+en vooral zal ze dit bericht door middel van een hashing functie
+sturen. Deze zal uit dit bericht een kort bitpatroon afleiden,
+dat uniek is voor het bericht. De hashing functie is irreversibel:
+uit het relatief korte bitpatroon van bijvoorbeeld 128 bits (digest)
+kan het oorspronkelijke bericht niet meer hersteld worden.</P>
+
+<P>Daarna zal Alice de digest encrypteren met haar eigen priv&eacute;
+encryptiesleutel. Dit vormt haar digitale handtekening. Deze handtekening
+hangt ze aan het oorspronkelijke bericht en gaat dit geheel encrypteren
+met Bob's publieke sleutel.</P>
+
+<P>Bob zal, als ontvanger, vanzelfsprekend het bericht decrypteren
+met zijn private sleutel en daarna met de publieke sleutel van
+Alice. Indien dit geheel leesbaar is, weet hij zeker dat het van
+Alice komt, want alleen de publieke sleutel van Alice 'past' op
+haar private sleutel. Bob zal het bericht, net zoals Alice, met
+de hashing functie processen. Indien dit hetzelfde bestand (digest)
+geeft als het digest dat met het bericht mee kwam, weet hij zeker
+dat dit bericht niet veranderd is.</P>
+
+<P><BR>
+Het is duidelijk dat de hashing functie aan twee eisen moet voldoen:<BR>
+- ze mag niet inverteerbaar zijn: uit de digest mag het oorspronkelijke
+bericht niet recupereerbaar zijn.<BR>
+- twee berichten mogen geen zelfde digest opleveren.<BR>
+</P>
+
+<P><B>user authenticatie en autorisatie</B></P>
+
+<P>Om na te gaan of de gebruiker echt is wie hij zegt te zijn,
+gebruikt men de combinatie gebruikersnaam/paswoord.</P>
+
+<P>Het is onnodig te vermelden dat dit vele gevaren inhoudt: is
+het paswoord de naam van de echtgenote, ... . Indien het paswoord
+zeer ingewikkeld is, mag men het zeker niet opschrijven en op
+de terminal plakken.</P>
+
+<P>Er bestaan meerdere systemen betreffende paswoord beveiliging:<BR>
+- PAP of paswoord authenticatie protocol: hier geeft de gebruiker
+zijn naam en paswoord. Het paswoord wordt geverifieerd in een
+database.<BR>
+- CHAP of challenge handshake authenticatie protocol: hierbij
+geeft de gebruiker zijn naam en wachtwoord. De host reageert met
+een random cijfer. Dit moet door de aanlogger gebruikt worden
+om een antwoord te formuleren. Indien dit antwoord datgene is
+wat de host verwacht, is alles OK.</P>
+
+<P>Microsoft supporteert zowel PAP als CHAP. Dit kan dus goed
+gebruikt worden om aan te loggen via een PPTP verbinding op een
+NT server.</P>
+
+<P>&nbsp;
+
+</BODY>
+</HTML>

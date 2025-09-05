@@ -1,0 +1,87 @@
+<HTML>
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 3.0 Win">
+  <BASE TARGET="target">
+  <TITLE>Cryptologie</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<P><CENTER><B><FONT SIZE="+4">DES substitutie</FONT></B></CENTER></P>
+
+<P><CENTER><IMG SRC="DES_substitutie.jpg" WIDTH="512" HEIGHT="355"
+ALIGN="BOTTOM" NATURALSIZEFLAG="2"></CENTER></P>
+
+<P>In bovenstaande figuur is de voorgeschiedenis en de nabewerking
+van de substitutie ook weergegeven. De substitutie gaat over de
+8 verschillende S blokken en hun werking.</P>
+
+<P>Zoals men in de figuur van de DES ronde kan opmerken gaat men
+in de functie F over van 48 naar 32 bits in een substitutieslag.
+De logica van deze substitutie is in vorige figuur weergegeven.</P>
+
+<P>Men gebruikt 8 S boxen die elk 6 bits invoer en 4 bits uitvoer
+hebben. De transformaties kan men in volgende figuur terugvinden.
+Conceptueel gebruikt men 8 substitutiedefinities. Elke substitutieblok
+verwerkt 6 bits tot 4 bits volgens een ingewikkelde bewerking
+met een tabel. De tabellen kan men in onderstaande figuur terugvinden.</P>
+
+<P>De eerste en laatste invoerbit van een invoerbox van 6 bits
+vormen een twee bits binair getal. Hiermee kan men tellen van
+0 tot en met 3. Deze bits bepalen &eacute;&eacute;n substitutie
+door een rij van de box aan te wijzen. Er zijn 4 rijen per substitutiebox!
+De middelste 4 bits van de 6 bepalen een kolom. Er zijn dus 16
+kolommen nodig in de box. De decimale waarde die door een rij
+en een getal wordt gegeven in de box wordt dan geconverteerd naar
+een 4 bits cijfer.<BR>
+Acht keer 4 bits leveren 32 bits.<BR>
+</P>
+
+<P>In volgende figuur kan men zien welke substitutie elk van de
+acht boxen van vorige figuur doorvoeren.</P>
+
+<P><CENTER><IMG SRC="DES_S_boxen.jpg" WIDTH="512" HEIGHT="606"
+ALIGN="BOTTOM" NATURALSIZEFLAG="2"></CENTER></P>
+
+<P>De S boxen moeten aan een aantal criteria voldoen. Deze zijn:<BR>
+- Geen enkele uitvoerbit mag dicht bij een lineaire functie van
+de invoerbits liggen. Met andere woorden: de bits moeten goed
+door mekaar gehaald worden. Anders is het algorithme lineair en
+kan het zeer gemakkelijk worden gebroken.<BR>
+- Elke rij van een S box dient alle 16 mogelijke uitvoercombinaties
+te omvatten.<BR>
+- Als twee invoerwaarden van een S box in juist 1 bit verschillen,
+moeten de uitvoerbits in minstens twee bits verschillen.<BR>
+- Als twee invoerwaarden van een S box precies in de twee middelste
+bits verschillen, moeten de uitvoerbits in minstens twee bits
+verschillen.<BR>
+- Als twee invoerwaarden van een S box in de eerste 2 bits verschillen
+en niet in de laatste twee, mogen de 2 uitvoerbits niet hetzelfde
+zijn.<BR>
+- Voor elk non-nul 6 bits verschil tussen invoerwaarden mag voor
+niet meer dan 8 van de 32 invoerparen die dit verschil vertonen,
+hetzelfde uitvoerverschil worden geproduceerd.</P>
+
+<P>Deze criteria zorgen er voor dat DES niet gemakkelijk kan worden
+gebroken.</P>
+
+<P>&nbsp;</P>
+
+<P>Er zijn ook criteria voor de perputatie P:<BR>
+- De 4 uitvoerbits van elke S box in ronde i worden verdeeld,
+zodat 2 van de bits invloed hebben op de middelste bits van de
+volgende ronde en de andere 2 de eindbits be&iuml;nvloeden. Deze
+eindbits zijn de 2 bits aan de linker- en rechterzijde die met
+de aangrenzende S boxen worden gedeeld.<BR>
+- De 4 uitvoerbits van elke S box be&iuml;nvloeden 6 verschillende
+S boxen in de volgende ronde. Nooit mogen 2 bits dezelfde S box
+be&iuml;nvloeden.<BR>
+- Voor twee S boxen j en k geldt: als een uitvoerbit van Sj in
+de volgende ronde een middelste bit van Sk be&iuml;nvloedt, kan
+een uitvoerbit van Sk geen middelste bit van Sj be&iuml;nvloeden.
+Dit impliceert dat voor j=k een uitvoerbit van Sj geen middelste
+bit van Sj mag be&iuml;nvloeden.</P>
+
+<P>Deze criteria zijn bedoeld om een betere diffusie te verkrijgen.
+
+</BODY>
+</HTML>

@@ -1,0 +1,120 @@
+<HTML>
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 3.0 Win">
+  <TITLE>Cryptologie</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<P><CENTER><B><FONT SIZE="+4">Geketende DES</FONT></B></CENTER></P>
+
+<P>Veronderstel volgend (extract van een) bestand:</P>
+
+<P><CENTER><TABLE WIDTH="80%" BORDER="1" CELLSPACING="2" CELLPADDING="0">
+  <TR>
+    <TD WIDTH="25%">
+    &nbsp;<B>volledige</B></TD> 
+    <TD WIDTH="25%">
+    &nbsp;<B>naam</B></TD> 
+    <TD WIDTH="25%">
+    &nbsp;<B>functie</B></TD> 
+    <TD WIDTH="25%">
+    <B>&nbsp;salaris &#128;/jaar</B></TD> 
+  </TR>
+  <TR>
+    <TD WIDTH="25%">
+    &nbsp;Peeters</TD> 
+    <TD WIDTH="25%">
+    &nbsp;Jef</TD> 
+    <TD WIDTH="25%">
+    &nbsp;director</TD> 
+    <TD WIDTH="25%">
+    &nbsp;00300000</TD> 
+  </TR>
+  <TR>
+    <TD WIDTH="25%">
+    &nbsp;Janssens</TD> 
+    <TD WIDTH="25%">
+    &nbsp; Victor</TD> 
+    <TD WIDTH="25%">
+    &nbsp;afdhoofd</TD> 
+    <TD WIDTH="25%">
+    &nbsp;<B>00150000</B></TD> 
+  </TR>
+  <TR>
+    <TD WIDTH="25%">
+    &nbsp;Vanhaech</TD> 
+    <TD WIDTH="25%">
+    &nbsp;t Staf</TD> 
+    <TD WIDTH="25%">
+    &nbsp;proffesr</TD> 
+    <TD WIDTH="25%">
+    &nbsp;00100000</TD> 
+  </TR>
+  <TR>
+    <TD WIDTH="25%">
+    &nbsp;Borreman</TD> 
+    <TD WIDTH="25%">
+    &nbsp; Stella</TD> 
+    <TD WIDTH="25%">
+    &nbsp;docente</TD> 
+    <TD WIDTH="25%">
+    &nbsp;<B>00025000</B></TD> 
+  </TR>
+  <TR>
+    <TD WIDTH="25%">
+    &nbsp;Deslimme</TD> 
+    <TD WIDTH="25%">
+    &nbsp; Peter</TD> 
+    <TD WIDTH="25%">
+    &nbsp;hoofddoc</TD> 
+    <TD WIDTH="25%">
+    &nbsp;00050000</TD> 
+  </TR>
+</TABLE></CENTER></P>
+
+<P>De velden zijn voor de eenvoud allemaal veelvouden van 8 bytes.
+Personen tesamen met hun functie en hun bruto jaarloon, uitgedrukt
+in euro, zijn gegeven. De blokken data die worden vercijferd zijn
+aangeduid door ze in eenzelfde blokje te plaatsen. In het bestand
+is de data echter reeds versleuteld via DES</P>
+
+<P>Stel dat de docente in staat is het bestand, voor dit naar
+de bank wordt doorgestuurd, te editeren. Indien de docente de
+opeenvolging van de data kent, kan zij gewoon het blok data dat
+overeenkomt met het jaarloon van het afdelingshoofd copi&euml;ren
+naar haar eigen plaats. Haar jaarloon stijgt duidelijk!</P>
+
+<P>Om dit tegen te gaan zijn een aantal mogelijkheden onderzocht.
+De meest gebruikte is de blokketening. Hierbij gaat men het blok
+data dat men wenst te vercijferen voor dit vercijferen gaan bewerken
+met een EXOR functie met het vercijferde vorige blok.</P>
+
+<P>Indien een blok data verplaatst is, is vanaf die plaats het
+vercijferde bestand niet meer ontcijferbaar: er zal niet zinvolle
+tekst geproduceerd worden. De informatie van de laatste lijn zal
+na decoderen onleesbaar zijn, zodat men weet waar er 'gefoefeld'
+werd. Spijtig voor de docente.</P>
+
+<P>In de praktijk kent men een aantal verschillende methodes van
+ketening. deze zijn:<BR>
+- electronic codebook mode <A HREF="ECB.html">(ECB)</A><BR>
+- cipher block chaining mode <A HREF="CBC.html">(CBC)</A><BR>
+- cipher feedback mode <A HREF="CFB.html">(CFB)</A><BR>
+- output feedback mode <A HREF="OFB.html">(OFB)</A><BR>
+- counter mode <A HREF="CTR.html">(CTR)</A></P>
+
+<P>Wanneer de input van een klavier komt, kan men natuurlijk niet
+wachten met het doorsturen van de data tot er 8 bytes zijn ingegeven.
+Men gebruikt dan cijferterugkoppeling. Hierbij doet men een EXOR
+van de te vercijferen byte met een byte die het resultaat is van
+een bewerking op een schuifregister die de voorbije 8 vercijferde
+bytes bevat. De bewerking is functie van de sleutel.</P>
+
+<P><CENTER><IMG SRC="cijferterugkoppeling.jpg" WIDTH="512" HEIGHT="246"
+ALIGN="BOTTOM" NATURALSIZEFLAG="3"></CENTER></P>
+
+<P>Deel (a) van de figuur toont wat er gebeurt bij het vercijferen,
+deel (b) wat er gebeurt bij het ontcijferen.
+
+</BODY>
+</HTML>

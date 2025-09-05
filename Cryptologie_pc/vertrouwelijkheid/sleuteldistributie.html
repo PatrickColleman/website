@@ -1,0 +1,73 @@
+<HTML>
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 3.0 Win">
+  <TITLE>Cryptologie</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<P><CENTER><B><FONT SIZE="+4">Sleuteldistributie</FONT></B></CENTER></P>
+
+<P>&nbsp;</P>
+
+<P><B><FONT SIZE="+2">Belangrijk bij secret key cryptografie</FONT></B></P>
+
+<P><B><FONT SIZE="+2">Mogelijkheden</FONT></B></P>
+
+<P><B><FONT SIZE="+2">Soorten sleutels</FONT></B></P>
+
+<P>&nbsp;</P>
+
+<P>Dit is een item waarmee secret key cryptografie staat of valt.
+Daarenboven moet men regelmatig van sleutels veranderen.</P>
+
+<P>Er zijn volgende mogelijkheden:<BR>
+1. A kiest een sleutel en levert deze fysiek af bij B.<BR>
+2. C kiest de sleutel en levert deze fysiek af bij A en B.<BR>
+3. A (of B) hebben al een sleutel volgens &eacute;&eacute;n van
+de bovenstaande methoden en kiezen een nieuwe sleutel die ze vercijferd
+via de oude gaan doorsturen naar hun communicatiepartner.<BR>
+4. C kan een nieuwe sleutel kiezen en deze via een versleutelde
+weg ('Master Key') naar A en B sturen.</P>
+
+<P>De opties 1 en 2 zijn alleen realiseerbaar bij link encryptie,
+want daar zijn het 2 vaste partners: 'van een kant van de draad
+naar de andere kant'. Het is wel onhandig. Voor end-to-end zijn
+er te veel sleutels die moeten uitgewisseld worden: per gebruiker
+en per proces.</P>
+
+<P>Mogelijkheid 3 werkt wel, maar als het bericht met de nieuwe
+sleutel verloren raakt, is de ganse communicatieopzet onmogelijk.</P>
+
+<P>Mogelijkheid 4 is de meest gekozen: met een KDC (Key Distribution
+Center). Men zal de ontvangen sleutel slechts voor een korte periode
+(een sessie) gebruiken. Dit om de hoeveelheid informatie die met
+&eacute;&eacute;n sleutel vercijferd is zo klein mogelijk te houden.</P>
+
+<P>Een aantal verschillende technieken om aan sleuteldistributie
+te doen gebruik makende van een sleuteldistributiecentrum kan
+men vinden in de paragraaf over authentisering.</P>
+
+<P><BR>
+Er zijn meerdere soorten sleutels:<BR>
+- master key: voor communicatie met bijvoorbeeld het sleuteldistributiecentrum.
+<BR>
+- sessiesleutels: voor &eacute;&eacute;n sessie tussen twee partners:<BR>
+* dataencryptiesleutels: algemene communicatie over het netwerk<BR>
+* Pin encryptiesleutels voor bijvoorbeeld elektronische transacties
+met een bank.<BR>
+* bestandsencryptiesleutels voor bestanden die op publieke plaatsen
+staan.</P>
+
+<P>Het is duidelijk dat een master key niet als sessiesleutel
+mag gebruikt worden, want anders kan een toepassingsprogramma
+deze gaan gebruiken en ongeoorloofde dingen doen.</P>
+
+<P><CENTER><IMG SRC="sleutelhierarchie.jpg" WIDTH="512" ALIGN="BOTTOM"
+BORDER="0" HEIGHT="449" NATURALSIZEFLAG="2"></CENTER></P>
+
+<P>In bovenstaande figuur ziet men nogmaals de sleutelhi&euml;rarchie.
+Met een master key kan men een sessiesleutel verzenden en met
+de sessiesleutel kan men dan de data versturen.
+
+</BODY>
+</HTML>

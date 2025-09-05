@@ -1,0 +1,51 @@
+<HTML>
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 3.0 Win">
+  <TITLE>Cryptologie</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<P><CENTER><B><FONT SIZE="+4">Blowfish</FONT></B></CENTER></P>
+
+<P><CENTER><IMG SRC="Blowfish.jpg" WIDTH="512" ALIGN="BOTTOM"
+BORDER="0" HEIGHT="390" NATURALSIZEFLAG="2"></CENTER></P>
+
+<P><CENTER>&nbsp;</CENTER></P>
+
+<P>Blowfish maakt gebruik van &eacute;&eacute;n tot veertien 32
+bits woorden als sleutel Ki (1&lt;=i&lt;=14). De lengte van de
+sleutel is dus variabel, maar kan zeer lang worden: van 32 tot
+448 bits!</P>
+
+<P>Hieruit worden 18 verschillende 32 bits deelsleutels Pj berekend
+(1&lt;=j&lt;=18).</P>
+
+<P>Er zijn 4 S boxen met elk 256 32 bits ingangen.</P>
+
+<P>De procedure om de uiteindelijke P en S bits te leveren loopt
+als volgt:<BR>
+- Initialiseer eerst P en S boxen met de opeenvolgende bits van
+het fractioneel deel van PI (3.1415...).<BR>
+- Voer een EXOR uit tussen de rij waarden van K en P. Indien er
+te weinig waarden voor K zijn, herneem dan de reeks. De resultaten
+vormen de nieuwe rij waarden van P.<BR>
+- Vercijfer het 64 bits blok dat allemaal nullen bevat met behulp
+van de huidige P en S informatie. Vervang P1 en P2 door dit resultaat.
+<BR>
+- Versleutel de uitvoer van vorige stap met de huidige P en S
+informatie en vervang P3 en P4 door het resultaat.<BR>
+- Vervolg dit proces om alle elementen van P en S bij te werken.</P>
+
+<P>In volgende figuur kan men een Blowfish stap bestuderen:</P>
+
+<P><B><FONT SIZE="+2"><IMG SRC="Blowfish_ronde.jpg" WIDTH="512"
+ALIGN="BOTTOM" BORDER="0" HEIGHT="428" NATURALSIZEFLAG="2"></FONT></B><BR>
+De eigenlijke vercijfering gebruikt de modulo 32 bits optelling
+en de EXOR functie. Het zijn 16 herhalingen van dezelfde basisbouwsteen.</P>
+
+<P>Blowfish is momenteel niet te kraken. Dit is te danken aan
+de lange sleutel en de complexe EXOR die in elke stap berekend
+wordt. (zie bovenstaande figuur)
+
+</BODY>
+</HTML>

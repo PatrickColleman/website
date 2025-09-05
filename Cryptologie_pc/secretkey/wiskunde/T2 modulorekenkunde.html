@@ -1,0 +1,68 @@
+<HTML>
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 3.0 Win">
+  <TITLE>Cryptologie</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<P><CENTER><B><FONT SIZE="+4">Modulair rekenen</FONT></B></CENTER></P>
+
+<P>Wanneer we een getal a delen door n, krijgt men een quoti&euml;nt
+q en een rest r, zodat:</P>
+
+<P><CENTER><FONT SIZE="+3">a = q*n + r</FONT></CENTER></P>
+
+<P>waarbij de rest r steeds positief is.</P>
+
+<P><CENTER><FONT SIZE="+3">-11 = -2*7 + 3<BR>
+11 = 1*7 + 4</FONT></CENTER></P>
+
+<P>&nbsp;</P>
+
+<P><B>Eigenschappen van de modulo operator:</B></P>
+
+<P>1. (( a mod n) + (b mod n)) mod n = (a + b) mod n<BR>
+2. (( a mod n) - (b mod n)) mod n = (a - b) mod n<BR>
+3. (( a mod n) * (b mod n)) mod n = (a * b) mod n</P>
+
+<P>Men kan dus besluiten dat de rekenkundige regels ook gelden
+voor modulair rekenen.</P>
+
+<P>Men kan dan een verzameling Z<sub>n</sub> gaan defini&euml;ren
+als alle gehele getallen tussen 0 en n-1. Men kan een mapping
+gaan doen van alle gehele getallen op deze verzameling Z<sub>n</sub>
+door de modulo operator.</P>
+
+<P>Voor Z<sub>8</sub> zou bijvoorbeeld het getal 11 'geprojecteerd
+worden' op 3, zijnde de rest van de deling van 11 door 8</P>
+
+<P>&nbsp;</P>
+
+<P>Soms moet men op zoek gaan naar de grootste gemene deler c
+van a en b. Hiervoor moet c voldoen aan:<BR>
+1. c moet een deler zijn van a en b<BR>
+2. elke deler van a en b moet ook een deler zijn van c.</P>
+
+<P>Een handig computeralgoritme is:</P>
+
+<P><CENTER><B><FONT SIZE="+3">ggd(a,b)=ggd(b, a mod b) </FONT>en<FONT
+ SIZE="+3"><BR>
+ggd(c,0)=c</FONT></B></CENTER></P>
+
+<P>Men zou dus in C kunnen schrijven:</P>
+
+<P>int ggd (int a, int b)<BR>
+{ <BR>
+if (b = = 0) return a;<BR>
+else return (ggd(b, a%b));<BR>
+/* in C is % de mod operator */<BR>
+}<BR>
+/* Hierbij veronderstellen we dat:<BR>
+- a groter is dan b<BR>
+- a en b positieve getallen zijn<BR>
+- Dit laatste is geen beperking, want voor de ggd is <BR>
+het teken van de getallen a en b irrelevant.<BR>
+*/
+
+</BODY>
+</HTML>

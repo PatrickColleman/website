@@ -1,0 +1,38 @@
+<HTML>
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 3.0 Win">
+  <TITLE>Cryptologie</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<P><CENTER><B><FONT SIZE="+4">SSL Record Protocol</FONT></B></CENTER></P>
+
+<P><CENTER><IMG SRC="SSL_record_protocol_werking.jpg" WIDTH="512"
+HEIGHT="311" ALIGN="BOTTOM" NATURALSIZEFLAG="2"></CENTER></P>
+
+<P>&nbsp;</P>
+
+<P>In vorige paragraaf spraken we over services geleverd door
+verbindingen. Het SSL record protocol levert <B>twee services
+voor SSL verbindingen</B>:</P>
+
+<P>- <B>vertrouwelijkheid</B>: definitie van een gedeelde secret
+key, gebruikt voor conventionele cryptografie.<BR>
+- <B>berichtintegriteit</B>: definitie van een gedeelde secret
+key, gebruikt voor de berichtauthenticatiecode (MAC)</P>
+
+<P>Bovenstaande figuur toont de volledige werking:<BR>
+- eerst wordt de data gefragmenteerd in blokken van 16364 bytes
+(of minder!!!)<BR>
+- dan worden deze blokken gecomprimeerd (momenteel nog niet in
+gebruik)<BR>
+- daarna wordt een MAC uitgerekend en toegevoegd. Hiervoor gebruikt
+men een gedeelde secret key. Het algorithme gelijkt op dat van
+HMAC. Het bericht mag niet meer dan 1024 bytes langer worden.<BR>
+- daarna wordt dit geheel versleuteld met symmetrische encryptie.
+Men mag o.a. IDEA, DES, 3DES, ... gebruiken. Hierdoor mag het
+bericht niet meer dan 1024 bytes langer worden.<BR>
+- uiteindelijk wordt de header toegevoegd.
+
+</BODY>
+</HTML>

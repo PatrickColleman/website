@@ -1,0 +1,54 @@
+<HTML>
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 3.0 Win">
+  <TITLE>Cryptologie</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<P><CENTER><B><FONT SIZE="+4">SSL architectuur</FONT></B></CENTER></P>
+
+<P><CENTER><IMG SRC="SSL_protocol_stack.jpg" WIDTH="512" HEIGHT="332"
+ALIGN="BOTTOM" NATURALSIZEFLAG="2"></CENTER></P>
+
+<P>Zoals bovenstaande figuur laat zien, maakt SSL gebruik van
+TCP voor een betrouwbare, veilige end-to-end service te verkrijgen.</P>
+
+<P>SSL bestaat uit het SSL record protocol en levert beveiligingsdiensten
+aan hogere lagen, in casu applicaties, zoals http er &eacute;&eacute;n
+is.</P>
+
+<P>Een SSL verbinding is een transport dat een passend type service
+levert. Deze zijn peer-to-peer relaties. De verbindingen zijn
+altijd tijdelijk en horen bij &eacute;&eacute;n sessie. Er kunnen
+meerdere veilige verbindingen bestaan tussen twee partijen. Een
+SSL verbinding (connection) heeft volgende parameters:<BR>
+- server en cli&euml;nt random<BR>
+-server write MAC secret: geheime sleutel voor MAC operaties bij
+het zenden op de server<BR>
+- cli&euml;nt write MAC secret: geheime sleutel voor MAC operaties
+bij het zenden vanop de cli&euml;nt.<BR>
+- server write key: conventionele encryptiesleutel voor communicatie
+server-client.<BR>
+- client write key: conventionele encryptiesleutel voor communicatie
+cli&euml;nt-server<BR>
+- initialisatievectors: initialisatievector voor CBC mode.<BR>
+- sequence numbers<BR>
+</P>
+
+<P>Een SSL sessie is een associatie tussen een client en een server.
+Ze worden aangemaakt door het handshake protocol, dat we verder
+zullen bespreken. Sessies defini&euml;ren een verzameling cryptografische
+beveiligingsparameters die door meerdere verbindingen kunnen worden
+gebruikt. Sessies worden gebruikt om het dure onderhandelen van
+nieuwe beveiligingsparameters voor elke verbinding te vermijden.<BR>
+Een sessie heeft volgende parameters:<BR>
+- sessie identifier<BR>
+- peer certificate: X509<BR>
+- compressiemethode<BR>
+- encryptie specificaties, zoals welk algoritme gebruikt is, welke
+hash, ...<BR>
+- master secret: 48 bytes lang geheim tussen client en server<BR>
+- resumable: kan de sessie een nieuwe verbinding oprichten?
+
+</BODY>
+</HTML>

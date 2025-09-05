@@ -1,0 +1,50 @@
+<HTML>
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 3.0 Win">
+  <TITLE>Cryptologie</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<P><CENTER><B><FONT SIZE="+3">Advanced encryption standard</FONT></B></CENTER></P>
+
+<P>&nbsp;</P>
+
+<P>Er moet eveneens een rijrotatie en een kolombewerking gebeuren.</P>
+
+<P><B>Rijrotatie.</B> De bytes worden per rij genoteerd over een
+aantal posities dat per rij verschilt en afhangt van de blokgrootte.<BR>
+In volgende figuur kan men bestuderen (voor de 128 byte configuratie)
+dat de cijfers op de eerste rij blijven staan, dat de bytes op
+de tweede rij &eacute;&eacute;n positie naar links worden opgeschoven,
+de bytes op de derde rij twee posities en de bytes op de vierde
+rij drie posities naar links (of &eacute;&eacute;n positie naar
+rechts). (zie mix columns in AES blokschema)</P>
+
+<P><CENTER><IMG SRC="AES_rij_en_kolomoperaties.jpg" WIDTH="512"
+ALIGN="BOTTOM" BORDER="0" HEIGHT="570" NATURALSIZEFLAG="2"></CENTER></P>
+
+<P><B>Kolomvermenigvuldiging.</B> Per kolom wordt een vaste transformatie
+uitgevoerd. Deze implementeren als tabel is niet mogelijk aangezien
+de tabel ruim vier miljard 32-bits-entries zou moeten bevatten.
+De kolommen (vier bytes) worden ge&iuml;nterpreteerd als polynomen
+met co&euml;ffici&euml;nten in GF(2<sup>8</sup>) en vermenigvuldigd
+met een vast polynoom. Men kan dit beschrijven als deel b van
+bovenstaande figuur (mix column transformation), namelijk door
+een soort matrixvermenigvuldiging.</P>
+
+<P>Men kan opmerken dat een matrixvermenigvuldiging neerkomt op
+een reeks produkten die gesommeerd worden. De optelling is een
+eenvoudige EXOR functie. Dat is dus eenvoudig.<BR>
+Maar, we moeten ook met 2 en 3 kunnen vermenigvuldigen. Met 3
+vermenigvuldigen komt neer op vermenigvuldigen met 2 en dan nog
+eens het origineel sommeren. (3=2+1). We moeten dus met 2 kunnen
+vermenigvuldigen!<BR>
+Hiervoor kan men bewijzen dat :<BR>
+2 * (b7 b6 b5 b4 b3 b2 b1 b0) = (b6 b5 b4 b3 b2 b1 b0 0) als b7
+= 0 <BR>
+en dat:<BR>
+2 * (b7 b6 b5 b4 b3 b2 b1 b0) = (b6 b5 b4 b3 b2 b1 b0 0) EXOR
+(00011011) als b7 = 1
+
+</BODY>
+</HTML>

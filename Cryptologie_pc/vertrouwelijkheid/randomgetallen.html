@@ -1,0 +1,79 @@
+<HTML>
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 3.0 Win">
+  <TITLE>Cryptologie</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<P><CENTER><B><FONT SIZE="+4">Random getallen</FONT></B></CENTER></P>
+
+<P>&nbsp;</P>
+
+<P><B><FONT SIZE="+2">Gebruik.</FONT></B></P>
+
+<P><B><FONT SIZE="+2">Eisen.</FONT></B></P>
+
+<P><B><FONT SIZE="+2">Algorithme</FONT></B></P>
+
+<P>&nbsp;</P>
+
+<P>Random getallen worden gebruikt bij:<BR>
+- authenticatie<BR>
+- sessiesleutelgeneratie<BR>
+- RSA</P>
+
+<P>&nbsp;</P>
+
+<P>Ze voldoen aan volgend eisen:<BR>
+- aselectheid: uniforme verdeling over het bereik en twee opeenvolgende
+getallen hebben geen verband: ze kunnen niet uit mekaar worden
+afgeleid.<BR>
+- onvoorspelbaarheid</P>
+
+<P>&nbsp;</P>
+
+<P><B>Lehmer</B></P>
+
+<P>Een veel gebruikt algorithme is dat van Lehmer. Dit gebruikt
+4 parameters:<BR>
+- m: modulus (zeer groot, bijvoorbeeld maximum positief cijfer
+die in een long int past - meestal een priemgetal, bijvoorbeeld
+2<sup>31</sup> - 1)<BR>
+- a: de vermenigvuldiger. Een goede waarde is 16807.<BR>
+- c: de increment. Deze kiest men dikwijls 0.<BR>
+- X<sub>0</sub>: de beginwaarde</P>
+
+<P>Men gebruikt volgende uitdrukking:</P>
+
+<P>X<sub>n+1</sub>=(aX<sub>n</sub> + c) mod m</P>
+
+<P>&nbsp;</P>
+
+<P><B>X9.17</B></P>
+
+<P>Een andere mogelijkheid is de geheime sleutels te gebruiken
+bij de berekening. Als parameters kan men de tijd en datum gebruiken
+en eventueel nog een kiem of startwaarde. Dit gebruikt men in
+X9.17:</P>
+
+<P><CENTER><IMG SRC="randomgetallen.jpg" WIDTH="512" HEIGHT="367"
+ALIGN="BOTTOM" NATURALSIZEFLAG="2"></CENTER></P>
+
+<P>- DTi is de datum en tijd<BR>
+- Vi is de startwaarde<BR>
+- Ri is het pseudorandomgetal<BR>
+- K1 en K2 zijn de DES sleutels van triple DES.</P>
+
+<P>&nbsp;</P>
+
+<P><B>Randomgetallen met een teller en DES:</B></P>
+
+<P><CENTER><IMG SRC="randomgetallen_counter.jpg" WIDTH="512" 
+HEIGHT="699" ALIGN="BOTTOM" BORDER="0" NATURALSIZEFLAG="2"></CENTER></P>
+
+<P>Nieuwe random getallen kan men krijgen door de uitgang van
+een teller door bijvoorbeeld DES te sturen. De resultaten zijn
+voldoende random.
+
+</BODY>
+</HTML>

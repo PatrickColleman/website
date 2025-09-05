@@ -1,0 +1,82 @@
+<HTML>
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 3.0 Win">
+  <TITLE>Cryptologie</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<P class="MsoNormal"><CENTER><B><FONT SIZE="+2">Virtuele private
+netwerken (VPN)<BR>
+PPTP</FONT></B></CENTER></P>
+
+<P class="MsoNormal">&nbsp;</P>
+
+<P class="MsoNormal">PPTP staat voor point to point tunneling
+protocol.</P>
+
+<P class="MsoNormal">Men kan achtereenvolgens datadelen vinden
+die telkens verpakt worden als volgt:<BR>
+- de data zit in een TCP pakket met TCP header.  Dit geheel zit
+in een<BR>
+- IP datagram met IP header. Dit geheel zit in een<BR>
+- PPP frame met PPP header. Dit geheel zit in een<BR>
+- GREv2 frame met header. Dit geheel zit in een<BR>
+- IP datagram met nieuwe IP header. Dit geheel zit in een<BR>
+- PPP frame met PPP header.  Dit laatste wordt opgezonden.</P>
+
+<P class="MsoNormal">Men kan dus opmerken dat het originele PPP
+frame wordt verpakt in een nieuw IP en PPP frame.  Men kan ook
+bijvoorbeeld NetBEUI of IPX (Novell) datagrammen versturen.</P>
+
+<P class="MsoNormal">Een groot voordeel van PPTP is dat het de
+mogelijkheid geeft (in de Microsoft implementatie) de geencapsuleerde
+payload te versleutelen.  De gemeenschappelijke sleutel van het
+DES algoritme is afkomstig van het gehashte paswoord van de client
+(gebruiker) in 40 bits.  Dit is eigenlijk een beetje weinig. 
+In de USA en Canada mag men een sleutel van 128 gebruiken.  Het
+feit dat men hierbij start met het paswoord maakt het systeem
+eigenlijk vrij onveilig, want kwetsbaar!!!</P>
+
+<P class="MsoNormal">PPTP gebruikt TCP poort 1723 om de tunnel
+op te zetten en te onderhouden.</P>
+
+<P class="MsoNormal"><CENTER><IMG SRC="image012.jpg" WIDTH="499"
+HEIGHT="254" ALIGN="BOTTOM" BORDER="0" NATURALSIZEFLAG="3"></CENTER></P>
+
+<P class="MsoNormal"><U>De 'buitenste' IP header bevat het IP
+adres van de VPN server van het bedrijf. Dit kan bijvoorbeeld
+een firewall, router of een andere bastion host zijn.</U></P>
+
+<P class="MsoNormal">In bovenstaande figuur is er een VPN tussen
+een ISP en de VPN server van het bedrijf. Er is een gewone PPP
+verbinding (inbelverbinding) tussen de gebruiker en zijn ISP.</P>
+
+<P class="MsoNormal">&nbsp;</P>
+
+<P class="MsoNormal">Een alternatief voor PPTP is L2TP of layer
+2 tunnelling protocol.  Dit protocol verpakt PPP frames in een
+routeerbaar geheel: het is media onafhankelijk.  L2TP maakt het
+mogelijk om ook andere netwerken te gebruiken, zoals ATM, Frame
+Relay, &#133; .  Het kan gebruikt worden als een access VPN, waarbij
+zowel een gebruiker als een ISP de tunnel kan opzetten.  In de
+draft staat dat men best de encryptie van IPSec gebruikt, want
+L2TP zelf zorgt niet voor encryptie.</P>
+
+<P class="MsoNormal">Het formaat is als volgt:<BR>
+- de data zit in een TCP pakket met TCP header.  Dit geheel zit
+in een<BR>
+- IP datagram met IP header. Dit geheel zit in een<BR>
+- PPP frame met PPP header. Dit geheel zit in een<BR>
+- L2TP frame met header. Dit geheel zit in een<BR>
+- UDP pakket met UDP header.  Dit geheel zit in een<BR>
+- IP datagram met nieuwe IP header. Dit geheel zit in een<BR>
+- PPP frame met PPP header.  Dit laatste wordt opgezonden.</P>
+
+<P class="MsoNormal">Zonder in detail te gaan op de L2TP header,
+is het toch nuttig aan te halen dat in de header sprake is van
+een tunnelID en een callID.  Dit moet het mogelijk maken data
+van verschillende bronnen door dezelfde tunnel te sturen.<BR>
+<BR>
+
+</BODY>
+</HTML>
