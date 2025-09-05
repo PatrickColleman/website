@@ -1,0 +1,58 @@
+<HTML>
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 2.0 Win">
+  <TITLE>Digital Audio Broadcasting</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<P><CENTER><B><FONT SIZE=+4>Codering en Multiplexing</FONT></B></CENTER></P>
+
+<P><B><FONT SIZE=+2><BR>
+Uit de probleemstelling noteren we:</FONT></B></P>
+
+<P><CENTER><IMG SRC="../OFDM/Multipathreception.jpg" WIDTH="512" HEIGHT=
+"187" ALIGN="BOTTOM" NATURALSIZEFLAG="3"></CENTER></P>
+
+<P><CENTER><B><FONT SIZE=+2>alle zenders zenden uit op dezelfde frequentie</FONT></B></CENTER></P>
+
+<P><CENTER><B><FONT SIZE=+2>multipadontvangst (ook echo's)</FONT></B> en
+overlap van symbolen</CENTER></P>
+
+<P><CENTER><B><FONT SIZE=+2>symboolinterferentie (functie van golflengte)</FONT></B></CENTER></P>
+
+<P><CENTER><B><FONT SIZE=+2>dus: verdwenen of zwaar verminkte bits</FONT></B></CENTER></P>
+
+<P><CENTER><B><FONT SIZE=+2>dus: foutcorrectie (codering) en multiplexing
+nodig</FONT></B></CENTER></P>
+
+<P><B><FONT SIZE=+3><BR>
+Daarom doet men op de musicam data:<BR>
+- een convolutionele codering<BR>
+- time interleaving<BR>
+- frequency interleaving (door OFDM)<BR>
+alvorens het door te sturen.</FONT></B></P>
+
+<P>&nbsp;</P>
+
+<P>Om zo zuinig mogelijk te zijn met de beschikbare bandbreedte is het natuurlijk
+geen slecht idee in gans Vlaanderen dezelfde frequentie(band) te gebruiken
+om de radioprogramma's uit te zenden.</P>
+
+<P>Het gevolg daarvan is echter dat bijvoorbeeld in het geval dat een ontvanger
+zijn data ontvangt van &eacute;&eacute;n zender, deze toch langs verschillende
+wegen kan ontvangen (reflecties).</P>
+
+<P>Veronderstellen we een geval waarbij we twee stralen ontvangen: &eacute;&eacute;n
+rechtstreeks en een anders via een 0dB verzwakking. Het is dan zo erg dat
+ongeveer 25% van de signalen twee componenten heeft die min of meer volledig
+in tegenfase zijn: die bits verliezen we. In 25% van de gevallen zijn de
+signalen in fase: deze worden versterkt: geen probleem. En tenslotte in
+50% van de gevallen staan de twee vectoren op ongeveer 90 graden van mekaar:
+dat zal ook geen echte problemen scheppen.</P>
+
+<P>Heel wat ontvangers zullen signalen ontvangen van twee of nog meer zenders.
+Deze zullen zeker te maken hebben met intersymboolinterferentie, want de
+kans dat men JUIST in het midden tussen twee zenders zit of woont is zo
+goed als nihil.
+</BODY>
+</HTML>
