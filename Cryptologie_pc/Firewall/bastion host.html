@@ -1,0 +1,48 @@
+<HTML>
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 3.0 Win">
+  <TITLE>Cryptologie</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<P><CENTER><B><FONT SIZE="+4">Firewall</FONT><FONT SIZE="+3">:
+bastion host</FONT></B></CENTER></P>
+
+<P>&nbsp;</P>
+
+<P>Een bastion host en de naam die men aan een computer geeft
+waar de firewallapplicatie op draait.</P>
+
+<P>Het is duidelijk dat deze computer aan een aantal eisen moet
+voldoen:</P>
+
+<UL>
+  <LI>Men gebruikt een veilige uitvoering van het operating systeem,
+  met de laatste correcties toegepast.
+  <LI>Alleen de diensten die nodig zijn, worden geinstalleerd (Telnet,
+  DNS, FTP, SMTP, authenticatie). Er zouden kunnen bugs zitten
+  in andere diensten, maar als die niet geinstalleerd zijn, heeft
+  de machine er geen last van.
+  <LI>De proxy is zodanig geconfigureerd dat hij slechts een deel
+  an de bevelen kent en dit omwille van dezelfde reden als in het
+  vorige punt.
+  <LI>De proxy heeft eventueel slechts toegang tot een beperkt
+  aantal computers.
+  <LI>De proxy moet een goede logging realiseren, zodat men achteraf
+  kan nagaan wat er fout gelopen zou kunnen zijn als er een inbreker
+  aan het werk is geweest.
+  <LI>De proxy doet geen schijfoperaties. Daardoor kunnen Trojaanse
+  paarden e.a. moeilijker geimplementeerd worden.
+  <LI>Men zal er zeker voor zorgen dat hij geen aanduiding gaat
+  geven van zijn versie van het operating systeem bij het aanloggen.
+  Hackers kunnen daaruit al concluderen welke gaten er voorhanden
+  liggen.
+  <LI>Men zal steeds de default user accounts veranderen (niet
+  standaard administrator en paswoord!!!)
+  <LI>Bij een dual homed host moet de data steeds door de applicatielaag:
+  disable eventuele routing functionaliteit, anders worden de eventuele
+  application layer functionaliteiten overgeslagen!! (zie verder)
+</UL>
+
+</BODY>
+</HTML>

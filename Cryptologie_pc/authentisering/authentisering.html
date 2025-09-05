@@ -1,0 +1,88 @@
+<HTML>
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 3.0 Win">
+  <TITLE>Cryptologie</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<P><CENTER><B><FONT SIZE="+4">Authentisering</FONT></B></CENTER></P>
+
+<P><CENTER>&nbsp;</CENTER></P>
+
+<P><CENTER><B><FONT SIZE="+4">Communiceer ik echt met wie ik denk
+te communiceren?</FONT></B></CENTER></P>
+
+<P><CENTER><B><FONT SIZE="+2">Partners - geheime sleutel - publieke
+sleutel - mix geheime &amp; publieke sleutel met voordelen</FONT></B></CENTER></P>
+
+<P>&nbsp;</P>
+
+<P><B>Communiceer ik echt met wie ik denk te communiceren?</B></P>
+
+<P>Dit is een zeer belangrijke vraag, bijvoorbeeld in de context
+van homebanking of het inloggen bij een ISP.</P>
+
+<P>Authentisering is niet hetzelfde als autorisatie. Dit laatste
+heeft te maken met het feit of iemand een bepaalde actie mag ondernemen,
+zoals het lezen of verwijderen van bestanden. Over die vraag gaat
+het hier niet!</P>
+
+<P>Vanzelfsprekend is het nodig eerst authentisering te kunnen
+doorvoeren, zodat een computersysteem weet wie aan het scherm
+zit. Daarna kan pas gedacht worden aan autorisatie.<BR>
+Authentisering op een computer doet men dikwijls met behulp van
+paswoorden, die door een serverproces gecontroleerd worden.</P>
+
+<P>In de context van datacommunicatie moeten beide partners zeker
+kunnen zijn van mekaars identiteit.</P>
+
+<P>Er worden meestal namen gegeven aan de partners. Alice en Bob
+zijn degenen die met mekaar wensen te communiceren. Alice kan
+bijvoorbeeld een klant zijn van een bank Bob.</P>
+
+<P>Een derde persoon zullen we Charlie noemen. Deze is een indringer,
+die de plaats van Alice of Bob wil innemen en de andere laten
+denken dat de gevraagde correspondent er is.</P>
+
+<P>Heel wat procedures zullen een KDC of een key distribution
+centre (sleuteldistributiecentrum) gebruiken als absoluut te vertrouwen
+partner. Deze speelt een beetje de rol van Big Brother zoals in
+de gelijknamige roman.</P>
+
+<P>Zoals we zullen bespreken kan authentisering gebeuren op basis
+van zowel een geheime als een publieke sleutel.</P>
+
+<P>Meestal zal de publieke sleutelalgoritme alleen gebruikt worden
+om snel een geheime sessiesleutel af te spreken. Daarna wordt
+deze sessiesleutel gebruikt, want vercijfering op basis van een
+geheime sleutel gaat veel sneller dan op basis van een publieke
+sleutel. Een ander voordeel is dat de publieke sleutel (en zijn
+tegenhanger) maar heel eventjes in het geheugen van de computer
+moeten zitten. Daarna kunnen ze gewist worden. Dit heeft het voordeel
+dat deze sleutel niet kan gevonden worden wanneer Charlie een
+core dump veroorzaakt. Een ander voordeel is het feit dat er met
+deze methode regelmatig een andere sessiesleutel wordt afgesproken,
+zodat er zeer regelmatig een andere sleutel gebruikt is. Een zeer
+nuttig gevolg daarvan is dat er maar relatief weinig data per
+sleutel gebruikt is. Dit verkleint de kans op indringen en verkleint
+de schade bij het indringen.</P>
+
+<P>&nbsp;</P>
+
+<P>Volgende figuur geeft enkele mogelijkheden weer:<BR>
+</P>
+
+<P><CENTER><IMG SRC="encryptietoepassingen.jpg" WIDTH="512" ALIGN="BOTTOM"
+BORDER="0" HEIGHT="676" NATURALSIZEFLAG="2"></CENTER></P>
+
+<P>Aan de hand van bovenstaande figuur kan men reeds een overzicht
+krijgen van wat men met cryptologie kan bekomen:<BR>
+a) geheimhouding en authenticatie met behulp van symmetrische
+encryptie op basis van &eacute;&eacute;n geheime sleutel.<BR>
+b) geheimhouding met public key cryptografie<BR>
+c) authenticatie en handtekening met public key encryptie<BR>
+d) geheimhouding , authenticatie en handtekening met public key
+cryptografie.
+
+</BODY>
+</HTML>

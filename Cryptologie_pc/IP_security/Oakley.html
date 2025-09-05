@@ -1,0 +1,40 @@
+<HTML>
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 3.0 Win">
+  <TITLE>Cryptologie</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<P><CENTER><B><FONT SIZE="+4">Sleutelbeheer: Oakley</FONT></B></CENTER></P>
+
+<P>&nbsp;</P>
+
+<P>&nbsp;</P>
+
+<P>Het<B> Oakley protocol is gebaseerd op dat van Diffie-Hellman</B>,
+maar is op een aantal punten <B>verbeterd</B>:</P>
+
+<P>- support van cookies, om verstoppingsaanvallen te voorkomen:
+Men kan het systeem van het slachtoffer verzadigen met nutteloos
+werk om secret keys te doen berekenen. Men kan bijvoorbeeld aanvragen
+doen om een sleutel te krijgen (en dat vraagt veel rekenkracht
+van de aangevallen partij) en daarbij het IP adres van een geldig
+gebruiker misbruiken. In de initi&euml;le boodschap komen beide
+partijen een cookie (pseudorandomgetal) overeen (m&eacute;t een
+aknowledgement, bevestiging) . Deze bevestiging moet herhaald
+worden in het eerste bericht van de Diffie Hellman berichtuitwisseling.
+Het cookie moet functie zijn van de twee partijen die de sleutel
+wensen af te spreken. Het moet ook functie zijn van geheime informatie,
+zodat een derde partij het niet kan aanmaken. Men zou bijvoorbeeld
+een MD5 kunnen berekenen over de IP adressen en poortnummers en
+nog een geheim getal van beide partijen.<BR>
+- het gebruik van nonces tegen replay aanvallen.<BR>
+- mogelijkheid tot uitwisseling van Diffie-Hellman public key
+waarden<BR>
+- authenticatie van de Diffie-Hellman uitwisseling, zodat de <B>man-in-the-middle
+aanval mislukt</B>. Hierbij gebruikt men bijvoorbeeld een digitale
+handtekening ofwel een vercijfering met publieke sleutel cryptografie
+of met een geheime sleutel cryptografie.
+
+</BODY>
+</HTML>

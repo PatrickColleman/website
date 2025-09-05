@@ -1,0 +1,42 @@
+<HTML>
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 2.0 Win">
+  <TITLE>Cryptologie</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<P><CENTER><B><FONT SIZE=+4>S/MIME</FONT></B></CENTER></P>
+
+<P>S/MIME levert volgende <B>functies</B>:</P>
+
+<P>1. omhulde data (enveloped data): versleutelde inhoud van een willekeurig
+type en encryptiesleutels voor deze versleutelde inhoud. De encryptiesleutels
+worden door RSA versleuteld. Men geeft eveneens de public key certificaat
+van de zender mee, zodat de ontvanger deze voorgaande stap kan omkeren.</P>
+
+<P>2.ondertekende data (signed data): Men maakt een digitale handtekening
+door middel van een message digest en deze MD gaat men dan versleutelen
+met de private sleutel van de ondertekenaar. Men geeft eveneens het public
+key certificaat van de zender mee. De inhoud en handtekening wordt dan gecodeerd
+met behulp van base64 codering. Gevolg: een ondertekend databericht kan
+alleen gelezen worden door iemand met S/MIME faciliteiten.</P>
+
+<P>3. ongecodeerde-ondertekende data (clear-signed data): Men maakt een
+digitale handtekening door middel van een message digest en deze MD gaat
+men dan versleutelen met de private sleutel van de ondertekenaar. De handtekening
+wordt dan gecodeerd met behulp van base64 codering. Gevolg: ontvangers met
+een S/MIME faciliteit kunnen de inhoud lezen, maar de handtekening niet
+nagaan.</P>
+
+<P>4. ondertekende en omhulde data: alleen ondertekende en alleen versleutelde
+entiteiten kunnen worden genest. Gevolg: versleutelde data kan worden ondertekend
+en ondertekende data of ongecodeerde-ondertekende data kan worden versleuteld.</P>
+
+<P>&nbsp;</P>
+
+<P>S/MIME laat eerst de normale MIME berichtvoorbereiding uitvoeren. Daarna
+zal de MIME entiteit plus de beveiligingsdata (zoals algorithmes, certificaten,
+...) worden verwerkt tot een PKCS object. Dit object wordt daarna als berichtinhoud
+( transfercodering is meestal nodig: base 64) behandeld en in MIME ingepakt.
+</BODY>
+</HTML>

@@ -1,0 +1,57 @@
+<HTML>
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 2.0 Win">
+  <TITLE>Cryptologie</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<P><CENTER><B><FONT SIZE=+4>Doel - eisen van Kerberos</FONT></B></CENTER></P>
+
+<P><B><FONT SIZE=+2>gevaren</FONT></B></P>
+
+<P><B><FONT SIZE=+2>motivatie</FONT></B></P>
+
+<P><B><FONT SIZE=+2>eisen</FONT></B></P>
+
+<P>&nbsp;</P>
+
+<P>Er liggen drie gevaren op de loer in een netwerkomgeving met meerdere
+cli&euml;nts en servers:<BR>
+- een gebruiker kan toegang krijgen en pretenderen een andere gebruiker
+te zijn<BR>
+- een gebruiker kan de netwerkidentificatie (IP adres bijvoorbeeld) zodanig
+veranderen dat het lijkt of die machine een andere computer is<BR>
+- een gebruiker kan uitwisselingen afluisteren en met behulp van replay
+de goede werking van het netwerk verstoren</P>
+
+<P>&nbsp;</P>
+
+<P>Volgende beveiligingsmethoden zijn denkbaar:<BR>
+- vertrouwen dat elk werkstation de identiteit van zijn gebruiker nagaat
+en dat elke server een beveiligingspolitiek voert gebaseerd op die identiteit<BR>
+- eisen dat client systemen zich bij een server authetiseren maar er op
+vertrouwen dat de client de identiteit van zijn gebruiker nagaat<BR>
+- eisen dat een gebruiker voor elke geactiveerde service zijn identiteit
+bewijst en dat de server dit ook doet aan de client</P>
+
+<P>Alleen deze laatste manier van werken geeft voldoende veiligheid in een
+open systeem. Dit is dan ook de methode die Kerberos ondersteunt.</P>
+
+<P>&nbsp;</P>
+
+<P>Er gelden dan ook volgende eisen voor Kerberos:<BR>
+- veilig : ook voor iemand die het netwerk afluistert. Deze mag geen informatie
+kunnen krijgen om zich nadien voor een andere gebruiker te laten doorgaan.<BR>
+- betrouwbaar: wanneer Kerberos voor een service uitvalt, is die niet meer
+beschikbaar. Vandaar dat een parallel draaiend systeem moet kunnen overnemen.<BR>
+- transparant: de gebruiker mag geen notie krijgen van de werking van Kerberos,
+alleen maar dat hij een wachtwoord moet invoeren<BR>
+- schaalbaar: Kerberos moet grote aantallen clients kunnen ondersteunen.
+Vandaar dat een schaalbaar systeem nodig is.</P>
+
+<P>&nbsp;</P>
+
+<P>Kerberos is als totaalsysteem een <B>trusted third party</B>. Het gebruikt
+een protocol dat gebaseerd is op dat van Needham en Schroeder.
+</BODY>
+</HTML>

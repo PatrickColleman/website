@@ -1,0 +1,40 @@
+<HTML>
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 2.0 Win">
+  <TITLE>Cryptologie</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<P><CENTER><B><FONT SIZE=+4>Pretty Good Privacy (PGP)<BR>
+vertrouwelijkheid</FONT></B></CENTER></P>
+
+<P>&nbsp;</P>
+
+<P>Men gebruikt een sleutel die maar &eacute;&eacute;n keer zal gebruikt
+worden, namelijk met het bericht (e-mail) zelf. Deze sleutel moet mee met
+het bericht reizen.</P>
+
+<P>Men gaat als volgt te werk:</P>
+
+<P>1. De zender genereert een bericht en een 128 bit getal dat voor dit
+bericht als sleutel zal gebruikt worden.</P>
+
+<P>2. Het bericht wordt versleuteld met de sleutel gebruik makende van bijvoorbeeld
+IDEA of 3DES. Voor 3DES gebruikt men een 168 bits getal.</P>
+
+<P>3. De sleutel wordt versleuteld met RSA met de publieke sleutel van de
+ontvanger en wordt aan het begin van het bericht gekoppeld.</P>
+
+<P>4. De ontvanger gebruikt eerst zijn private sleutel om de sleutel te
+vinden.</P>
+
+<P>5. en dan gebruikt hij deze sleutel om de rest van het bericht te decoderen.</P>
+
+<P>&nbsp;</P>
+
+<P>In plaats van RSA kan men ook Diffie-Hellman gebruiken.</P>
+
+<P>Merk op dat het sneller zou gaan indien we secret key cryptografie zouden
+gebruiken in plaats van RSA.
+</BODY>
+</HTML>

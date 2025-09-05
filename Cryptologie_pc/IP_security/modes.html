@@ -1,0 +1,31 @@
+<HTML>
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 2.0 Win">
+  <TITLE>Cryptologie</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<P><CENTER><B><FONT SIZE=+4>IPSec modes</FONT></B></CENTER></P>
+
+<P>Er bestaan twee modes: <B>transportmode en tunnelmode.</B></P>
+
+<P>&nbsp;</P>
+
+<P>1. Transportmode</P>
+
+<P>Hierbij strekt de beveiliging zich uit tot de data van de IP laag. Dit
+wil zeggen dat de 'output' van de transportlaag (TCP - UDP - ...) beveiligd
+is. Dit gebruikt men bij directe client-server communicatie. Als beiden
+dezelfde sleutel gebruiken, is de authorisatie in orde.</P>
+
+<P>&nbsp;</P>
+
+<P>2. Tunnelmode</P>
+
+<P>Hierbij geldt de beveiliging voor het IP frame. Het ganse IP frame wordt
+versleuteld en als data in een nieuw IP frame gestopt. Het binnenste pakket
+reist door een tunnel van de zender naar de ontvanger. De bron en bestemmings
+IP adressen kunnen helemaal anders zijn, bijvoorbeeld een firewall of router
+waarop IPSec is ge&iuml;nstalleerd.
+</BODY>
+</HTML>

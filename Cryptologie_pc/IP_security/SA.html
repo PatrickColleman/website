@@ -1,0 +1,63 @@
+<HTML>
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 3.0 Win">
+  <TITLE>Cryptologie</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<P><CENTER><B><FONT SIZE="+4">IPSec:<BR>
+security associations</FONT></B></CENTER></P>
+
+<P>&nbsp;</P>
+
+<P>Een security association (SA) is een unidirectionele relatie
+tussen een zender en een ontvanger (peer to peer). Voor een bidirectionele
+mogelijkheid zijn er dus twee SA's nodig.</P>
+
+<P><BR>
+Deze hebben drie parameters:<BR>
+- security parameter index: lokale informatie<BR>
+- IP destination address (alleen unicast)<BR>
+- security protocol identifier: authenticatie- (AH) of gecombineerd
+encryptie / authenticatieprotocol (ESP)</P>
+
+<P>De functies van de SA zijn:<BR>
+- overeenkomt over het protocol<BR>
+- overeenkomst over het algoritme<BR>
+- overeenkomst over de sleutels<BR>
+- primaire authenticatie: Alice weet dat ze met Bob communiceert
+(en omgekeerd)<BR>
+- management van de sleutels na goedkeuring<BR>
+- uitwisseling van de sleutels na goedkeuring</P>
+
+<P>De SA database in een computer bevat volgende elementen:<BR>
+- sequence number teller: nodig om het sequence number in de AH
+en ESP header te genereren. Deze start op 1 en bij elk pakket
+verhoogt men hem met 1.<BR>
+- sequence number overflow: wat moet er gebeuren als de sequence
+number niet juist is: geluidssignaal, stoppen van de datacommunicatie,
+... ?<BR>
+- anti-replay window: om na te gaan of een AH of ESP is een replayaanval.
+Hiervoor gaat men de sequence number nagaan.<BR>
+- AH informatie: algoritmes, sleutels, ...<BR>
+- ESP informatie: algoritmes, sleutels, ...<BR>
+- lifetime van een SA: na een tijd of een aantal bits moet de
+SA afgebroken worden en desnoods vervangen door een neiuw.<BR>
+- IPSec protocol mode: tunnel of transport<BR>
+- pad MTU: maximum MTU </P>
+
+<P>In een eerste fase wordt een beveiligde verbinding opgesteld
+tussen twee 'peers' of gelijken. Dit is de ISAKMP Security Associaton.
+In een tweede stap onderhandelen de peers over een 'general purpose'
+SA dat ze verder zullen gebruiken voor de data uitwisseling. Dit
+heeft het voordeel dat het ISAKMP SA niet veel gebruikt wordt.</P>
+
+<P>Voor een gedetailleerde beschrijving van deze protocols verwijzen
+we weer naar gespecialiseerde litteratuur. Het volstaat op te
+merken dat ze gebruik maken van volgende elementen:<BR>
+- Alice en Bob komen een encryptie en hash algoritme overeen<BR>
+- publieke sleutels worden kenbaar gemaakt<BR>
+- handtekeningen worden uitgewisseld, vergezeld van certificaten.
+
+</BODY>
+</HTML>

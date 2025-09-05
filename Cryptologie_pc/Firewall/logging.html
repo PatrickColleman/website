@@ -1,0 +1,97 @@
+<HTML>
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 3.0 Win">
+  <TITLE>Cryptologie</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<P>&nbsp;</P>
+
+<P><CENTER><B><FONT SIZE="+4">Firewall</FONT><FONT SIZE="+3">:
+logging</FONT></B></CENTER></P>
+
+<P>&nbsp;</P>
+
+<P><B>Controle en alarmmeldingen</B></P>
+
+<P>Met testaanvallen op het netwerk kan men de zwakke plaatsen
+van het netwerk ontdekken.  Een hacker die volhoudt, weet altijd
+wel zo'n plaats te vinden.  Daarom is het bijhouden van al deze
+gegevens de beste verdediging tegen dit soort aanvallen.</P>
+
+<P>&nbsp;</P>
+
+<P><I>Activiteitenlog</I></P>
+
+<P>Om de beheerder informatie te geven over de activiteiten op
+zijn netwerk, bieden de meeste firewalls de mogelijkheid om alles
+op te slaan in een bestand op een harde schijf.  We noemen dit
+activiteiten-logging of auditing.  De bestanden die op deze wijze
+ontstaan, worden audit trails of logfiles genoemd.  Een goede
+firewall houdt zowel de geslaagde als de niet-geslaagde verbindingen
+bij.  Een 'logboek' van succesvolle toegangspogingen kan later
+gebruikt worden om de activiteiten van een hacker na te pluizen.
+ De standaard informatie die een audit trail of logfile moet bijhouden
+is:<BR>
+&middot; Tijd en datum van het begin van de sessie.<BR>
+&middot; Tijd en datum van het einde van de sessie.<BR>
+&middot; Host-adres van de bron.<BR>
+&middot; Host-adres van de bestemming.<BR>
+&middot; Het gebruikte protocol.<BR>
+&middot; Bestemmingspoort ( gewenste dienst ).<BR>
+&middot; Genomen actie ( verbinding toegestaan of geweigerd ).<BR>
+&middot; Naam van de gebruiker als authentisering werd toegepast.</P>
+
+<P>&nbsp;</P>
+
+<P>Sommige logfiles geven ook het aantal pakketten op dat binnen
+een sessie werd vervoerd.  Beheerders kunnen in de logfile zoeken
+naar verdachte activiteiten zoals:<BR>
+&middot; Herhaaldelijk misbruikte toegang van een host naar verschillende
+diensten.<BR>
+&middot; Een constante stroom van toegangsverzoeken aan dezelfde
+host.<BR>
+&middot; Verbindingen die op vreemde uren of 's nachts werden
+gemaakt.<BR>
+&middot; Verschillende mislukte authentiseringspogingen.</P>
+
+<P>&nbsp;</P>
+
+<P><I>Alarm</I></P>
+
+<P>Wanneer de firewall beheerder een verdachte actie ontdekt,
+moet hij onmiddellijk actie ondernemen.  Dit kan bestaan uit het
+waarschuwen van de beheerder van de computer waar de aanval vandaan
+komt of het wijzigen van de regels en toelatingsmogelijkheden
+om verdere problemen te voorkomen.  Dergelijke acties kunnen te
+laat komen, omdat de beheerder niet voortdurend op zijn scherm
+zit te kijken.  U kunt nog steeds de logfile gebruiken om de mogelijk
+schade te beoordelen, door te kijken welke host door de inbreker
+werd bezocht en wanneer.  </P>
+
+<P>Logfiles kunnen zeer groot worden waardoor het veel tijd kost
+om alle activiteiten te doorzoeken om mogelijke inbraakpogingen
+te ontdekken.  Daarom bieden veel firewalls de mogelijkheid tot
+het geven van een alarmmelding via de logfile.  Een alarm is een
+speciale actie die wordt geactiveerd zodra aan een bepaalde voorwaarde
+wordt voldaan.  Dank zij een dergelijke alarmmelding kan de beheerder
+vaak erger onheil voorkomen.</P>
+
+<P>Sommige firewalls hebben een apart alarmmechanisme dat speciaal
+is ontworpen om voortdurend de logfile te scannen op gebeurtenissen
+die door de beheerder zijn aangegeven, waarna een voorgeprogrammeerde
+actie wordt ondernomen.  Deze krachtige mogelijkheden kunnen uitgaan
+van specifieke voorwaarden zoals ' een alarm nadat een te controleren
+gebeurtenis voor de vijfde maal binnen 15 minuten is opgetreden
+'.  Dit biedt de beheerder een krachtige mogelijkheid om aanvallen
+te ontdekken.</P>
+
+<P>Het gevolg van de alarmmelding kan zijn dat er een e-mail bericht
+aan de beheerder wordt gestuurd, dat een lampje op de firewall
+begint te knipperen of dat zelfs het telefoonnummer van de beheerder
+wordt gedraaid om de pieper van de beheerder te laten overgaan.
+ Het kan zelfs gebeuren dat de beheerder de hacker nog even door
+laat gaan om meer informatie te krijgen voor een latere aanklacht.<BR>
+
+</BODY>
+</HTML>

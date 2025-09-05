@@ -1,0 +1,86 @@
+<HTML>
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 3.0 Win">
+  <TITLE>Cryptologie</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<P><CENTER><B><FONT SIZE="+4">X.509 autenticatieprocedures</FONT></B></CENTER></P>
+
+<P><CENTER><IMG SRC="X509_authenticatie.jpg" WIDTH="512" HEIGHT="713"
+ALIGN="BOTTOM" NATURALSIZEFLAG="2"></CENTER></P>
+
+<P><CENTER>&nbsp;</CENTER></P>
+
+<P>&nbsp;</P>
+
+<P>Veronderstel dat alle nodige publieke sleutels gekend zijn.</P>
+
+<P>&nbsp;</P>
+
+<P>De authenticatie kan op drie verschillende manieren, die we
+hierna &eacute;&eacute;n na &eacute;&eacute;n bespreken.</P>
+
+<P>1. E&eacute;nrichtingsauthenticatie (deel a van de figuur)</P>
+
+<P>Hierin vinden we volgende onderdelen:<BR>
+- tijdsstempel van A<BR>
+- nonce van A<BR>
+- bestemmeling van het bericht: B<BR>
+- eventueel: gesigneerde data, in het veld van de handtekening<BR>
+- een sessiesleutel van A naar B, ondertekend met de publieke
+sleutel van B<BR>
+en dit alles ondertekend met de private sleutel van A.<BR>
+De nonce en de tijdsstempel moeten er voor zorgen dat vertraagd
+afspelen niets uithaald.</P>
+
+<P>&nbsp;</P>
+
+<P>2. Tweerichtingsauthenticatie (deel b van de figuur)</P>
+
+<P>Hierin vinden we volgende onderdelen:<BR>
+- tijdsstempel van A<BR>
+- nonce van A<BR>
+- bestemmeling van het bericht: B<BR>
+- eventueel: gesigneerde data, in het veld van de handtekening<BR>
+- een sessiesleutel van A naar B, ondertekend met de publieke
+sleutel van B<BR>
+en dit alles ondertekend met de private sleutel van A.<BR>
+- tijdsstempel van B<BR>
+- nonce van B<BR>
+- bestemmeling van het bericht: A<BR>
+- nonce van A herhaald<BR>
+- eventueel: gesigneerde data, in het veld van de handtekening<BR>
+- een sessiesleutel van B naar A, ondertekend met de publieke
+sleutel van A<BR>
+en dit alles ondertekend met de private sleutel van B.<BR>
+Op deze manier kunnen beide partners mekaars identiteit perfect
+kennen.</P>
+
+<P>&nbsp;</P>
+
+<P>3. Drierichtingsauthenticatie (deel c van de figuur)</P>
+
+<P>Hierin vinden we volgende onderdelen:<BR>
+- tijdsstempel van A<BR>
+- nonce van A<BR>
+- bestemmeling van het bericht: B<BR>
+- eventueel: gesigneerde data, in het veld van de handtekening<BR>
+- een sessiesleutel van A naar B, ondertekend met de publieke
+sleutel van B<BR>
+en dit alles ondertekend met de private sleutel van A.<BR>
+- tijdsstempel van B<BR>
+- nonce van B<BR>
+- bestemmeling van het bericht: A<BR>
+- nonce van A herhaald<BR>
+- eventueel: gesigneerde data, in het veld van de handtekening<BR>
+- een sessiesleutel van B naar A, ondertekend met de publieke
+sleutel van A<BR>
+en dit alles ondertekend met de private sleutel van B.<BR>
+- een laatste bericht van A naar B met een ondertekende copie
+van de nonce van B. <BR>
+Op deze manier moeten de tijdsstempels niet gecontroleerd worden
+want beide nonces worden teruggestuurd.
+
+</BODY>
+</HTML>

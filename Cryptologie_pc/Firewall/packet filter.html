@@ -1,0 +1,93 @@
+<HTML>
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 3.0 Win">
+  <TITLE>Cryptologie</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<P><CENTER><B><FONT SIZE="+4">Firewall: packet filter</FONT></B></CENTER></P>
+
+<P><CENTER>&nbsp;</CENTER></P>
+
+<P>Een packet filter router past een reeks regels toe op IP adressen.
+Deze functionaliteit kan men eenvoudig toevoegen aan een router,
+want deze staat ook in voor het doorsturen van een pakket. In
+dit geval krijgen ze de optie het pakket ook niet door te sturen.
+Deze filter (packet filters of traffic filters genoemd) kan men
+implementeren op de interfacekaart (OSI niveau 2) of in de kernel
+van het operating system. Deze firewalls kijken naar de IP adressen
+en de poortnummers van bron en bestemmeling, alsmede hun gebruikte
+protocol, bijvoorbeeld TCP. Op basis hiervan is de actie doorgaan
+of weigeren. Ze zenden dan ook soms een ICMP bericht, zie volgende
+paragraaf. </P>
+
+<P>Het gevolg van deze oplossing is dat de router kan zorgen voor
+een betere service: bulk transfer applicaties, zoals applicaties
+die hele websites ineens downloaden, gebruiken teveel bandbreedte
+op tragere WAN lijnen. De routers kunnen onnodige trafiek tegenhouden
+en alzo de totale nuttige throughput verbeteren. Eventueel passen
+ze een prioriteitsmechanisme toe waarbij bijvoorbeeld interactieve
+applicaties voorrang krijgen.</P>
+
+<P>Merk op dat dit soort firewall niet kan filteren op 'gebruiker',
+maar alleen op het IP adres van een computer. Hij kan ook niet
+filteren op deze file wel en een andere niet en eveneens niet
+op applicatiebevelen zoals delete een bestand, ... . Met andere
+woorden: er wordt niet gekeken naar de inhoud van de pakketjes.
+</P>
+
+<P>Een voordeel is dat men de regels kan configureren voor binnenkomende
+en uitgaande datastromen apart.</P>
+
+<P>Samengevat: de regels kijken naar:</P>
+
+<UL>
+  <LI>source IP adres
+  <LI>destination IP adres
+  <LI>transport level poortnummer (TCP) om te weten over welke
+  applcatie het gaat (vb surfen, e-mail, ... )
+  <LI>IP protocol veld : TCP of een ander protocol?
+  <LI>interface: langs welke 'kabel' (telefoonlijn, Internetmodem,
+  ...) komt de data binnen?
+</UL>
+
+<P>Bij deze regels noteert men steeds discard of forward.</P>
+
+<P>Men geeft eveneens de default regel op. Bijvoorbeeld: wat moet
+er gebeuren als het IP adres niet gekend is in de verzameling
+regels? Deze is natuurlijk best 'discard'.</P>
+
+<P>Packet filter firewalls kijken niet naar de hogere lagen. Wanneer
+een applicatie toegang krijgt is dat voor de ganse applicatie.
+Zelfs wanneer die applicatie een format van je harde schijf wil
+doen....</P>
+
+<P>De logging (het noteren van de beslissingen) is ook beperkt.</P>
+
+<P>Dit alles maakt dat de packet filter router (firewall) vrij
+beperkte mogelijkheden heeft.</P>
+
+<P><I>Nadelen:</I><BR>
+- IP address spoofing: de indringer gebruikt een geldig intern
+IP adres.<BR>
+- source routing attacks: Token ring bijvoorbeeld kan de te volgen
+weg specificeren. Men kan hopen dat de firewall dit niet goed
+afwerkt.<BR>
+- kleine fragmenten aanval: Wanneer het IP datagram zeer klein
+is, staat de TCP header reeds in een ander gefragmenteerd datagram.
+Daardoor kent de firewall het poortnummer niet.<BR>
+- moeilijk te configureren<BR>
+- moeilijk te testen<BR>
+- filenamen, usernamen, ... zijn onbekende parameters<BR>
+- Alleen het eerste fragment bevat de juiste poortnummers. Bijgevolg
+worden alle pakketjes met fragment offset verschillend van 0 doorgezonden,
+hetgeen onnodig is. (zie stateful inspection firewall als oplossing)</P>
+
+<P><BR>
+<I>Voordelen:</I><BR>
+- volledig transparant voor de gebruiker zijn: hij weet niet dat
+een firewall gebruikt wordt. <BR>
+- de functionaliteit is beschikbaar in alle routers
+
+</BODY>
+</HTML>

@@ -1,0 +1,79 @@
+<HTML>
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 3.0 Win">
+  <TITLE>Cryptologie</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<P><CENTER><B><FONT SIZE="+4">Kerberos</FONT></B></CENTER></P>
+
+<P><B><FONT SIZE="+2">Authentiseringsserver: controleren users
+bij inloggen<BR>
+Ticket granting server: tickets identiteitsbewijs<BR>
+Bob: doet wat Alice wil laten uitvoeren</FONT></B></P>
+
+<P><CENTER><IMG SRC="Kerberos.jpg" WIDTH="512" HEIGHT="185" ALIGN="BOTTOM"
+NATURALSIZEFLAG="3"></CENTER></P>
+
+<P>De AS heeft een geheim wachtwoord met elke gebruiker.</P>
+
+<P>De TGS moet de echte servers er van overtuigen dat de houders
+van een ticket zijn wie ze beweren te zijn.<BR>
+</P>
+
+<P>Alice gaat aan een PC zitten en geeft haar naam. Deze gaat
+als klare tekst naar de AS. Deze stuurt bericht 2 terug, vercijferd
+met de geheime sleutel van Alice. Hierin zit de sessiesleutel
+K<sub>S</sub> en een ticket K<sub>TGS</sub>. Deze is functie van
+Alice's identiteit en de sessiesleutel K<sub>S</sub>.</P>
+
+<P>De PC vraagt het paswoord van Alice. Op basis van dit wachtwoord
+kan bericht 2 ontcijferd worden. Het wachtwoord van Alice wordt
+in het geheugen van de PC onmiddelijk overschreven.</P>
+
+<P>Als Charlie tracht binnen te breken, kan hij bericht 2 niet
+ontcijferen.</P>
+
+<P>Als Alice met Bob wil communiceren, zal haar PC eerst een bericht
+3 naar de TGS sturen. Hierin zit ondermeer haar ticket K<sub>TGS</sub>
+van AS gekregen en de naam van Bob. Hierin zit eveneens een tijdsstempel
+om er voor te zorgen dat wanneer Charlie nadat Alice is afgelogd,
+niets meer met eventueel afgeluisterde informatie kan aanvangen.
+Door middel van deze tijdsstempel kan men een levensduur aan het
+ticket geven, bijvoorbeeld 30 minuten of 8 uur, het equivalent
+van &eacute;&eacute;n werkdag. Merk op dat een korte levensduur
+enerverend kan zijn wanneer men lang aangelogd blijft. Een lange
+levensduur maakt het systeem kwetsbaar voor aanvallen zoals hierboven
+beschreven.</P>
+
+<P>Charlie kan hier niet tussenkomen omdat in bericht 3 een tijdsstempel
+zit die met K<sub>S</sub> versleuteld is en hij dus niet kan veranderen..
+Herhaald afspelen help niet!</P>
+
+<P>De TGS maakt een sessiesleutel K<sub>AB</sub> die Alice voor
+Bob kan gebruiken. Hij stuurt een bericht 4 waar deze sessiesleutel
+in staat, maar &eacute;&eacute;nmaal versleuteld voor Alice (met
+K<sub>S</sub>) en &eacute;&eacute;nmaal voor Bob (met K<sub>B</sub>).
+Merk op dat in dit laatste ook de identiteit van Alice staat,
+zodat het ticket voor Bob bewijst dat het van en voor Alice is.
+Merk op dat Charlie K<sub>S</sub> niet kent en dus ook K<sub>AB</sub>
+niet kan berekenen.</P>
+
+<P>Alice stuurt bericht 5 naar Bob. Ook hierin staat een tijdsstempel.
+Alice kan K<sub>B</sub> niet namaken! Bob kan er wel K<sub>AB</sub>
+uit halen. Dit is dan de gemeenschappelijk sessiesleutel.</P>
+
+<P>Als Alice later met Dominique (andere server) wil communiceren,
+start de procedure vanaf bericht 3.</P>
+
+<P>&nbsp;</P>
+
+<P>Het is duidelijk dat een volledige Kerberos omgeving de gebruikers
+identiteit en hun gehashte paswoord in zijn database moet hebben.
+Alle gebruikers worden bij Kerberos geregistreerd.</P>
+
+<P>De Kerberos server moet met elke server een geheime sleutel
+delen. Alle servers worden bij Kerberos geregistreerd.
+
+</BODY>
+</HTML>

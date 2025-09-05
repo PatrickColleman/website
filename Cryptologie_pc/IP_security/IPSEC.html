@@ -1,0 +1,89 @@
+<HTML>
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 3.0 Win">
+  <TITLE>Cryptologie</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<P><CENTER><B><FONT SIZE="+4">IPSec</FONT></B></CENTER></P>
+
+<P>&nbsp;</P>
+
+<P>IPSec geeft de mogelijkheid een veilige verbinding te hebben
+tussen twee plaatsen via het Internet. Dit is een VPN of Virtual
+Private Network. Dit kan gaan tot inbelmogelijkheden via een ISP,
+extranetten met leveranciers, ... .</P>
+
+<P>Het is functionaliteit die in een firewall of router, die een
+LAN met het Internet verbindt, zit, onder de transportlaag. Vandaar
+dat deze frames kunnen vertransporteerd worden door gewone routers,
+...</P>
+
+<P>Men plaatst deze logica bij voorkeur op de firewall, want dit
+levert de waarborg dat alle data van en naar het Internet door
+dit apparaat en dus ook door deze software moet passeren. Datatrafiek
+binnen het bedrijf loopt dus niet door IPSec.</P>
+
+<P>Omdat IPSec onder de transportlaag zit, weten de applicaties
+niet dat IPSec gebruikt wordt. Men kan het dus met alle applicaties
+gebruiken!</P>
+
+<P><CENTER><IMG SRC="IPSec%20scenario%20ws.jpg" WIDTH="512" HEIGHT="290"
+ALIGN="BOTTOM" BORDER="0" NATURALSIZEFLAG="2"></CENTER></P>
+
+<P>In bovenstaande figuur kan men zien dat een buitenstaander
+veilig data kan sturen naar de firewall, die de IP header en IPSec
+header wegneemt en het bericht kan verdersturen naar de gewenste
+computer. Binnen het (bedrijfs)netwerk gebruikt men een IPSec.
+Hetzelfde is natuurlijk ook mogelijk voor communicatie tussen
+2 bedrijven.</P>
+
+<P><B></B>&nbsp;</P>
+
+<P><B>IPSec levert volgende diensten:</B><BR>
+- toegangscontrole<BR>
+- verbindingsloze integriteit<BR>
+- authenticatie<BR>
+- afkeuring van replay aanvallen<BR>
+- encryptie<BR>
+- beperkte vertrouwelijkheid in de verkeersstroom.</P>
+
+<P>Hoe kan een VPN een private, veilige verbinding maken op het
+Internet? Problemen die kunnen opduiken zijn bijvoorbeeld:<BR>
+- uw LAN gebruikt geen IP<BR>
+- uw LAN gebruikt IP adressen die niet toegelaten zijn (niet aangevraagd)<BR>
+- hoe kan men vreemde bezoekers buiten houden? (hackers)</P>
+
+<P>Om de eigen IP adressen verborgen te houden voor het Internet,
+zal men zijn toevlucht nemen tot tunneling. We weten dat het Internet
+een packet-switched network is. Men kan dus moeilijk van een echte
+tunnel spreken. Wat men wel kan realiseren is dat de zender en
+ontvanger op een of andere manier een akkoord sluiten over hoe
+ze gaan communiceren. Er worden een aantal achtergrondberichten
+heen en weer gestuurd over het Internet om tot zo een deal over
+te gaan. Het is echter geenszins een echte tunnel zoals de vaste
+telefoonverbinding er een is met zijn toegewezen kanaalcapaciteit.</P>
+
+<P>Een andere kreet is 'encapsulation'. Men gebruikt deze min
+of meer als synoniem voor tunneling. Het is echter beter het onderscheid
+scherper te stellen en te poneren dat 'encapsulation' gaat over
+wat men gaat doen met elk apart pakketje. De term tunnelling gebruikt
+men om het ganse proces van data transfer te kenmerken.</P>
+
+<P>In dit encapsulation proces zal men elk pakket, inclusief de
+header, verbergen in een nieuwe enveloppe en op deze enveloppe
+de adressen van de source en destination VPN servers noteren.
+Dit geheel gaat dan als een IP pakket door het Internet. De oude
+header reist dus mee als data in de enveloppe! (Let op: deze verborgen
+pakketten worden eerst helemaal versleuteld met een geheime code,
+zodat het voor vreemden zeer moeilijk of niet doenbaar is de data
+te achterhalen. Men noemt dit encryptie) Dit maakt dat compleet
+vreemde netwerkframes kunnen getransporteerd worden. Uiterst belangrijk
+is het dus in te zien dat men bij het gebruik van een VPN steeds
+een frame dat normaal zou opgezonden worden in het Internet, eerst
+gaat verpakken in een routeerbaar geheel, dit wil zeggen in een
+IP datagram. Dit kan dus zowel een laag 2 frame zijn (PPP) als
+een laag 3 datagram (IPSec)
+
+</BODY>
+</HTML>

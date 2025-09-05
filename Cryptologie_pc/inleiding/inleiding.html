@@ -1,0 +1,83 @@
+<HTML>
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 3.0 Win">
+  <TITLE>Cryptologie</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<P><B><FONT SIZE="+3">Inleiding - Wat ?<BR>
+Probleemgebieden:</FONT></B></P>
+
+<P><B><FONT SIZE="+1">- geheimhouding<BR>
+- authentisering<BR>
+- niet verloochening<BR>
+- integriteitscontrole<BR>
+<BR>
+</FONT></B>In volgende figuur, die typisch is voor vercijfering,
+kan men de algemene werking bestuderen:</P>
+
+<P><CENTER><IMG SRC="encryptiemodel.jpg" WIDTH="512" HEIGHT="201"
+ALIGN="BOTTOM" BORDER="0" NATURALSIZEFLAG="2"></CENTER></P>
+
+<P>Men ziet dat een zender zijn data zal beveiligen door een sleutel.
+De ontvanger gebruikt ook zo'n sleutel om het oorspronkelijke
+bericht te kunnen regenereren.<BR>
+Merk op: er bestaan twee soorten sleutels:<BR>
+- geheime sleutels: zender en ontvanger gebruiken beide dezelfde
+geheime sleutel<BR>
+- combinatie publieke - persoonlijke sleutel. Deze zijn (simplifi&euml;rend)
+mekaars inverse: ze laten toe de werking van de andere te neutraliseren.<BR>
+Op beide mechanismen zullen we uitgebreid ingaan!</P>
+
+<P><B>Welke zijn de probleemgebieden? Waarvoor gebruikt men cryptografie?</B></P>
+
+<P><B>1. Geheimhouding</B> moet er voor zorgen dat derden een
+bericht niet kunnen ontcijferen of, en dat is nog erger, kunnen
+aanpassen.</P>
+
+<P>Deze derden zijn per definitie kwaadwillige personen die zichzelf
+willen bevoordelen of anderen opzettelijk veel schade berokkenen.
+Deze personen of instanties hebben dikwijls enorme finanti&euml;le
+middelen, zodat ze hun pogingen lang kunnen volhouden.</P>
+
+<P>&nbsp;</P>
+
+<P><B>2. Authentisering</B> staat in voor de functionaliteit die
+er voor zorgt dat twee computers die met mekaar gaan communiceren
+met absolute zekerheid kunnen bepalen dat hun gebruikers zijn
+wie ze zeggen dat ze zijn. Een indringer mag niet kunnen doorgaan
+als een gerechtigd persoon.</P>
+
+<P>&nbsp;</P>
+
+<P><B>3. Niet verloochenin</B>g heeft te maken met het feit dat
+iemand niet kan negeren dat hij/zij een bericht doorgezonden heeft.
+Men kan daarbij denken aan bijvoorbeeld bankopdrachten om aandelen
+aan te kopen of te verkopen. Als die aandelen bijvoorbeeld de
+dag na de aankoop sterk in waarde zijn gedaald, moet de bank kunnen
+bewijzen dat de opdracht echt gegeven werd.</P>
+
+<P>&nbsp;</P>
+
+<P><B>4. Integriteitscontrole</B> heeft te maken met het feit
+dat men de verzekering heeft dat een ontvangen bericht echt het
+doorgezonden bericht is en niet een door een tegenstander aangepast
+bericht.</P>
+
+<P>&nbsp;</P>
+
+<P>De cryptografie heeft als doel de vercijfering zo goedkoop
+en eenvoudig mogelijk te maken, terwijl de ontcijfering zo moeilijk
+en duur mogelijk moet zijn.</P>
+
+<P>&nbsp;</P>
+
+<P>In de meeste gevallen zal de cryptografie in point to point
+verbindingen worden toegepast in de datalinklaag. Hierbij doet
+de datalinklaag van de zender de encryptie en de datalinklaag
+van de ontvanger de decryptie. De hogere lagen merken daar dan
+niets van. Deze werkwijze is echter niet mogelijk wanneer routers
+nodig zijn. Deze router weet niet hoe hij moet ontcijferen.
+
+</BODY>
+</HTML>

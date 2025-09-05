@@ -1,0 +1,116 @@
+<HTML>
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 3.0 Win">
+  <TITLE>Cryptologie</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<P><CENTER><B><FONT SIZE="+4">Firewall</FONT><FONT SIZE="+3">:
+configuratie</FONT></B></CENTER></P>
+
+<P>Naast de eenvoudige implementaties, zoals te zien op volgende
+figuur:</P>
+
+<P><CENTER><IMG SRC="Firewalls%20ws.jpg" ALIGN="BOTTOM" WIDTH="512"
+HEIGHT="712" NATURALSIZEFLAG="2"></CENTER></P>
+
+<P>doet men ook ingewikkelder configuraties, zoals op volgende
+figuur:</P>
+
+<P><CENTER><IMG SRC="Firewall%20configuratie%20ws.jpg" ALIGN="BOTTOM"
+WIDTH="512" HEIGHT="592" NATURALSIZEFLAG="2"></CENTER></P>
+
+<P>&nbsp;</P>
+
+<P><B>1. Screened host firewall, single homed bastion (a)</B></P>
+
+<P>Hierbij bestaat de firewall uit 2 computers:<BR>
+- een packet filtering router<BR>
+- een bastion host</P>
+
+<P>De router zal typisch pakketten komende vanaf het Internet
+toelaten als ze naar de bastion host moeten. Op die baston host
+draait dan bijvoorbeeld een webserver of een mailserver.<BR>
+Voor pakketten komende vanaf het interne netwerk worden alleen
+IP pakketten doorgelaten die vanaf de bastion host komen.</P>
+
+<P>De bastion host moet authenticatie en proxyfuncties uitvoeren.</P>
+
+<P>Daardoor worden zowel packet filtering als application level
+filtering toegepast.</P>
+
+<P>Een indringer moet eveneens twee systemen passeren voor hij
+op het interne netwerk zit.</P>
+
+<P>&nbsp;</P>
+
+<P><B>2. Screened host firewall, dual homed bastion (b)</B></P>
+
+<P>Een nadeel van de single home bastion is dat als de router
+niet goed meer werkt (alle data doorlaat), men rechstreeks op
+et interne netwerk zit.</P>
+
+<P>De dual homed bastionoplossing laat dit niet toe: er is een
+fysische scheiding tussen het interne en het 'Internetgedeelte'.</P>
+
+<P>Alle voordelen van de single homed bastionoplossing blijven
+bewaard.</P>
+
+<P>De bastionhost heeft echter twee netwerkinterfacekaarten (Ethernetkaarten),
+&eacute;&eacute;n voor de verbinding naar de router toe en &eacute;&eacute;n
+om data door te sturen naar het interne netwerk.</P>
+
+<P>&nbsp;</P>
+
+<P><B>3. Screened subnet firewall (c)</B></P>
+
+<P>Dit is de veiligste oplossing!</P>
+
+<P>Men gebruikt twee packet filter routers, eentje tussen de bastion
+host en het Internet en &eacute;&eacute;n tussen de bastion host
+en het lokale (private) netwerk.</P>
+
+<P>Op de bastion host kan men een dial-in mogelijkheid voorzien.</P>
+
+<P>De bastion host is een geisoleerd subnetwerk waar de informatieservers
+(webserver, email, ...) op draaien.</P>
+
+<P>Men kan de bastion host(s) bereiken zowel via het Internet
+als via het lokale netwerk. Men kan ze echter niet overslaan (bypass),
+zodat de bastion host de nodige proxydiensten kan aanbieden (forceren).</P>
+
+<P>Het netwerk tussen beide routers noemt men ook het <B>perimeter
+netwerk</B>. Soms noemt men dit ook de <B>gedemilitariseerde zone</B>.
+(DMZ)</P>
+
+<P>Voordelen:</P>
+
+<UL>
+  <LI>drie beveiligingsniveau's
+  <LI>de outside router maakt naar buiten alleen het bestaan van
+  de bastion hosts publiek. Het interne netwerk is bij wijze van
+  spreken onbestaande vanuit het Internet.
+  <LI>Van binnenuit maakt men alleen het bestaan van de inside
+  router kenbaar, zodat machines van binnenin niet rechtstreeks
+  met het Internet kunnen verbonden zijn.
+</UL>
+
+<P>Het perimeternetwerk is best een apart LAN zijn met een eigen
+netwerkadres.  Eventueel gebruikt men de subnet maskers, maar
+dat is zeker niet de eerste keuze, daar men daar zonder veel moeite
+als gebruiker kan op ingrijpen.</P>
+
+<P>Het interne LAN is dan zo goed mogelijk beschermd tegen aanvallen
+van het Internet.  Meestal zal men de gedemilitariseerde zone
+plaatsen tussen de firewall en de router naar het Internet toe.
+ Het is namelijk niet verstandig de servers van de gedemilitariseerde
+zone (bijvoorbeeld de www server, pop server, ...) binnen de beveiligde
+zone te plaatsen.  Indien men kan inbreken in dit soort servers
+(die op een bastion host draaien), is er geen enkele barri&egrave;re
+meer naar de 'gewone' computers en ligt de weg breed open voor
+een aanval. Wanneer de Internet servers tussen beide routers liggen,
+moet nog een router met een controlerende toegangslijst gepasseerd
+worden.  <BR>
+
+</BODY>
+</HTML>

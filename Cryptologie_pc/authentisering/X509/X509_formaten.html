@@ -1,0 +1,65 @@
+<HTML>
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 3.0 Win">
+  <TITLE>Cryptologie</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<P><CENTER><B><FONT SIZE="+4">X.509 certificaten</FONT></B></CENTER></P>
+
+<P><CENTER><IMG SRC="X509_formaten.jpg" WIDTH="512" HEIGHT="351"
+ALIGN="BOTTOM" NATURALSIZEFLAG="2"></CENTER></P>
+
+<P>&nbsp;</P>
+
+<P>Het certificaat wordt dus door een authoriteit aangemaakt en
+in een directory geplaatst. Deze autoriteit noemt men ook de CA
+of certificaatautoriteit. Eventueel kan de gebruiker dit laatste
+ook doen. De directory is maar een gemakkelijke plaats om de certificaten
+te bekomen.</P>
+
+<P>Bovenstaande figuur toont de inhoud van het certificaat. Men
+kan volgende elementen onderscheiden:<BR>
+- versie: normaal is dit 1, 2 of 3 naargelang welke velden ingevuld
+zijn.<BR>
+- serienummer: uniek en hoort aan het certificaat<BR>
+- identificatie van de handtekeningalgorithme.<BR>
+- naam van de uitgever: naam van de autoriteit<BR>
+- geldigheidsperiode: van ... tot ...<BR>
+- subjectnaam: naam van de gebruiker van het certificaat<BR>
+- public key informatie van het subject: publieke sleutel van
+de gebruiker<BR>
+- unieke uitgeveridentificatie: id van de autoriteit die het certificaat
+uitgaf<BR>
+- unieke subjectidentificatie: id van de gebruiker<BR>
+- uitbreidingen<BR>
+- handtekening: de hash code van de andere velden, versleuteld
+met de private sleutel van de autoriteit.</P>
+
+<P>&nbsp;</P>
+
+<P>De certificaten hebben volgende eigenschappen:<BR>
+- wanneer men de publieke sleutel van de CA heeft, kan men de
+publieke sleutel van de gebruiker terugvinden<BR>
+- alleen de CA kan zijn certificaat wijzigen. Waneer anderen dit
+doen wordt het opgemerkt.</P>
+
+<P>&nbsp;</P>
+
+<P>Om het mogelijk te maken dat twee CA's naast mekaar bestaan,
+is het nodig dat deze mekaars publieke sleutel kennen. Wanneer
+Alice dan het vertrouwen heeft in CA1 en Bob in CA2, kunnen ze
+toch in volle vertrouwen mekaars certificaat uitwisselen, via
+een omslachtiger procedure.</P>
+
+<P>&nbsp;</P>
+
+<P>Certificaten (kunnen) aflopen: ze hebben een einddatum. Vlak
+voor het verstrijken kunnen ze worden hernieuwd. Men kan het certificaat
+ook intrekken wanneer er zich een onregelmatigheid heeft voorgedaan
+in de zin van een compromittering van bijvoorbeeld de sleutel
+van een gebruiker, het niet meer certificeren van een gebruiker,
+...
+
+</BODY>
+</HTML>

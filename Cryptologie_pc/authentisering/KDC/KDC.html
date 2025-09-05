@@ -1,0 +1,69 @@
+<HTML>
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 2.0 Win">
+  <TITLE>Cryptologie</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<P><CENTER><B><FONT SIZE=+3>Gemeenschappelijke sleutel maken:<BR>
+sleuteldistributiecentrum<BR>
+<BR>
+</FONT>Een sleuteldistributiecentrum is een door alle partijen te vertrouwen
+instantie.<BR>
+<BR>
+Eenvoudig protocol op basis van een KDC. Herhaald afspelen =&gt; oplossingen.<BR>
+<BR>
+Otway en Rees.<BR>
+</B><IMG SRC="KDC.jpg" WIDTH="512" HEIGHT="146" ALIGN="BOTTOM" NATURALSIZEFLAG=
+"3"></CENTER></P>
+
+<P><CENTER>&nbsp;</CENTER></P>
+
+<P>&nbsp;</P>
+
+<P>Er zijn verschillende mechanismen bedacht om met behulp van een sleuteldistributiecentrum
+een geheime sleutel te kunnen afspreken.</P>
+
+<P>Een eerste, <B>eenvoudige procedure</B>, bestaat er in dat Alice met
+haar geheime sleutel een bericht naar een sleuteldistributiecentrum (KDC)
+stuurt, waar in vermeld is dat ze met Bob wil communiceren en een sleutel
+K<sub>S</sub> voorstelt. Daarna stuurt het KDC een versleuteld bericht (met
+de geheime sleutel van Bob) naar Bob waar in vermeld staat dat Alice wil
+communiceren met sleutel K<sub>S</sub>. Daarna kan Alice een bericht doorsturen.</P>
+
+<P>Charlie kan evenwel op &eacute;&eacute;n of andere manier op een geldige
+manier een bericht van Alice naar Bob forceren en dupliceren (bijvoorbeeld
+een geldoverschrijving). Hij kan dit bericht herhaald afspelen. Kassa!!!</P>
+
+<P>Een oplossing bestaat in het gebruik van een tijdsstempel. Daardoor kan
+Bob verouderde berichten weggooien. Het probleem is evenwel dat de klokken
+van de systemen niet helemaal synchroon lopen.</P>
+
+<P>Een oplossing hiervoor is het gebruik van een nonce. Dit is een &eacute;&eacute;nmalig
+berichtnummer. Het nadeel daarvan is dat Bob alle berichten moet onthouden,
+zelfs van jaren geleden. Beter is het de nonce en de tijdsstempel tesamen
+te gebruiken.</P>
+
+<P>&nbsp;</P>
+
+<P>Procedure van Otway en Rees:</P>
+
+<P>Alice kiest R dat als gemeenschappelijke identifier zal gebruikt worden
+en R<sub>A</sub> om Bob uit te dagen. Ze stuurt bericht 1 op naar Bob. Een
+deel is versleuteld met haar geheime sleutel K<sub>A</sub>. Bob kan dit
+deel niet ontcijferen want hij kent K<sub>A</sub> niet.</P>
+
+<P>Bob kiest R<sub>B</sub> om Alice uit te dagen. Bob stuurt bericht 2 naar
+het KDC. Hierin is een deel van het bericht van A verweven. Een ander deel
+is versleuteld met zijn geheime sleutel K<sub>B</sub>.</P>
+
+<P>Het KDC gaat eerst nagaan of in het bericht van Bob de twee waarde van
+R gelijk zijn. Indien dit het geval is, zal het KDC een sessiesleutel K<sub>S</sub>
+genereren. Bob krijgt van het KDC bericht 3 terug waar de sessiesleutel
+en zijn random nummer R<sub>B</sub> in staat. Het KDC stuurt bericht 4 naar
+Alice. Dit bevat eveneens de sessiesleutel en R<sub>A</sub>.</P>
+
+<P>Het random nummer van Alice en Bob moeten deze verzekeren dat Charlie
+niet ergens tussenbeide is gekomen.
+</BODY>
+</HTML>

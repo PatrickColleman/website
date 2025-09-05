@@ -1,0 +1,69 @@
+<HTML>
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 3.0 Win">
+  <TITLE>Cryptologie</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<P><CENTER><B><FONT SIZE="+4">Firewall</FONT><FONT SIZE="+3">:
+application level gateway</FONT></B></CENTER></P>
+
+<P><B><FONT SIZE="+1">Een application level gateway noemt men
+ook een proxy server.</FONT></B></P>
+
+<P>&nbsp;</P>
+
+<P>De gebruiker die iets over het netwerk wil doen, neemt contact
+op met de proxy server m.b.v. een TCP/IP toepassing, bijvoorbeeld
+TELNET of FTP (file transfer protocol).</P>
+
+<P>De proxy server vraagt de gebruiker welk de remote host is
+waarmee hij wil communiceren. Hierbij geeft de gebruiker zijn
+gebruikersID en zijn paswoord waarmee de proxy server die vreemde
+host (vreemd aan het eigen netwerk, remote host) zal contacteren
+en de TCP segmenten zal doorsturen naar die vreemde host.</P>
+
+<P>Indien de proxy server niet de nodige code heeft om voor een
+bepaalde applicatie een remote host te contacteren, zal die dienst
+niet kunnen uitgevoerd worden. Anders gesteld: ze hebben een aparte
+applicatie (proxy) nodig per netwerkdienst.  Ze werken bijvoorbeeld
+voor telnet, FTP en SMTP toegang.  </P>
+
+<P>De application level gateway kan zelfs voldoende 'slim' zijn
+om slechts bepaalde mogelijkheden door te laten. Hij zou bijvoorbeeld
+een wissen van bepaalde folders kunnen weigeren door te laten.</P>
+
+<P>Een nadeel van dit soort firewall is de extra processingtijd
+op elke verbinding. Er zijn trouwens 2 verbindingen actief: &eacute;&eacute;n
+van de gebruiker tot de firewall en &eacute;&eacute;n van de firewall
+naar de remote host.</P>
+
+<P>Belangrijk is het in te zien dat de fysieke laag, datalinklaag
+en netwerklaag als het ware in twee gesplitst zijn: de data komt
+binnen aan &eacute;&eacute;n zijde, loopt omhoog, wordt gekopieerd
+en verlaat daarna de firewall aan de andere zijde via de andere
+netwerklaag, datalinklaag en fysieke laag.  </P>
+
+<P>Een groot voordeel is echter dat de interne IP adressen kunnen
+verborgen worden: men kan zelfs op het interne netwerk een reeks
+IP adressen gebruiken en op het externe netwerk (het Internet)
+een geldig vrij IP adres.  Hierdoor kunnen verschillende hosts
+zich verbergen achter hetzelfde IP adres.  Men noemt dit adrestranslatie.
+ Men gebruikt hierbij zeer intensief de poortnummers om een onderscheid
+te kunnen maken tussen de verschillende interne computers.   Dit
+maakt deze firewalls zeer populair!!	</P>
+
+<P>De firewall kan op applicatieniveau het volledige IP datagram
+assembleren en daarna dit geheel verwerpen of doorlaten.  Het
+probleem van de IP fragmentatie is daarmee verholpen: fragmenten
+waarbij het eerste pakket wordt tegengehouden en de andere niet
+komen niet voor omdat de pakketten in hun geheel doorgelaten of
+geweigerd worden. <BR>
+</P>
+
+<P>&nbsp;</P>
+
+<P>&nbsp;
+
+</BODY>
+</HTML>

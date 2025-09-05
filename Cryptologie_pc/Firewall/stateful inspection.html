@@ -1,0 +1,53 @@
+<HTML>
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 3.0 Win">
+  <TITLE>Cryptologie</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<P><CENTER><B><FONT SIZE="+4">Firewall: </FONT><FONT SIZE="+3">stateful
+inspection</FONT></B></CENTER></P>
+
+<P><CENTER>&nbsp;</CENTER></P>
+
+<P>TCP/IP is verbindingsgericht. Meer specifiek: TCP werkt verbindingsgericht.
+Een verbinding moet eerst opgezet worden voor men er data kan
+over sturen. Op het einde moet de verbinding afgebroken worden.</P>
+
+<P>Men gaat de pakketjes niet meer filteren op een pakket per
+pakket basis, maar meer naar de toestand van een connectie.  Hiervoor
+wordt alle mogelijke informatie uit de hoger liggende lagen gebruikt.
+  Herinneren we ons dat een TCP verbinding moet opgezet worden
+voordat data kan doorgezonden worden.  Hiervoor worden vlaggen
+gebruikt in de TCP header.  Hiervoor gebruikt men onder andere
+de SYN vlag bij het pakket dat de verbinding aanvraagt &eacute;n
+bij het pakket dat dit bericht bevestigd (drie berichten omwille
+van de drie weg handshake).  Een andere vlag is de FIN vlag die
+wordt gezet bij de berichten heen en weer die dienen voor het
+be&euml;indigen van een verbinding.  Als noodoplossing is er nog
+de RST vlag die zorgt voor een heropstarten van de verbinding
+omwille van een onoplosbare fout.  Het gevolg daarvan is dat het
+fragmentatieprobleem opgelost is, want men kijkt naar beslissingen
+van vroeger verwerkte pakketjes: wanneer de verbinding geweigerd
+wordt, worden alle pakketjes voor die verbinding niet doorgezonden.
+</P>
+
+<P>Wanneer een applicatie een verbinding wil realiseren met een
+server, zal het een verbinding maken met een poortnummer lager
+dan 1024 (de well-known port numbers). Deze zijn permanent toegewezen
+aan applicaties.</P>
+
+<P>Een packet filter firewall moet binnenkomende trafiek voor
+een poortnummer lager dan 1024 binnenlaten, want anders kan vb.
+de e-mail niet meer werken, of de webserver, ... .</P>
+
+<P>Een stateful inspection firewall is een uitbreiding van een
+packet filter. Hij moet een tabel bijhouden van uitgaande verbindingen.
+E&eacute;n zo'n verbinding zou bijvoorbeeld de aanvraag van een
+webpagina kunnen zijn. De stateful inspection firewall zal alleen
+datagrammen binnenlaten die passen in de reeks uitgaande verbindingen.
+Hij moet bijvoorbeeld het antwoord van de vreemde webserver doorlaten
+naar de interne gebruiker.
+
+</BODY>
+</HTML>

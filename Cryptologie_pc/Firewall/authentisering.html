@@ -1,0 +1,109 @@
+<HTML>
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 3.0 Win">
+  <TITLE>Cryptologie</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<P><CENTER><B><FONT SIZE="+4">Firewall</FONT><FONT SIZE="+3">:
+authentisering</FONT></B></CENTER></P>
+
+<P>&nbsp;</P>
+
+<P><B>Authentisering van de gebruiker</B></P>
+
+<P>Authentisering betekent simpelweg de bevestiging dat de opgegeven
+identiteit van de gebruiker die toegang vraagt tot de firewall
+inderdaad klopt.  Vanzelfsprekend is dit zeer waardevolle informatie
+voor de firewall.  Er zijn drie traditionele methoden om de identiteit
+van iemand te verifi&euml;ren:<BR>
+- De eerste methode gebruikt 'iets bekends', wat bijvoorbeeld
+een geheim stuk informatie kan zijn zoals een wachtwoord.<BR>
+- De tweede methode identificeert iemand aan de hand van 'iets
+dat iemand in zijn bezit heeft' zoals een sleutel of een smartcard.<BR>
+- De derde methode gebruikt 'iets lichamelijk', zoals een vingerafdruk
+of de patronen in iemands netvlies.</P>
+
+<P>&nbsp;</P>
+
+<P><I>a. Wachtwoorden</I></P>
+
+<P>De twee verschillende soorten wachtwoorden zijn het &eacute;&eacute;n-
+en meermalig te gebruiken wachtwoord:<BR>
+- Het meermalig wachtwoord wordt het meest gebruikt omdat het
+goedkoop is, eenvoudig in gebruik en het vereist geen speciale
+hardware.  De kritiek op dit soort wachtwoord is dat hetzelfde
+wachtwoord langdurig gebruikt kan worden.  Als iemand het netwerk
+binnen kan dringen en de wachtwoorden kan zien, dan kan deze persoon
+deze wachtwoorden gebruiken om zichzelf te vermommen.<BR>
+- Het &eacute;&eacute;nmalig gebruikte wachtwoord werd ge&iuml;ntroduceerd
+om de risico's van meervoudig gebruik te beperken.  In een dergelijk
+systeem wordt een lijst met wachtwoorden afgelopen om het volgende
+wachtwoord daaruit te halen.</P>
+
+<P>Men gebruikt het password authentication protocol (PAP) en
+het challenge handshake protocol (CHAP), hetgeen veel beter is.</P>
+
+<P>&nbsp;</P>
+
+<P><I>b. Smartcards</I></P>
+
+<P>De meeste firewalls ondersteunen het gebruik van een draagbare,
+hand-held authenticator (HHA), zoals een smartcard.  Deze apparaten
+verlangen van de gebruiker dat hij een willekeurig getal (challenge)
+intoetst dat de firewall tijdens de authentiseringsprocedure doorgeeft.
+ Het apparaat geeft een antwoord dat gebaseerd is op een encryptie-sleutel
+die alleen bij het apparaat en de firewall bekend is.  De gebruiker
+toetst dit antwoord in en verstuurt het naar de firewall.  Omdat
+challenges willekeurige getallen zijn die iedere keer veranderen,
+is deze authentiseringsmethode zeer secuur.  Veel HHA's vragen
+om een persoonlijk identificatienummer (PIN) voordat ze kunnen
+werken, om illegaal gebruik ervan te voorkomen</P>
+
+<P>&nbsp;</P>
+
+<P><B>Sessie-encryptie</B></P>
+
+<P>Wachtwoorden en smartcards kunnen een sessie alleen authentiseren
+terwijl de verbinding open staat.  Alle volgende pakketten die
+bij deze sessie horen, worden verondersteld van dezelfde geverifieerde
+host te komen.  Bij een session-hacking kan de dader de controle
+van een vastgestelde verifieerde sessie overnemen.  Om dergelijke
+aanvallen te voorkomen zoekt men naar een oplossing met encryptie
+van alle pakketten binnen een sessie.  Het in bezit hebben van
+de encryptie- of decryptie-sleutel is het bewijs voor authentisering.</P>
+
+<P><BR>
+<I>a. In-band authentisering</I></P>
+
+<P>Gebruikers-authentisering met behulp van wachtwoorden en smartcards
+heeft informatie nodig van de gebruiker.  Het probleem voor de
+firewall is hoe deze informatie moet worden opgevraagd.  Hiervoor
+zijn twee methoden ontwikkeld: in-band, ofwel in-line authentisering
+en out-of-band authentisering.  </P>
+
+<P>In-band authentisering houdt in dat de firewall de authentiseringsinformatie
+opvraagt en bewaart gedurende de hele verbinding.  De FTP staat
+deze in-band authentisering toe.    Het FTP-protocol werd ontworpen
+om het concept van accounts te ondersteunen waarbij groepen gebruikers
+worden ge&iuml;dentificeerd.  </P>
+
+<P>De firewall kan daarmee een verzoek indienen voor de loginnaam
+en een wachtwoord of smartcard-antwoord, door gebruik te maken
+van een bepaald sleutelwoord.  Bij deze methode moet de gebruiker
+een loginnaam en een wachtwoord invoeren ( of een HHA-antwoord
+).</P>
+
+<P>&nbsp;</P>
+
+<P><I>b. Out-of-band authentificatie</I></P>
+
+<P>De out-of-band verbinding is een aparte verbinding die tot
+stand komt tussen firewalls en de gebruiker, met als doel de juiste
+informatie te ontvangen.  Deze methode wordt weinig gebruikt,
+omdat zij een speciaal programma vereist aan de kant van de gebruiker.
+ <BR>
+<BR>
+
+</BODY>
+</HTML>

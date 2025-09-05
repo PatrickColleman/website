@@ -1,0 +1,57 @@
+<HTML>
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 3.0 Win">
+  <TITLE>Cryptologie</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<P><CENTER><B><FONT SIZE="+4">IPSec : ESP header</FONT></B></CENTER></P>
+
+<P><CENTER><IMG SRC="IPSec_ESP.jpg" WIDTH="512" ALIGN="BOTTOM"
+BORDER="0" HEIGHT="321" NATURALSIZEFLAG="2"></CENTER></P>
+
+<P>De velden in de header zijn:<BR>
+- Security Parameter Index: identificatie beveiligingsassociatie
+- niet versleuteld<BR>
+- Sequence number: zie ook AH - niet versleuteld<BR>
+- Payload Data : beveiligde IP data <BR>
+- Padding: 0-255 bytes (opvulbits): Indien het encryptiealgorithme
+vereist dat de lengte van de data een veelvoud is van een gegeven
+cijfer, kan men door middel van deze padding bits daaraan voldoen.<BR>
+- Pad length: aantal paddingbits<BR>
+- next header: TCP of een extensieheader van IPv6.<BR>
+- Authentication data: bevat een Integrity Check Value over het
+ESP gedeelte min de authentication data. - niet versleuteld</P>
+
+<P>&nbsp;</P>
+
+<P><CENTER><IMG SRC="IPSec_ESP_modi.jpg" WIDTH="512" ALIGN="BOTTOM"
+BORDER="0" HEIGHT="554" NATURALSIZEFLAG="2"></CENTER></P>
+
+<P><B>Samengevat: welke header staat waar?</B></P>
+
+<P>1. transportmode:<BR>
+- IP header<BR>
+- AH header<BR>
+- ESP header - geauthentiseerd en versleuteld<BR>
+- TCP header - versleuteld<BR>
+- data - versleuteld<BR>
+- ESP authentication</P>
+
+<P>2. tunnelmode:<BR>
+- nieuwe IP header<BR>
+- AH header<BR>
+- ESP header - geauthentiseerd en versleuteld<BR>
+- oorspronkelijke IP header - versleuteld<BR>
+- TCP header - versleuteld<BR>
+- data - versleuteld<BR>
+- ESP authentication</P>
+
+<P>In IPv6 staan de extentieheaders vlak na de IP headers. De
+eventuele oorspronkelijke extentieheaders (tunnelmode) zijn ook
+versleuteld.</P>
+
+<P>De optionele AH header staat steeds voor de ESP header.
+
+</BODY>
+</HTML>

@@ -1,0 +1,42 @@
+<HTML>
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 3.0 Win">
+  <TITLE>Cryptologie</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<P><CENTER><B><FONT SIZE="+4">Sleutelbeheer: ISAKMP</FONT></B></CENTER></P>
+
+<P><CENTER><IMG SRC="ISAKMP_header.jpg" WIDTH="512" HEIGHT="385"
+ALIGN="BOTTOM" NATURALSIZEFLAG="2"></CENTER></P>
+
+<P>Bovenstaande figuur (a) toont de ISAKMP header. Deze bestaat
+uit volgende velden:</P>
+
+<P>- initiator cookie: 64 bits: cookie van de entiteit die het
+opzetten, informeren en het verwijderen van de SA heeft ge&iuml;nitieerd<BR>
+- responder cookie<BR>
+- next payload: het type van de eerste payload in het bericht.
+Er zijn vele typen payload gedefinieerd. Een volledig overzicht
+gaat buiten het doel van deze website. Er zijn verschillende soorten
+gedefini&euml;erd: SA payload, proposal payload, transform payload,
+key exchange payload, identification payload, certificate payload,
+certificate request payload, hash payload, signature payload,
+nonce payload en notification payload<BR>
+- main version: het primaire versienummer van ISAKMP<BR>
+- minor version: het secundaire versienummer van ISAKMP<BR>
+- Exchange type: het type uitwisseling. Er bestaan volgende mogelijkheden:
+base exchange (sleuteluitwisseling en authenticatie), identity
+protection exchange (sleuteluitwisseling, authenticatie en identiteit
+van de gebruiker), authentication only, agressive exchange (minimaal
+aantal uitwisselingen) en informational exchange (unidirectionele
+overdracht van SA beheersinformatie)<BR>
+- flags: momenteel zijn de vlaggen voor encryptie (van alle velden
+na de payload) en commit (het versleutelde materiaal niet ontvangen
+voordat het opzetten van de SA is afgerond) voorzien.<BR>
+- message: uniek id voor dit bericht<BR>
+- length: lengte van het ganse bericht, headers inbegrepen (in
+aantal bytes)
+
+</BODY>
+</HTML>

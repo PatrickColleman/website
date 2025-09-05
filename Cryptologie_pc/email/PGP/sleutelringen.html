@@ -1,0 +1,111 @@
+<HTML>
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 2.0 Win">
+  <TITLE>Cryptologie</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<P><CENTER><B><FONT SIZE=+4>Pretty Good Privacy (PGP)<BR>
+sleutelringen</FONT></B></CENTER></P>
+
+<P>&nbsp;</P>
+
+<P>&nbsp;</P>
+
+<P>Omdat er zovele sleutelsets mogelijk zijn per gebruiker, gaat men doen
+alsof men deze aan een sleutelring gaat hangen. Er zijn twee types sleutelringen:
+private sleutelringen en publieke sleutelringen.</P>
+
+<P>&nbsp;</P>
+
+<P>1. Private sleutelringen</P>
+
+<P>Dit is een database waar men volgende informatie over een sleutelset
+(priv&eacute;-publiek) gaat bijhouden:<BR>
+- tijdsstempel: het ogenblik van generatie van de sleutelset<BR>
+- sleutel-id: de 64 minst beduidende bits van de sleutel. Deze gebruikt
+men o.a. bij het ontvangen van een e-mail om de juiste publieke sleutel
+te kunnen bepalen.<BR>
+- public key: de publieke sleutel<BR>
+- private key: de priv&eacute; sleutel, versleuteld met bijvoorbeeld IDEA
+of 3DES. Dit doet men op basis van een wachtzin (wachtwoord): SHA-1 geeft
+de 160 bits code. Men gebruikt dan 128 bits uit deze code om de priv&eacute;
+sleutel te vercijferen.<BR>
+- gebruikers-id: bijvoorbeeld het e-mail adres van de gebruiker</P>
+
+<P>Men kan deze indexeren op gebruikers-id of sleutel-id.</P>
+
+<P>Opvragen van een sleutel doet men op basis van de wachtzin om de ontcijfercode
+te kunnen genereren.</P>
+
+<P>&nbsp;</P>
+
+<P>2. Public key sleutelringen</P>
+
+<P>In deze database zal men volgende velden bijhouden:<BR>
+- tijdsstempel: het ogenblik van generatie van de sleutelset<BR>
+- sleutel-id: de 64 minst beduidende bits van de sleutel. <BR>
+- public key: de publieke sleutel<BR>
+- gebruikers-id: bijvoorbeeld het e-mail adres van de gebruiker</P>
+
+<P>Men kan deze indexeren op gebruikers-id of sleutel-id.</P>
+
+<P>&nbsp;</P>
+
+<P>PGP gebruikt beide ringen om het doorsturen en ontvangen voor de gebruiker
+zo eenvoudig mogelijk te houden. We herhalen voor de eenvoud eventjes het
+formaat:</P>
+
+<P><CENTER><IMG SRC="PGP_formaat.jpg" WIDTH="366" HEIGHT="425" ALIGN="BOTTOM"
+NATURALSIZEFLAG="3"></CENTER></P>
+
+<P>1. zenden</P>
+
+<P>a. ondertekenen:<BR>
+- ophalen van de private key van de zender uit de priv&eacute; sleutelring
+op basis van de gebruikers-id<BR>
+- vraag naar wachtzin om deze sleutel te kunnen ontcijferen<BR>
+- handtekening contrueren</P>
+
+<P>b. versleutelen van het bericht:<BR>
+- sessiesleutel genereren en versleutelen van het bericht<BR>
+- ophalen van de public key ring van de ontvanger uit de public key ring
+met behulp van de naam van de ontvanger als index<BR>
+- de session key component van het bericht genereren.</P>
+
+<P>&nbsp;</P>
+
+<P>2. ontvangen</P>
+
+<P>a. ontcijferen van het bericht:<BR>
+- ophalen van de private key van de ontvanger uit de private key ring op
+basis van de sleutel-id<BR>
+- vragen van de wachtzin om deze sleutel te kunnen ontcijferen<BR>
+- herstellen van de session key en ontcijfereing van het bericht</P>
+
+<P>b. authenticatie:<BR>
+- ophalen van de public key van de zender uit de public key sleutelring
+op basis van de sleutel-id<BR>
+- herstellen van de message digest<BR>
+- berekenen van de message digest en vergelijking met de zojuist gedecodeerde
+message digest</P>
+
+<P>&nbsp;</P>
+
+<P>Een groot probleem in PGP is het kunnen hebben van vertrouwen in de sleutelset
+van een andere gebruiker (correspondent). Men kan dit op vele manieren bekomen,
+maar het laten genereren door een door beide partijen vertrouwde partij
+ofwel, nog beter, door een CA, zijn de handigste en meest veilige oplossingen.</P>
+
+<P>Men gaat wel in de pulic key sleutelring een aantal extra velden bijhouden
+die de mate ven vertrouwen in de sleutel moeten bepalen.</P>
+
+<P>&nbsp;</P>
+
+<P>Indien men een sleutelset wenst te verwijderen, maakt men eveneens een
+(sleutelherroepings)certificaat aan, en gaat dit zo snel mogelijk naar zoveel
+mogelijk respondenten doorsturen.</P>
+
+<P>&nbsp;
+</BODY>
+</HTML>

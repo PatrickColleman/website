@@ -1,0 +1,50 @@
+<HTML>
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 3.0 Win">
+  <TITLE>Cryptologie</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<P><CENTER><B><FONT SIZE="+3">Gemeenschappelijke sleutel maken:<BR>
+sleuteldistributiecentrum<BR>
+<BR>
+</FONT>Een sleuteldistributiecentrum is een door alle partijen
+te vertrouwen instantie.</B></CENTER></P>
+
+<P><CENTER><IMG SRC="KDC_2.jpg" WIDTH="512" HEIGHT="303" ALIGN="BOTTOM"
+NATURALSIZEFLAG="2"></CENTER></P>
+
+<P><CENTER>&nbsp;</CENTER></P>
+
+<P>De procedure loopt als volgt:</P>
+
+<P>Alice vraagt bij het KDC een sessiesleutel aan om de communicatie
+met Bob te beveiligen. Dit bericht bevat de naam van Alice, Bob
+en een nonce.</P>
+
+<P>Het KDC stuurt naar A een antwoord dat versleuteld is met de
+geheime sleutel voor communicatie tussen Alice en het KDC K<sub>a</sub>.
+Hierin staat een geheime eenmalige sessiesleutel voor Bob K<sub>s</sub>
+en de nonce. Hiermee weet Alice dat de oorspronkelijke aanvraag
+niet werd veranderd onderweg en de nonce kan ze gebruiken om de
+aanvraag te identificeren. Het bericht bevat ook een item die
+Alice voor Bob nodig heeft, namelijk een bericht dat met de geheime
+sleutel van Bob K<sub>b</sub> is versleuteld en die de identificatie
+van Alice, haar identificatie &eacute;n de sessiesleutel bevat.</P>
+
+<P>Alice stuurt dit laatste bericht naar Bob. Ze kan dit niet
+zelf aanmaken! De sessiesleutel is veilig afgeleverd!</P>
+
+<P>Om authenticatie te bekomen zal Bob een bericht naar Alice
+sturen. Hierin zit opnieuw een nonce. Dit bericht is met de sessiesleutel
+versleuteld.</P>
+
+<P>Alice zal de nonce van Bob aanpassen met &eacute;&eacute;n
+of andere functie die ze met Bob afsprak en dan deze met de sessiesleutel
+versleuteld naar Bob sturen.</P>
+
+<P>Hierdoor weet Bob dat het eerste bericht dat hij van Alice
+kreeg geen replay was.
+
+</BODY>
+</HTML>

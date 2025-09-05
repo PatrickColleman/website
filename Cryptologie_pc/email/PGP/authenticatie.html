@@ -1,0 +1,34 @@
+<HTML>
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 2.0 Win">
+  <TITLE>Cryptologie</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<P><CENTER><B><FONT SIZE=+4>Pretty Good Privacy (PGP)<BR>
+authenticatie</FONT></B></CENTER></P>
+
+<P>&nbsp;</P>
+
+<P>Men gaat als volgt te werk:</P>
+
+<P>1. Stel het bericht op.</P>
+
+<P>2. Met SHA-1 maakt men een 160 bit hash code van het bericht</P>
+
+<P>3. Deze hash code wordt versleuteld met RSA, gebruik makend van de private
+sleutel van de zender</P>
+
+<P>4. De ontvanger gebruikt RSA met de publieke sleutel van de zender.</P>
+
+<P>5. De ontvanger genereert ook een hash code en vergelijkt met de ontvangen
+hash code. Als ze gelijk zijn, is het bericht authentiek.</P>
+
+<P>&nbsp;</P>
+
+<P>Er bestaan ook losgekoppelde handtekeningen. Men gebruikt deze wanneer
+bijvoorbeeld meerdere personen een document moeten ondertekenen. Ze berekenen
+dan allemaal de handtekening op de oorspronkelijke tekst, in plaats van
+de tekst plus de reeds berekende handtekeningen.
+</BODY>
+</HTML>

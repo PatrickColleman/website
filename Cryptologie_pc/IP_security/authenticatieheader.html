@@ -1,0 +1,67 @@
+<HTML>
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 3.0 Win">
+  <TITLE>Cryptologie</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<P><CENTER><B><FONT SIZE="+4">IPSec authenticatieheader</FONT></B></CENTER></P>
+
+<P><CENTER>&nbsp;</CENTER></P>
+
+<P><CENTER><IMG SRC="IPSec_AH.jpg" WIDTH="512" HEIGHT="216" ALIGN="BOTTOM"
+BORDER="0" NATURALSIZEFLAG="2"></CENTER></P>
+
+<P>De velden van deze header zijn:</P>
+
+<P>- next header: zie IPv6 - meestal ESP<BR>
+- payload length: lengte van de header in woorden van 32 bits,
+min 2<BR>
+- SPI: identificatie van een beveiligingsassociatie SA<BR>
+- sequence number: dient om replay aanvallen af te blokken. Men
+laat deze incrementeren bij elk nieuw frame. De eerste waarde
+is 1. Wanneer de maximale waarde bereikt is, moet een nieuw SA
+opgezet worden. Het ontvangstvenster is 64 frames breed. <BR>
+- authenticatie data: bevat de Integrity Check Value (ICV) of
+MAC.</P>
+
+<P>&nbsp;</P>
+
+<P>Als het ontvangen frame binnen het venster valt, wordt de MAC
+gecontroleerd. Als het pakket geauthentiseerd is, wordt het aanvaard.</P>
+
+<P>De ICV wordt door HMAC aangemaakt, maar afgekapt op 96 bits.
+De MAC wordt berekend over:<BR>
+- IP header velden die onderweg niet veranderen, zoals header
+lengte en source adress<BR>
+- De bovenstaande authentication header<BR>
+- De data van het transportlaagprotocol.</P>
+
+<P>&nbsp;</P>
+
+<P>In transportmode wordt de AH header ingevuld na de IP header
+en voor de data. De data wordt vanzelfsprekend versleuteld.</P>
+
+<P>In tunnelmode vindt men eerst de nieuwe IP header, daarna de
+AH header, daarna de oorspronkelijke IP header en daarna de TCP
+header en de data. De oorspronkelijke IP header en alle daaraanvolgende
+info wordt versleuteld.<BR>
+<BR>
+De header van IPSec is identiek aan deze van IP. Dit maakt dat
+alle bestaande apparatuur IPSec aankan. Er wordt zelfs samengewerkt
+met Ipv6. Het enige speciale is dat er als protocol ESP (encapsulated
+security payload) is gespecificeerd in plaats van TCP of UDP.
+ESP zal de data encrypteren. Men kan een optionele authentication
+header (AH) toevoegen om aan te tonen dat de data niet aangepast
+is tijdens het transport. Deze header moet de integriteit van
+het ganse pakket garanderen.</P>
+
+<P>In volgende figuur kan men de verschillende headers terugvinden
+in functie van de mode.<BR>
+</P>
+
+<P><CENTER><IMG SRC="IPSec_AH_modi.jpg" WIDTH="512" ALIGN="BOTTOM"
+BORDER="0" HEIGHT="642" NATURALSIZEFLAG="2"></CENTER>
+
+</BODY>
+</HTML>

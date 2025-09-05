@@ -1,0 +1,78 @@
+<HTML>
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 2.0 Win">
+  <TITLE>Cryptologie</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<P><CENTER><B><FONT SIZE=+3>Gemeenschappelijke sleutel maken:<BR>
+Diffie - Hellman</FONT></B></CENTER></P>
+
+<P><CENTER><IMG SRC="DiffieHellman.jpg" WIDTH="512" HEIGHT="236" ALIGN=
+"BOTTOM" NATURALSIZEFLAG="3"></CENTER></P>
+
+<P><CENTER><B><FONT SIZE=+2>niet veilig =&gt; man halverwege!</FONT></B></CENTER></P>
+
+<P>&nbsp;</P>
+
+<P>In het voorgaande veronderstelden we dat Alice en Bob een geheime gemeenschappelijke 
+  sleutel hebben. Als dat niet het geval is, moeten ze er een afspreken.</P>
+
+<P><B>Dit wil dus zeggen dat twee partners een sleutel kunnen afspreken,
+zelfs als Charlie in de buurt is en alle berichten kan lezen. Het systeem
+is echter niet helemaal veilig!</B></P>
+
+<P>Er worden twee grote priemgetallen n en g afgesproken. Deze kunnen gerust
+publiek zijn. (n-1)*0.5 moet ook een priemgetal zijn.</P>
+
+<P>Alice kiest een groot getal x en Bob een groot getal y. Deze houden ze
+geheim!!!</P>
+
+<P>Alice stuurt een eerste bericht naar Bob met als inhoud de publieke n,
+g en de berekende g<sup>x</sup> mod n.</P>
+
+<P>Bob stuurt een bericht terug met als inhoud: g<sup>y</sup> mod n.</P>
+
+<P>Alice gaat nu (g<sup>y</sup> mod n)<sup>x</sup> uitrekenen. Dit is eigenlijk
+ook g<sup>xy</sup> mod n.</P>
+
+<P>Bob rekent (g<sup>x</sup> mod n)<sup>y</sup> uit. Dit is eigenlijk ook
+g<sup>xy</sup> mod n. </P>
+
+<P>We kunnen dus besluiten dat g<sup>xy</sup> mod n de gemeenschappelijke
+geheime sleutel is.</P>
+
+<P>Nochtans is het systeem niet waterdicht. Als Bob de boodschap ontvangt,
+weet hij niet zeker dat het van Alice komt. Hier komt Charlie weer tussenbeide
+in een aanval die men ook <B>man halverwege</B> noemt.</P>
+
+<P>Alice kiest een groot getal x en Bob een groot getal y. Charlie kiest
+een getal z. Deze houden ze geheim!!!</P>
+
+<P>Alice stuurt een eerste bericht naar Bob met als inhoud de publieke n,
+g en de berekende g<sup>x</sup> mod n. Charlie onderschept dit bericht en
+stuurt een bericht naar Bob met de inhoud: n, g en de berekende g<sup>z</sup>
+mod n, d.w.z. met zijn eigen gekozen cijfer.</P>
+
+<P>Charlie stuurt een bericht naar Alice terug met als inhoud: g<sup>z</sup>
+mod n.</P>
+
+<P>Bob stuurt een bericht terug naar Charlie met als inhoud: g<sup>y</sup>
+mod n.</P>
+
+<P>Alice gaat nu (g<sup>z</sup> mod n)<sup>x</sup> uitrekenen. Dit is eigenlijk
+ook g<sup>xz</sup> mod n.</P>
+
+<P>Bob rekent (g<sup>z</sup> mod n)<sup>y</sup> uit. Dit is eigenlijk ook
+g<sup>zy</sup> mod n. </P>
+
+<P>Charlie doet deze berekeningen eveneens. Met de sleutel g<sup>xz</sup>
+mod n kan hij met Alice communiceren en met g<sup>zy</sup> mod n kan hij
+met Bob communiceren. </P>
+
+<P>Het probleem is echter ook dat Alice denkt met Bob te communiceren, terwijl
+dat in de praktijk met Charlie is. Bob denkt met Alice te communiceren,
+terwijl dit ook met met Charlie is. Charlie ziet alle berichten binnenkomen
+en kan ze, eventueel gewijzigd, doorsturen.
+</BODY>
+</HTML>

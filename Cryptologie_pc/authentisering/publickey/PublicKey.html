@@ -1,0 +1,56 @@
+<HTML>
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 2.0 Win">
+  <TITLE>Cryptologie</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<P><CENTER><B><FONT SIZE=+4>Public key authentisering</FONT></B></CENTER></P>
+
+<P><CENTER><B><FONT SIZE=+2>wederzijdse authentisering:</FONT></B></CENTER></P>
+
+<P><CENTER><IMG SRC="PublicKey.jpg" WIDTH="512" HEIGHT="191" ALIGN="BOTTOM"
+NATURALSIZEFLAG="3"><BR>
+<B><FONT SIZE=+2>probleem indien publieke sleutel niet gekend! Dan:<BR>
+aanval emmerbrigade (=man in het midden)<BR>
+oplossing aanval emmerbrigade</FONT></B></CENTER></P>
+
+<P>Doel: wederzijdse authentisering met een publieke sleutel en afspraak sessiesleutel 
+  maken.</P>
+
+<P>Veronderstellen we om te beginnen dat de publieke sleutels van Alice
+en Bob gekend zijn.</P>
+
+<P>Alice stuurt een boodschap 1 naar Bob met haar identiteit en een random
+cijfer R<sub>A</sub>.</P>
+
+<P>Bob weet niet zeker of bericht 1 van Alice komt, maar stuurt toch maar
+bericht 2 op. Hij kiest daarin ook een random cijfer R<sub>B</sub> en een
+voorgestelde sessiesleutel K<sub>S</sub>.</P>
+
+<P>Alice ziet bericht 2 en kan het ontcijferen. Het feit dat R<sub>A</sub>
+er in staat zegt haar dat Bob degene is waar ze mee communiceert. Alice
+stuurt bericht 3 naar Bob. </P>
+
+<P>Wanneer Bob bericht 3 ziet, kan dit alleen van Alice komen, want alleen
+Alice kon K<sub>S</sub> uit bericht 2 halen.</P>
+
+<P>&nbsp;</P>
+
+<P>Wanneer de publieke sleutels niet gekend zijn, werkt de aanval van de
+emmerbrigade (man in het midden) zoals reeds besproken. Alice kan haar openbare
+sleutel naar Bob sturen. Wanneer Charlie deze sleutel onderschept zullen
+Alice en Bob communiceren  met Charlie zonder het zelf te beseffen.</P>
+
+<P>Een oplossing hiervan is het gebruik van een publieke database. Maar
+opnieuw kan Charlie de aanvraag van Alice aan de publieke database onderscheppen,
+zodat de emmerbrigadeaanval werkt.</P>
+
+<P>De beste oplossing is dat Alice en Bob na het uitwisselen van de publieke
+sleutels hun berichten versleutelen, maar eerst bijvoorbeeld de bits op
+de even plaatsen uitwisselen en daarna de bits op de oneven plaatsen. Wanneer
+Charlie het (halve) bericht van Alice of Bob ziet binnenkomen, kan hij dat
+onmogelijk ontcijferen. Bob ziet in het ergste geval nonsens binnenkomen
+en zal daaruit snel zijn conclusies nemen!!
+</BODY>
+</HTML>

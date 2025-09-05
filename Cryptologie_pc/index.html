@@ -1,0 +1,54 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+<html lang="nl">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta http-equiv="Content-Language" content="nl">
+  <title>Cryptologie</title>
+  <script type="text/javascript" src="sha1.js"></script>
+  <script type="text/javascript">
+    correctSHA1 = "8cffa7742b8cfd9e381e61b731934fd21229b7b7";
+    
+    function go( page ) {
+      window.document.location.href = page + ".html";
+    }
+    
+    function verify( pass ) {
+      if ( calcSHA1( pass ) == correctSHA1 ) {
+        go( String.fromCharCode(
+          pass.charCodeAt( 3 ) + 55,
+          pass.charCodeAt( 4 ) + 44,
+          pass.charCodeAt( 2 ) + 63,
+          pass.charCodeAt( 3 ) + 64,
+          pass.charCodeAt( 0 ) + 59,
+          pass.charCodeAt( 5 ) + 61,
+          pass.charCodeAt( 6 ) + 65,
+          pass.charCodeAt( 7 ) + 56,
+          pass.charCodeAt( 2 ) + 48,
+          pass.charCodeAt( 1 ) + 76,
+          pass.charCodeAt( 1 ) + 59,
+          pass.charCodeAt( 3 ) + 50,
+          pass.charCodeAt( 4 ) + 51,
+          pass.charCodeAt( 7 ) + 63,
+          pass.charCodeAt( 6 ) + 61,
+          pass.charCodeAt( 5 ) + 52,
+          pass.charCodeAt( 0 ) + 68,
+          pass.charCodeAt( 4 ) + 46
+        ) );
+      } else {
+        window.alert( "Foutief paswoord..." );
+        window.document.frmPasswd.password.select();
+      }
+    }
+  </script>
+</head>
+
+<body style="text-align: center" onload="window.document.frmPasswd.password.focus()">
+  <h4>Deze cursus is beveiligd met een paswoord.</h4>
+  <form name="frmPasswd" action="javascript:verify( window.document.frmPasswd.password.value )">
+    Paswoord: <input type="password" name="password"> <input type="submit" value="verstuur">
+  </form>
+</body>
+
+</html>

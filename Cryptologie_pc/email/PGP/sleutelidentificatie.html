@@ -1,0 +1,34 @@
+<HTML>
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 2.0 Win">
+  <TITLE>Cryptologie</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<P><CENTER><B><FONT SIZE=+4>Pretty Good Privacy (PGP)<BR>
+sleutelidentificatie</FONT></B></CENTER></P>
+
+<P>&nbsp;</P>
+
+<P>In PGP heeft men de mogelijkheid meerdere paren publieke/private sleutels
+te hebben. Hoe weet de ontvanger dan welk paar hij moet gebruiken?</P>
+
+<P>Men heeft binnen PGP gekozen voor de oplossing waarbij elk paar een id
+heeft die met zeer grote waarschijnlijkheid uniek is binnen een gebruikersgroep.
+Deze bestaat uit de 64 minst beduidende bits. Dit maakt dat men de id snel
+mee kan doorsturen met het bericht.</P>
+
+<P><CENTER><IMG SRC="PGP_formaat.jpg" WIDTH="366" HEIGHT="425" ALIGN="BOTTOM"
+NATURALSIZEFLAG="3"></CENTER></P>
+
+<P>Dit brengt ons tot bovenstaand formaat van een PGP bericht. De session
+key is de eenmalige sleutel waarmee het bericht versleuteld wordt.</P>
+
+<P>E<sub>KUb</sub> is de publieke sleutel van B.</P>
+
+<P>E<sub>KRa</sub> is de private sleutel van A.</P>
+
+<P>Met de eerste twee bytes van de message digest kan de ontvanger nagaan
+of hij het juiste sleutelpaar gebruikt heeft.
+</BODY>
+</HTML>

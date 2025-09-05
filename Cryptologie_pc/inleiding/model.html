@@ -1,0 +1,116 @@
+<HTML>
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 3.0 Win">
+  <TITLE>Cryptologie</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<P><CENTER><B><FONT SIZE="+4">Vercijfermodel</FONT></B></CENTER></P>
+
+<P><CENTER><IMG SRC="vercijfermodel.jpg" WIDTH="512" HEIGHT="225"
+ALIGN="BOTTOM" NATURALSIZEFLAG="3"></CENTER></P>
+
+<P><CENTER><B><FONT SIZE="+2">sleutel en zijn lengte<BR>
+publiek algorithme - types vercijfering<BR>
+onconditioneel veilig - computational secure<BR>
+cryptoanalyse - cryptografie - cryptologie</FONT></B></CENTER></P>
+
+<P>&nbsp;</P>
+
+<P>Het probleem is dat een actieve of passieve indringer kan trachten
+het bericht te beluisteren (passieve indringer) of zelfs aan te
+passen (actieve indringer).</P>
+
+<P>De linkerhelft van de figuur toont wat aan de zenderzijde moet
+gebeuren. De rechterhelft doet hetzelfde voor de ontvangstzijde.</P>
+
+<P>De te vercijferen tekst, in het jargon <B>plaintext</B> of
+<B>klare tekst</B> genoemd moet, gebruik makende van een <B>encryptiemethode</B>
+of <B>vercijfermethode</B> worden omgezet in een vercijferde tekst
+C. Hierbij gebruikt men een <B>vercijfersleutel</B> k.</P>
+
+<P>De vercijferde tekst moet aan de ontvangstzijde door middel
+van een <B>decryptiemethode</B> of <B>ontcijfermethode</B> opnieuw
+worden omgezet in de oorspronkelijke klare tekst . Hierbij gebruikt
+men eveneens een <B>ontcijfersleutel</B> k', die niet per definitie
+dezelfde hoeft te zijn als de vercijfersleutel k. Hij is er natuurlijk
+wel functie van (zie public key cryptografie)!</P>
+
+<P><CENTER><IMG SRC="conventioneel_cryptosysteem.jpg" WIDTH="512"
+HEIGHT="295" ALIGN="BOTTOM" BORDER="0" NATURALSIZEFLAG="2"></CENTER></P>
+
+<P>Het is duidelijk dat er een zeer veilige methode moet ontwikkeld
+worden om de sleutel van de ene zijde naar de andere te brengen
+via een 'secure channel' of beveiligd kanaal.</P>
+
+<P>Wiskundig kan men stellen dat:<BR>
+C=E<sub>k</sub>(P)<BR>
+en<BR>
+P=D<sub>k&#146;</sub>(C)<BR>
+zodat dus ook: P=D<sub>k&#146;</sub>(E<sub>k</sub>(P))<BR>
+(vercijferen en ontcijferen zijn dus complementaire bewerkingen)</P>
+
+<P>Deze sleutel is een groot binair getal van 56, 64 of 128 bits
+lengte voor de meest gebruikte vercijferingsmethoden zoals DES,
+AES en IDEA (zie verder). In het algemeen kan men stellen dat
+een langere sleutel een waarborg levert voor een moeilijker te
+kraken systeem. Op dit ogenblik kan men stellen dat echte waterdichte
+systemen niet toekomen met 64 bits, zodat men ineens overgaat
+naar 128 bits.</P>
+
+<P>Er zijn twee soorten indringers: <B>passieve indringers</B>
+die alleen maar meeluisteren (spionage) en <B>actieve indringers</B>
+die de tekst aanpassen. Deze indringer, vijand, kan per definitie
+de volledige tekst horen en noteren. Als alles goed verloopt kan
+hij/zij daar echter niets mee uithalen, want hij/zij kent de sleutel
+niet, zodat hij de klare tekst niet kan recupereren. In het algemeen
+kan men stellen dat de indringer wel het algorithme van de vercijfering
+kent, maar hopelijk niet de sleutel k.</P>
+
+<P>Het feit dat het algorithme publiek gekend is, is eigenlijk
+een sterk punt. Indien men een nieuwe procedure in mekaar stopt,
+is het natuurlijk niet absoluut zeker dat deze procedure volledig
+waterdicht is. Een mens is tenslotte ook maar een mens en alle
+mogelijkheden doorzoeken is niet evident. Maar wanneer de procedure
+publiek is, gaan vele cryptologen op zoek om te bewijzen dat ze
+slimmer zijn dan de bedenker van de procedure. Wanneer er gedurende
+enkele jaren geen bericht komt dat de procedure gekraakt is, kan
+men stellen dat deze vrij waterdicht is.</P>
+
+<P>Er zijn twee soorten cryptologiesystemen: <B>block vercijfering
+en data-stream vercijfering</B>. Voor het eerste deel worden blokken
+data van vaste lengte in blokken verwerkt. Deze verwerking is
+onafhankelijk van de verwerking van vorige blokken. Bij data-stream
+vercijfering doet men de vercijfering onafhankelijk van het aantal
+tekens.</P>
+
+<P>Tevens spreekt men over <B>geheime sleutel en publieke sleutel
+cryptografie</B>. De geheime sleutel cryptografie spreekt voor
+zichzelf. Bij de publieke sleutel cryptografie gebruikt men een
+publieke sleutel die iedereen kent en een geheime die alleen de
+eigenaar kent en die de 'inverse' is van de publieke sleutel.</P>
+
+<P>Een cryptografiesysteem is <B>onconditioneel veilig</B> als
+het onmogelijk is de code te kraken. Een voorbeeld hiervan is
+het one time pad.</P>
+
+<P>Een cryptografiesysteem is <B>computational secure voor x jaren</B>
+indien er x aantal jaren nodig zijn om de sleutel te kraken en
+dit in de best mogelijke condities voor de 'kraker'.</P>
+
+<P>De <B>cryptoanalyse</B> is de kunst van het kraken van een
+sleutel.</P>
+
+<P><B>Cryptografie</B> is de kunst van het opstellen van geheimschriften.</P>
+
+<P><B>Cryptologie</B> is de verzamelterm voor cryptoanalyse en
+cryptografie.</P>
+
+<P>Voor het kraken zijn er twee mogelijkheden. Ofwel kent de cryptoanalist
+alleen de vercijferde code. In het andere geval kent hij eveneens
+de inhoud van (een deel van) de klare tekst. Dit laatste is mogelijk
+indien hij in staat is een bericht te doen verzenden. (cfr. oorlogsomstandigheden
+- spionage en contra spionage)
+
+</BODY>
+</HTML>

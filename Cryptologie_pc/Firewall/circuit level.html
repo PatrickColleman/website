@@ -1,0 +1,35 @@
+<HTML>
+<HEAD>
+  <META NAME="GENERATOR" CONTENT="Adobe PageMill 2.0 Win">
+  <TITLE>Cryptologie</TITLE>
+</HEAD>
+<BODY BGCOLOR="#ffffff">
+
+<P><CENTER><B><FONT SIZE=+4>Firewall</FONT><FONT SIZE=+3>: circuit level
+gateway</FONT></B></CENTER></P>
+
+<P><B><FONT SIZE=+1></FONT></B>&nbsp;</P>
+
+<P>Een circuit level gateway laat geen end-to-end TCP connectie toe tusen
+bron en bestemmeling.</P>
+
+<P>De gateway zal 2 TCP verbindingen realiseren: &eacute;&eacute;n tussen
+de bron en de gateway en &eacute;&eacute;n tussen de gateway en de bestemmeling.</P>
+
+<P>Zodra beide verbindingen gerealiseerd zijn, zal de circuit leveml gateway
+TCP segmenten van de ene verbinding doorsturen naar de andere verbinding,
+zonder nog naar de inhoud van die segmenten te kijken.</P>
+
+<P>De beveiliging zit hem dus alleen in het al dan niet willen realiseren
+van de doorverbinding naar de andere host.</P>
+
+<P>Dit type firewall gebruikt men typisch wanneer de beheerder de interne
+gebruikers vertrouwd. De verbindingen 'van binnen naar buiten' lopen dan
+door de circuit level firewall, terwijl de verbindingen 'van buiten naar
+binnen' door de application level firewall lopen, zodat extra controle mogelijk
+is.</P>
+
+<P>Herinner je dat de verschillende types firewall door mekaar gebruikt
+worden, al dan niet op &eacute;&eacute;nzelfde computer.
+</BODY>
+</HTML>
